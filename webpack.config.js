@@ -1,13 +1,14 @@
 var path = require('path');
 
 module.exports = {
-    entry: [
-        './src/index.js'
-    ],
+    entry: {
+        admin: './src/admin/index.js',
+        viewer: './src/viewer/index.js'
+    },
     output: {
         path: path.join(__dirname, '/public/build'),
         publicPath: '/',
-        filename: 'bundle.js'
+        filename: '[name].bundle.js'
     },
     module: {
         loaders: [
