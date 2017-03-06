@@ -3,6 +3,7 @@ import SideBar from './SideBar/Index';
 import NavBar from './NavBar/Index';
 import NameList from '../containers/NameList';
 import Name from '../containers/Name';
+import Footer from './Footer/Index';
 
 const App = () => (
     <div>
@@ -13,6 +14,7 @@ const App = () => (
             <hr />
             <h1>Names</h1>
             <NameList />
+            <Footer />
         </div>
     </div>
 );
