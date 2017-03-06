@@ -1,0 +1,19 @@
+section.loading-animation
+{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+section.loading-animation > div
+{
+    margin: 0;
+    width: 210px;
+}
+section.loading-animation > div > div
+{
+    background-color: #35b88f;
+    height: 50px;
+    width: 50px;
+}
