@@ -1,3 +1,7 @@
+.flag-icon-ph.flag-icon-squared
+{
+    background-image: url(images/ph.svg);
+}
 section.loading-animation
 {
     margin: 0;
