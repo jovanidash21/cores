@@ -4,15 +4,53 @@ const Menu  = () => {
     return(
         <div className="sidebar-menu">
             <ul className="sidebar-nav">
-                <li>
-                    <a href="./index.html">
+                <li className="active">
+                    <a href="#">
                         <div className="icon">
                             <i className="fa fa-tasks" aria-hidden="true" />
                         </div>
                         <div className="title">Dashboard</div>
                     </a>
                 </li>
-                <li className="dropdown ">
+                <li className="dropdown">
+                    <a href="#" className="dropdown-toggle" data-toggle="dropdown">
+                        <div className="icon">
+                            <i className="fa fa-line-chart" aria-hidden="true" />
+                        </div>
+                        <div className="title">Seminar</div>
+                    </a>
+                    <div className="dropdown-menu">
+                        <ul>
+                            <li className="section"><i className="fa fa-file-o" aria-hidden="true" />&nbsp;Seminar</li>
+                            <li><a href="#">All Seminars</a></li>
+                            <li><a href="#">Add New</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li className="dropdown">
+                    <a href="#" className="dropdown-toggle" data-toggle="dropdown">
+                        <div className="icon">
+                            <i className="fa fa-microphone" aria-hidden="true" />
+                        </div>
+                        <div className="title">Speaker</div>
+                    </a>
+                    <div className="dropdown-menu">
+                        <ul>
+                            <li className="section"><i className="fa fa-file-o" aria-hidden="true" />&nbsp;Speaker</li>
+                            <li><a href="#">All Speakers</a></li>
+                            <li><a href="#">Add New</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                        <div className="icon">
+                            <i className="fa fa-tasks" aria-hidden="true" />
+                        </div>
+                        <div className="title">Sales</div>
+                    </a>
+                </li>
+                <li className="dropdown">
                     <a href="#" className="dropdown-toggle" data-toggle="dropdown">
                         <div className="icon">
                             <i className="fa fa-user" aria-hidden="true" />
