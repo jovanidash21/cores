@@ -1,0 +1,50 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        title= title
+        link(rel='stylesheet', type='text/css', href='/stylesheets/vendor.css')
+        link(rel='stylesheet', type='text/css', href='/stylesheets/flat-admin.css')
+        link(rel='stylesheet', type='text/css', href='/stylesheets/login.css')
+    body
+        .app-container.app-login
+            .flex-center
+                .app-header
+                .app-body
+                    .loader-container.text-center
+                        .icon
+                            .sk-folding-cube
+                                .sk-cube1.sk-cube
+                                .sk-cube2.sk-cube
+                                .sk-cube4.sk-cube
+                                .sk-cube3.sk-cube
+                        .title Logging in...
+                    .app-block
+                        .app-form
+                            .form-header
+                                .app-brand
+                                    span.highlight CoRES
+                                    |  Admin
+                            form(action='/', method='POST')
+                                .input-group
+                                    span#basic-addon1.input-group-addon
+                                        i.fa.fa-user(aria-hidden='true')
+                                    input.form-control(type='text', placeholder='Username', aria-describedby='basic-addon1')
+                                .input-group
+                                    span#basic-addon2.input-group-addon
+                                        i.fa.fa-key(aria-hidden='true')
+                                    input.form-control(type='text', placeholder='Password', aria-describedby='basic-addon2')
+                                .text-center
+                                    input.btn.btn-success.btn-submit(type='submit', value='Login')
+                            .form-line
+                                .title OR
+                            .form-footer
+                                button.btn.btn-default.btn-sm.btn-social.__facebook(type='button')
+                                    .info
+                                        i.icon.fa.fa-facebook-official(aria-hidden='true')
+                                        span.title Login with Facebook
+        script(type='text/javascript', src='/javascripts/vendor.js')
+        script(type='text/javascript', src='/javascripts/app.js')
+        script(type='text/javascript', src='/javascripts/login.js')
