@@ -3,7 +3,7 @@ import Mobile from './Mobile';
 import Left from './Left';
 import Right from './Right';
 
-const NavBar  = () => {
+const NavBar = () => {
     return(
         <nav className="navbar navbar-default" id="navbar">
             <div className="container-fluid">

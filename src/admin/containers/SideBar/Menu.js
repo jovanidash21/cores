@@ -45,9 +45,9 @@ const Menu  = () => {
                 <li>
                     <a href="#">
                         <div className="icon">
-                            <i className="fa fa-tasks" aria-hidden="true" />
+                            <i className="fa fa-money" aria-hidden="true" />
                         </div>
-                        <div className="title">Sales</div>
+                        <div className="title">Sale</div>
                     </a>
                 </li>
                 <li className="dropdown">

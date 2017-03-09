@@ -9,7 +9,7 @@ const Mobile = () => {
                 </button>
             </li>
             <li className="logo">
-                <a className="navbar-brand" href="#"><span className="highlight">Flat v3</span> Admin</a>
+                <a className="navbar-brand" href="#"><span className="highlight">CoRES</span>&nbsp;Admin</a>
             </li>
             <li>
                 <button type="button" className="navbar-toggle">
