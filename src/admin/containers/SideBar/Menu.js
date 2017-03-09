@@ -62,6 +62,11 @@ const Menu  = () => {
                         <ul>
                             <li className="section"><i className="fa fa-file-o" aria-hidden="true" />&nbsp;User</li>
                             <li><a href="#">All Users</a></li>
+                            <li>
+                                <Link to="/admin/user/add">
+                                    Add New
+                                </Link>
+                            </li>
                             <li><a href="#">Add New</a></li>
                             <li className="line" />
                             <li className="section"><i className="fa fa-file-o" aria-hidden="true" />&nbsp;Profile</li>
