@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { IndexLink, Link } from 'react-router';
 
 const Menu  = () => {
     return(
         <div className="sidebar-menu">
             <ul className="sidebar-nav">
                 <li className="active">
-                    <Link to="/admin">
+                    <IndexLink to="/admin">
                         <div className="icon">
                             <i className="fa fa-tasks" aria-hidden="true" />
                         </div>
                         <div className="title">Dashboard</div>
-                    </Link>
+                    </IndexLink>
                 </li>
                 <li className="dropdown">
                     <a href="#" className="dropdown-toggle" data-toggle="dropdown">
