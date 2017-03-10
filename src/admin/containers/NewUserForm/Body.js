@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
+import Select2 from 'react-select2-wrapper';
 
 const Body  = () => {
     return(
@@ -29,6 +30,24 @@ const Body  = () => {
                     </ControlLabel>
                     <div className="col-md-9">
                         <FormControl id="lastName" type="text" placeholder="" />
+                    </div>
+                    <ControlLabel bsClass="col-md-3 control-label" htmlFor="gender">
+                        Gender
+                    </ControlLabel>
+                    <div className="col-md-9">
+                        <Select2
+                            defaultValue={'male'}
+                            data={['male', 'female']}
+                        />
+                    </div>
+                    <ControlLabel bsClass="col-md-3 control-label" htmlFor="role">
+                        Role
+                    </ControlLabel>
+                    <div className="col-md-9">
+                        <Select2
+                            defaultValue={'registrant'}
+                            data={['registrant', 'administrator']}
+                        />
                     </div>
                 </FormGroup>
             </div>

@@ -21,3 +21,7 @@ section.loading-animation > div > div
     height: 50px;
     width: 50px;
 }
+.select2
+{
+    width: 100% !important;
+}
