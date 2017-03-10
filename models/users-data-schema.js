@@ -16,11 +16,6 @@ var usersDataSchema = new Schema
             type:String,
             default: ''
         },
-        role: {
-            type:String,
-            enum: ['administrator', 'registrant'],
-            default: 'registrant'
-        },
         birthDate: {type: Date, default: ''},
         gender: {
             type:String,
@@ -40,8 +35,14 @@ var usersDataSchema = new Schema
             youtube: {type: String, default: ''},
             github: {type: String, default: ''},
             codepen: {type: String, default: ''}
-        }]
+        }],
+        role: {
+            type:String,
+            enum: ['administrator', 'registrant'],
+            default: 'registrant'
+        }
     },
+
     {
         collection: 'usersData'
     }
