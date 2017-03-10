@@ -18,8 +18,8 @@ var usersDataSchema = new Schema
         },
         role: {
             type:String,
-            enum: ['administrator', 'subscriber', 'viewer'],
-            default: 'viewer'
+            enum: ['administrator', 'registrant'],
+            default: 'registrant'
         },
         birthDate: {type: Date, default: ''},
         gender: {
