@@ -83,6 +83,12 @@ const Body  = () => {
                             ]}
                         />
                     </div>
+                    <ControlLabel bsClass="col-md-3 control-label" htmlFor="password">
+                        Password
+                    </ControlLabel>
+                    <div className="col-md-9">
+                        <FormControl id="password" type="password" placeholder="" />
+                    </div>
                     <ControlLabel bsClass="col-md-3 control-label">
                         Role
                     </ControlLabel>
