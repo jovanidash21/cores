@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import NewUserFormContainer from '../containers/NewUserForm/Index';
 
 const NewUserForm  = () => {
