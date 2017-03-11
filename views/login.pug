@@ -8,7 +8,7 @@ html
         link(rel='stylesheet', type='text/css', href='/stylesheets/vendor.css')
         link(rel='stylesheet', type='text/css', href='/stylesheets/flat-admin.css')
         link(rel='stylesheet', type='text/css', href='/stylesheets/login.css')
-    body
+    body.login-page
         .app-container.app-login
             .flex-center
                 .app-header
@@ -26,17 +26,20 @@ html
                             .form-header
                                 .app-brand
                                     span.highlight CoRES
-                            form(action='/', method='POST')
+                            form(action='/auth/login', method='post')
                                 .input-group
                                     span#basic-addon1.input-group-addon
                                         i.fa.fa-user(aria-hidden='true')
-                                    input.form-control(type='text', placeholder='Username', aria-describedby='basic-addon1')
+                                    input.form-control(name='username', type='text', placeholder='Username', aria-describedby='basic-addon1')
                                 .input-group
                                     span#basic-addon2.input-group-addon
                                         i.fa.fa-key(aria-hidden='true')
-                                    input.form-control(type='text', placeholder='Password', aria-describedby='basic-addon2')
+                                    input.form-control(name='password', type='password', placeholder='Password', aria-describedby='basic-addon2')
                                 .text-center
                                     input.btn.btn-success.btn-submit(type='submit', value='Login')
+                            if (alertMessage.length > 0)
+                                p.alert-message
+                                    | #{alertMessage}
                             .form-line
                                 .title OR
                             .form-footer
@@ -44,6 +47,3 @@ html
                                     .info
                                         i.icon.fa.fa-facebook-official(aria-hidden='true')
                                         span.title Login with Facebook
-        script(type='text/javascript', src='/javascripts/vendor.js')
-        script(type='text/javascript', src='/javascripts/app.js')
-        script(type='text/javascript', src='/javascripts/login.js')

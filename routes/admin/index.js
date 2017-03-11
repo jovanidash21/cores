@@ -2,7 +2,14 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-    res.render('admin/index', { title: 'Dashboard' });
+    if(req.user){
+        res.render('admin/index', {
+            title: 'Dashboard'
+        });
+    }
+    else {
+        res.redirect('/auth/login');
+    }
 });
 
 module.exports = router;

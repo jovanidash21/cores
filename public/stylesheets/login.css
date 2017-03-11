@@ -1,0 +1,10 @@
+body.login-page p
+{
+    text-align: center;
+}
+body.login-page p.alert-message
+{
+    color: #a93127;
+    font-size: 14px;
+    margin: 10px 0;
+}
