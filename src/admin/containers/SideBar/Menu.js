@@ -23,8 +23,12 @@ const Menu  = () => {
                     <div className="dropdown-menu">
                         <ul>
                             <li className="section"><i className="fa fa-file-o" aria-hidden="true" />&nbsp;Seminar</li>
-                            <li><a href="#">All Seminars</a></li>
                             <li><a href="#">Add New</a></li>
+                            <li>
+                                <Link to="/admin/seminars">
+                                    All Seminars
+                                </Link>
+                            </li>
                         </ul>
                     </div>
                 </li>
