@@ -65,7 +65,11 @@ const Menu  = () => {
                     <div className="dropdown-menu">
                         <ul>
                             <li className="section"><i className="fa fa-file-o" aria-hidden="true" />&nbsp;User</li>
-                            <li><a href="#">All Users</a></li>
+                            <li>
+                                <Link to="/admin/users">
+                                    All Users
+                                </Link>
+                            </li>
                             <li>
                                 <Link to="/admin/user/add">
                                     Add New
