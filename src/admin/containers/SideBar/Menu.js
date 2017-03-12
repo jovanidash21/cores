@@ -79,7 +79,6 @@ const Menu  = () => {
                                     Add New
                                 </Link>
                             </li>
-                            <li><a href="#">Add New</a></li>
                             <li className="line" />
                             <li className="section"><i className="fa fa-file-o" aria-hidden="true" />&nbsp;Profile</li>
                             <li><a href="#">My Profile</a></li>
