@@ -1,34 +1,28 @@
 import axios from 'axios';
 
-const RECEIVE_ERROR = 'RECEIVE_ERROR';
-const REQUEST_DATA = 'REQUEST_DATA';
-const RECEIVE_DATA = 'RECEIVE_DATA';
-
 function requestData() {
-    return {type: REQUEST_DATA}
+    return {
+        type: 'REQUEST_DATA'
+    }
 }
 function receiveData(json) {
-    return{
-        type: RECEIVE_DATA,
+    return {
+        type: 'RECEIVE_DATA',
         data: json
     }
 }
 function receiveError(json) {
     return {
-        type: RECEIVE_ERROR,
+        type: 'RECEIVE_ERROR',
         data: json
     }
 }
-
-function fetchGetUsersData() {
+export function fetchGetUserData() {
     return function(dispatch) {
         dispatch(requestData());
 
-        return axios({
-            url: `/api/user`,
-            method: 'GET',
-            responseType: 'json'
-        })
+        return axios
+            .get(`/api/user`)
             .then(function(response) {
                 dispatch(receiveData(response.data));
             })
@@ -37,5 +31,3 @@ function fetchGetUsersData() {
             })
     }
 }
-
-export default fetchGetUsersData;
