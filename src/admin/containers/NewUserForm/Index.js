@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-refetch';
 import CardHeader from './CardHeader';
 import Body from './Body';
-import Footer from './Footer';
 
 class NewUserForm extends Component {
+    constructor(props) {
+        super(props);
+
+        this.handleAddNewUserSubmit = this.handleAddNewUserSubmit.bind(this);
+    }
+    handleAddNewUserSubmit() {
+
+    }
+
     render() {
-        // const { fetchUsersData } = this;
+        const { handleAddNewUserSubmit } = this;
 
         return(
             <div className="row">
@@ -14,8 +23,7 @@ class NewUserForm extends Component {
                         <CardHeader />
                         <div className="card-body">
                             <form className="form form-horizontal">
-                                <Body />
-                                <Footer />
+                                <Body handleAddNewUserSubmit={handleAddNewUserSubmit} />
                             </form>
                         </div>
                     </div>
@@ -25,4 +33,23 @@ class NewUserForm extends Component {
     }
 }
 
-export default NewUserForm;
+export default connect(() => {
+    const refreshUsersData = {
+        userDataFetch: {
+            url: `/api/users`,
+            force: true,
+            refreshing: true
+        }
+    };
+
+    return {
+        addNewUser: () => ({
+            editProfileFetch: {
+                url: `/api/users/`,
+                method: 'POST',
+                body: JSON.stringify(newUser),
+                then: () => (refreshUsersData)
+            }
+        })
+    }
+})(NewUserForm);
