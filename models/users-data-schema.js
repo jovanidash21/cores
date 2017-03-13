@@ -20,11 +20,55 @@ var usersDataSchema = new Schema
         gender: {
             type:String,
             enum: ['male', 'female'],
-            default: ''
+            default: 'male'
         },
-        school: {type:String, default: ''},
+        school: {
+            type:String,
+            enum: [
+                'pup-manila',
+                'adu',
+                'au',
+                'ceu',
+                'dbtc',
+                'earist',
+                'feu',
+                'gardner',
+                'icct',
+                'icst',
+                'jru',
+                'neu',
+                'nu',
+                'plmar',
+                'plm',
+                'philsca',
+                'pup-batangas',
+                'rtu',
+                'sjtcp',
+                'sti',
+                'sti-global-city',
+                'tcu',
+                'tnhs',
+                'tip',
+                'tup',
+                'urs',
+                'ue',
+                'ust',
+                'wis',
+                'other'
+            ],
+            default: 'pup-manila'
+        },
         studentNumber: {type:String, default: ''},
-        course: {type:String, default: ''},
+        course: {
+            type:String,
+            enum: [
+                'bscpe',
+                'bsit',
+                'bscs',
+                'other'
+            ],
+            default: 'bscpe'
+        },
         socialLinks: [{
             website: {type: String, default: ''},
             facebook: {type: String, default: ''},
