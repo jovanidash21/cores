@@ -43,7 +43,7 @@ export default connect(() => {
     };
 
     return {
-        addNewUser: () => ({
+        addNewUser: (newUser, password) => ({
             editProfileFetch: {
                 url: `/api/users/`,
                 method: 'POST',

@@ -21,6 +21,11 @@ section.loading-animation > div > div
     height: 50px;
     width: 50px;
 }
+body .app-container > div > div.row
+{
+    padding-left: 30px;
+    padding-right: 30px;
+}
 .select2
 {
     width: 100% !important;
