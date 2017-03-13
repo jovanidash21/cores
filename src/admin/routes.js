@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import App from './components/App';
+import App from './containers/App';
 import Dashboard from './components/Dashboard';
 import AllUsers from './components/AllUsers';
 import NewUserForm from './components/NewUserForm';

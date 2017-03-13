@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import SideBar from '../containers/SideBar/Index';
-import NavBar from '../containers/NavBar/Index';
-import Footer from '../containers/Footer/Index';
+import SideBar from './SideBar/Index';
+import NavBar from './NavBar/Index';
+import Footer from './Footer/Index';
 
 class App extends Component {
     render() {
