@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 class Right extends Component {
     render() {
@@ -130,9 +131,9 @@ class Right extends Component {
                         </div>
                         <ul className="action">
                             <li>
-                                <a href="#">
+                                <Link to={'/admin/user/' + user._id}>
                                     Profile
-                                </a>
+                                </Link>
                             </li>
                             <li>
                                 <a href="#">

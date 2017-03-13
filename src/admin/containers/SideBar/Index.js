@@ -3,14 +3,18 @@ import Header from './Header';
 import Menu from './Menu';
 import Footer from './Footer';
 
-const SideBar = () => {
-    return(
-        <aside className="app-sidebar" id="sidebar">
-            <Header />
-            <Menu />
-            <Footer />
-        </aside>
-    )
-};
+class SideBar extends Component {
+    render() {
+        const { user } = this.props;
+
+        return(
+            <aside className="app-sidebar" id="sidebar">
+                <Header />
+                <Menu user={user} />
+                <Footer />
+            </aside>
+        )
+    }
+}
 
 export default SideBar;
