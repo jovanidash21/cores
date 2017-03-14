@@ -3,6 +3,7 @@ var Promise = require('bluebird');
 var Schema = mongoose.Schema;
 var passportLocalMongoose = require('passport-local-mongoose');
 var timestamps = require('mongoose-timestamp');
+var seminarsData = require('./seminars-data-schema');
 
 mongoose.Promise = Promise;
 
@@ -69,6 +70,10 @@ var usersDataSchema = new Schema
             ],
             default: 'bscpe'
         },
+        seminars: [{
+            type: Schema.Types.ObjectId,
+            ref: 'seminarsData'
+        }],
         socialLinks: [{
             website: {type: String, default: ''},
             facebook: {type: String, default: ''},

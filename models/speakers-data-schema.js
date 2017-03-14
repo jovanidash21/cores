@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Promise = require('bluebird');
 var Schema = mongoose.Schema;
 var timestamps = require('mongoose-timestamp');
+var seminarsData = require('./seminars-data-schema');
 
 mongoose.Promise = Promise;
 
@@ -13,6 +14,10 @@ var speakersDataSchema = new Schema
         position: {type:String, default: ''},
         school: {type:String, default: ''},
         office: {type:String, default: ''},
+        seminar: {
+            type: Schema.Types.ObjectId,
+            ref: 'seminarsData'
+        },
         socialLinks: [{
             website: {type: String, default: ''},
             facebook: {type: String, default: ''},
