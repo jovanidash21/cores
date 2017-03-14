@@ -14,7 +14,7 @@ var usersDataSchema = new Schema
         email: {type:String, default: ''},
         profileImage: {
             type:String,
-            default: ''
+            default: 'https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/profile/default.png'
         },
         birthDate: {type: Date, default: ''},
         gender: {
