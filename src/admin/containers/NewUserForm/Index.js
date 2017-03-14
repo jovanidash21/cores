@@ -35,7 +35,7 @@ class NewUserForm extends Component {
 
 export default connect(() => {
     const refreshUsersData = {
-        userDataFetch: {
+        usersDataFetch: {
             url: `/api/users`,
             force: true,
             refreshing: true
@@ -44,8 +44,8 @@ export default connect(() => {
 
     return {
         addNewUser: (newUser, password) => ({
-            editProfileFetch: {
-                url: `/api/users/`,
+            addNewUserFetch: {
+                url: `/api/users`,
                 method: 'POST',
                 body: JSON.stringify(newUser),
                 then: () => (refreshUsersData)
