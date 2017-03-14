@@ -34,10 +34,14 @@ router.get('/users', function(req, res, next) {
         res.json({});
     }
     else {
-        usersData.find()
-            .then(function (usersData) {
-                res.json([usersData]);
-            });
+        usersData.find({}, function(err, results) {
+            if(err) {
+                res.end(err);
+            }
+            else {
+                res.json(results);
+            }
+        });
     }
 });
 
