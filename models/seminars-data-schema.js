@@ -10,7 +10,9 @@ var seminarsDataSchema = new Schema
     {
         title: {type:String, default: ''},
         speaker: {type:String, default: ''},
-        date: {type:Date, default: ''}
+        schedule: {type:Date, default: ''},
+        location: {type:String, default: ''},
+        registrants: {type:String, default: ''}
     },
     {
         collection: 'seminarsData'
