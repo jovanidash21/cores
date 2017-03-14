@@ -64,18 +64,15 @@ router.get('/seminars', function(req, res, next) {
         res.json({});
     }
     else {
-        seminarsData.find({}, function(err, results) {
+        seminarsData.find({}, function(err) {
             if(err) {
                 res.end(err);
-            }
-            else {
-                res.json(results);
             }
         });
     }
 });
 
-router.post('/users', function(req, res, next) {
+router.post('/seminars', function(req, res, next) {
     if (req.user === undefined) {
         res.redirect('/');
     }
