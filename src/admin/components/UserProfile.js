@@ -1,9 +1,9 @@
 import React from 'react';
 import UserProfileContainer from '../containers/UserProfile/Index';
 
-const UserProfile  = () => {
+const UserProfile  = (props) => {
     return (
-        <UserProfileContainer />
+        <UserProfileContainer userID={props.params.userID}/>
     )
 };
 

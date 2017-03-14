@@ -4,6 +4,7 @@ class Header extends Component {
     render() {
         const { user } = this.props;
 
+        console.log(user.firstName);
         return(
             <div className="row">
                 <div className="col-lg-12">
@@ -18,11 +19,16 @@ class Header extends Component {
                                         }
                                         &nbsp;
                                         {
-                                            user.firstName
+                                            user.lastName
                                         }
                                     </span>
                                 </div>
-                                <div className="description">&#64;user.username</div>
+                                <div className="description">
+                                    &#64;
+                                    {
+                                        user.username
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
