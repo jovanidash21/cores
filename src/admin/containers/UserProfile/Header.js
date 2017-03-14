@@ -10,7 +10,7 @@ class Header extends Component {
                 <div className="col-lg-12">
                     <div className="card">
                         <div className="card-body app-heading">
-                            <img className="profile-img" src="../assets/images/profile.png" />
+                            <img className="profile-img" src={user.profileImage} />
                             <div className="app-title">
                                 <div className="title">
                                     <span className="highlight">
