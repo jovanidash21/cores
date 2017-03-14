@@ -12,15 +12,12 @@ class App extends Component {
             userDataFetch,
             children
         } = this.props;
+
         if (userDataFetch.pending) {
-            return (
-                <LoadingAnimation />
-            )
+            return <LoadingAnimation />
         }
         else if (userDataFetch.rejected) {
-            return (
-                <Error error={userDataFetch.reason} />
-            )
+            return <Error error={userDataFetch.reason} />
         }
         else if (userDataFetch.fulfilled) {
             const [ user ] = userDataFetch.value;
