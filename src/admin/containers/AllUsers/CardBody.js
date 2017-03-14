@@ -9,15 +9,15 @@ class CardBody extends Component {
             <div className="card-body no-padding">
                 <table className="datatable table table-striped primary" cellSpacing="0" width="100%">
                     <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Date Created</th>
-                        <th>Last Update</th>
-                    </tr>
+                        <tr>
+                            <th>Username</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Date Created</th>
+                            <th>Last Update</th>
+                        </tr>
                     </thead>
                     <tbody>
                         {

@@ -10,7 +10,6 @@ class AllUsers extends Component {
         const { usersDataFetch } = this.props;
         const allUsersDataFetch = PromiseState.all([usersDataFetch]);
 
-
         if (allUsersDataFetch.pending) {
             return <LoadingAnimation />
         }
