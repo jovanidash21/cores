@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard';
 import AllSeminars from './components/AllSeminars';
 import NewSeminarForm from './components/NewSeminarForm';
 import EditSeminarForm from './components/EditSeminarForm';
+import SeminarProfile from './components/SeminarProfile';
 import AllSpeakers from './components/AllSpeakers';
 import NewSpeakerForm from './components/NewSpeakerForm';
 import EditSpeakerForm from './components/EditSpeakerForm';
@@ -19,6 +20,7 @@ export default (
         <Route path="/admin/seminars" component={AllSeminars} />
         <Route path="/admin/seminar/add" component={NewSeminarForm} />
         <Route path="/admin/seminar/:seminarID" component={EditSeminarForm} />
+        <Route path="/admin/seminar/:seminarID" component={SeminarProfile} />
         <Route path="/admin/speakers" component={AllSpeakers} />
         <Route path="/admin/speaker/add" component={NewSpeakerForm} />
         <Route path="/admin/speaker/:speakerID" component={EditSpeakerForm} />
