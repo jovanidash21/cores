@@ -9,6 +9,7 @@ import AllSpeakers from './components/AllSpeakers';
 import EditSpeakerForm from './components/EditSpeakerForm';
 import AllUsers from './components/AllUsers';
 import NewUserForm from './components/NewUserForm';
+import EditUserForm from './components/EditUserForm';
 import UserProfile from './components/UserProfile';
 
 export default (
@@ -21,6 +22,7 @@ export default (
         <Route path="/admin/speaker/:speakerID" component={EditSpeakerForm} />
         <Route path="/admin/users" component={AllUsers} />
         <Route path="/admin/user/add" component={NewUserForm} />
+        <Route path="/admin/user/:userID" component={EditUserForm} />
         <Route path="/admin/user/:userID" component={UserProfile} />
     </Route>
 );
