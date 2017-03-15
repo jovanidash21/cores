@@ -51,8 +51,16 @@ class Menu extends Component {
                             <ul>
                                 <li className="section"><i className="fa fa-file-o" aria-hidden="true"/>&nbsp;Speaker
                                 </li>
-                                <li><a href="#">All Speakers</a></li>
-                                <li><a href="#">Add New</a></li>
+                                <li>
+                                    <Link to="/admin/speakers">
+                                        Add Speakers
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/admin/speaker/add">
+                                        Add New
+                                    </Link>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -92,7 +100,11 @@ class Menu extends Component {
                                         My Profile
                                     </Link>
                                 </li>
-                                <li><a href="#">Edit Profile</a></li>
+                                <li>
+                                    <Link to={'/admin/user/' + user._id + '/edit'}>
+                                        Edit Profile
+                                    </Link>
+                                </li>
                             </ul>
                         </div>
                     </li>
