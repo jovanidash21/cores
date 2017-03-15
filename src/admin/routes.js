@@ -19,14 +19,14 @@ export default (
         <IndexRoute component={Dashboard} />
         <Route path="/admin/seminars" component={AllSeminars} />
         <Route path="/admin/seminar/add" component={NewSeminarForm} />
-        <Route path="/admin/seminar/:seminarID" component={EditSeminarForm} />
+        <Route path="/admin/seminar/:seminarID/edit" component={EditSeminarForm} />
         <Route path="/admin/seminar/:seminarID" component={SeminarProfile} />
         <Route path="/admin/speakers" component={AllSpeakers} />
         <Route path="/admin/speaker/add" component={NewSpeakerForm} />
-        <Route path="/admin/speaker/:speakerID" component={EditSpeakerForm} />
+        <Route path="/admin/speaker/:speakerID/edit" component={EditSpeakerForm} />
         <Route path="/admin/users" component={AllUsers} />
         <Route path="/admin/user/add" component={NewUserForm} />
-        <Route path="/admin/user/:userID" component={EditUserForm} />
+        <Route path="/admin/user/:userID/edit" component={EditUserForm} />
         <Route path="/admin/user/:userID" component={UserProfile} />
     </Route>
 );
