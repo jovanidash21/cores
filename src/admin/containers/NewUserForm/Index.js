@@ -14,7 +14,6 @@ class NewUserForm extends Component {
         const { addNewUser } = this.props;
 
         addNewUser(newUser);
-        console.log(newUser);
     }
 
     render() {

@@ -55,29 +55,17 @@ class Body extends Component {
 
         const { handleAddNewUserSubmit } = this.props;
         let newUser = [];
-        let username = this.stateValue;
-        let email = this.state.EmailValue;
+        let username = this.state.usernameValue;
+        let email = this.state.emailValue;
         let firstName = this.firstName.value;
         let lastName = this.lastName.value;
         let gender = this.state.genderValue;
         let school = this.state.schoolValue;
         let studentNumber = this.studentNumber.value;
         let course = this.state.courseValue;
-        let password = this.state.PasswordValue;
+        let password = this.state.passwordValue;
         let role = this.state.roleValue;
 
-        newUser.push({
-            username,
-            email,
-            firstName,
-            lastName,
-            gender,
-            school,
-            studentNumber,
-            course,
-            password,
-            role
-        });
         if (
             (username == '' ) ||
             (email == '') ||
@@ -86,6 +74,18 @@ class Body extends Component {
             alert("Please fill out all the required fields");
         }
         else {
+            newUser.push({
+                username,
+                email,
+                firstName,
+                lastName,
+                gender,
+                school,
+                studentNumber,
+                course,
+                password,
+                role
+            });
             handleAddNewUserSubmit(newUser);
         }
     }

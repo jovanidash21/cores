@@ -68,12 +68,12 @@ router.post('/users', function(req, res, next) {
             };
             var password = userData.password;
 
-            usersData.register(new usersData(user), password, function(err) {
+            usersData.register(new usersData(user), password, function(err, results) {
                 if(err) {
                     res.end(err);
                 }
                 else {
-                    console.log('user saved');
+                    res.json(results);
                 }
             });
         });
