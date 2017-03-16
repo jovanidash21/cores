@@ -85,9 +85,12 @@ router.get('/seminars', function(req, res, next) {
         res.json({});
     }
     else {
-        seminarsData.find({}, function(err) {
+        seminarsData.find({}, function(err, results) {
             if(err) {
                 res.end(err);
+            }
+            else {
+                res.json(results);
             }
         });
     }
