@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-refetch';
+import { browserHistory } from 'react-router';
 import CardHeader from './CardHeader';
 import Body from './Body';
 
@@ -9,8 +10,11 @@ class NewUserForm extends Component {
 
         this.handleAddNewUserSubmit = this.handleAddNewUserSubmit.bind(this);
     }
-    handleAddNewUserSubmit() {
+    handleAddNewUserSubmit(newUser) {
+        const { addNewUser } = this.props;
 
+        addNewUser(newUser);
+        console.log(newUser);
     }
 
     render() {
@@ -43,7 +47,7 @@ export default connect(() => {
     };
 
     return {
-        addNewUser: (newUser, password) => ({
+        addNewUser: (newUser) => ({
             addNewUserFetch: {
                 url: `/api/users`,
                 method: 'POST',

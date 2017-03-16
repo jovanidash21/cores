@@ -52,10 +52,30 @@ router.post('/users', function(req, res, next) {
         res.redirect('/');
     }
     else {
-        usersData.register(new req.body.userData, req.body.password, function(err) {
-            if(err) {
-                res.end(err);
-            }
+        var userData = req.body;
+
+        userData.forEach(function (userData) {
+            var user = {
+                username: userData.username,
+                email: userData.email,
+                firstName: userData.firstName,
+                lastName: userData.lastName,
+                gender: userData.gender,
+                school: userData.school,
+                studentNumber: userData.studentNumber,
+                course: userData.course,
+                role: userData.role
+            };
+            var password = userData.password;
+
+            usersData.register(new usersData(user), password, function(err) {
+                if(err) {
+                    res.end(err);
+                }
+                else {
+                    console.log('user saved');
+                }
+            });
         });
     }
 });

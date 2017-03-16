@@ -12,16 +12,28 @@ class Body extends Component {
         super(props);
 
         this.state = {
+            usernameValue: '',
+            emailValue: '',
             genderValue: 'male',
             schoolValue: 'pup-manila',
             courseValue: 'bscpe',
+            passwordValue: '',
             roleValue: 'registrant'
         };
+        this.handleUsernameValueChange = this.handleUsernameValueChange.bind(this);
+        this.handleEmailValueChange = this.handleEmailValueChange.bind(this);
         this.handleGenderValueChange = this.handleGenderValueChange.bind(this);
         this.handleSchoolValueChange = this.handleSchoolValueChange.bind(this);
         this.handleCourseValueChange = this.handleCourseValueChange.bind(this);
+        this.handlePasswordValueChange = this.handlePasswordValueChange.bind(this);
         this.handleRoleValueChange = this.handleRoleValueChange.bind(this);
         this.handleAddNewUserSubmit = this.handleAddNewUserSubmit.bind(this);
+    }
+    handleUsernameValueChange(event) {
+        this.setState({usernameValue: event.target.value})
+    }
+    handleEmailValueChange(event) {
+        this.setState({emailValue: event.target.value})
     }
     handleGenderValueChange(event) {
         this.setState({genderValue: event.target.value})
@@ -32,6 +44,9 @@ class Body extends Component {
     handleCourseValueChange(event) {
         this.setState({courseValue: event.target.value})
     }
+    handlePasswordValueChange(event) {
+        this.setState({passwordValue: event.target.value})
+    }
     handleRoleValueChange(event) {
         this.setState({roleValue: event.target.value})
     }
@@ -39,22 +54,60 @@ class Body extends Component {
         event.preventDefault();
 
         const { handleAddNewUserSubmit } = this.props;
+        let newUser = [];
+        let username = this.stateValue;
+        let email = this.state.EmailValue;
+        let firstName = this.firstName.value;
+        let lastName = this.lastName.value;
+        let gender = this.state.genderValue;
+        let school = this.state.schoolValue;
+        let studentNumber = this.studentNumber.value;
+        let course = this.state.courseValue;
+        let password = this.state.PasswordValue;
+        let role = this.state.roleValue;
 
-
+        newUser.push({
+            username,
+            email,
+            firstName,
+            lastName,
+            gender,
+            school,
+            studentNumber,
+            course,
+            password,
+            role
+        });
+        if (
+            (username == '' ) ||
+            (email == '') ||
+            (password == '')
+        ) {
+            alert("Please fill out all the required fields");
+        }
+        else {
+            handleAddNewUserSubmit(newUser);
+        }
     }
 
     render() {
         const {
+            handleUsernameValueChange,
+            handleEmailValueChange,
             handleGenderValueChange,
             handleSchoolValueChange,
             handleCourseValueChange,
+            handlePasswordValueChange,
             handleRoleValueChange,
             handleAddNewUserSubmit
         } = this;
         const {
+            usernameValue,
+            emailValue,
             genderValue,
             schoolValue,
             courseValue,
+            passwordValue,
             roleValue
         } = this.state;
 
@@ -62,31 +115,81 @@ class Body extends Component {
             <div>
                 <div className="section">
                     <div className="section-body">
-                        <FormGroup>
+                        <FormGroup
+                            bsClass=
+                            {
+                                usernameValue == ""
+                                    ?
+                                    "form-group has-error"
+                                    :
+                                    "form-group"
+                            }
+                        >
                             <ControlLabel bsClass="col-md-3 control-label" htmlFor="username">
                                 Username (required)
                             </ControlLabel>
                             <div className="col-md-9">
-                                <FormControl id="username" ref="username" type="text" placeholder="" />
+                                <FormControl
+                                    id="username"
+                                    inputRef={(ref) => {this.username = ref}}
+                                    type="text"
+                                    value={usernameValue}
+                                    onChange={handleUsernameValueChange}
+                                    placeholder=""
+                                />
                             </div>
+                        </FormGroup>
+                        <FormGroup
+                            bsClass=
+                                {
+                                    emailValue == ""
+                                        ?
+                                        "form-group has-error"
+                                        :
+                                        "form-group"
+                                }
+                        >
                             <ControlLabel bsClass="col-md-3 control-label" htmlFor="email">
                                 Email (required)
                             </ControlLabel>
                             <div className="col-md-9">
-                                <FormControl id="email" ref="email" type="email" placeholder="" />
+                                <FormControl
+                                    id="email"
+                                    inputRef={(ref) => {this.email = ref}}
+                                    type="email"
+                                    value={emailValue}
+                                    onChange={handleEmailValueChange}
+                                    placeholder=""
+                                />
                             </div>
+                        </FormGroup>
+                        <FormGroup>
                             <ControlLabel bsClass="col-md-3 control-label" htmlFor="firstName">
                                 First Name
                             </ControlLabel>
                             <div className="col-md-9">
-                                <FormControl id="firstName" ref="firstName" type="text" placeholder="" />
+                                <FormControl
+                                    id="firstName"
+                                    inputRef={(ref) => {this.firstName = ref}}
+                                    type="text"
+                                    placeholder=""
+                                />
                             </div>
+                        </FormGroup>
+                        <FormGroup>
                             <ControlLabel bsClass="col-md-3 control-label" htmlFor="lastName">
                                 Last Name
                             </ControlLabel>
                             <div className="col-md-9">
-                                <FormControl id="lastName" ref="lastName" type="text" placeholder="" />
+                                <FormControl
+                                    id="lastName"
+                                    inputRef={(ref) => {this.lastName = ref}}
+                                    type="text"
+                                    placeholder=""
+                                />
                             </div>
+                        </FormGroup>
+                        <FormGroup>
                             <ControlLabel bsClass="col-md-3 control-label">
                                 Gender
                             </ControlLabel>
@@ -104,6 +207,8 @@ class Body extends Component {
                                     </label>
                                 </div>
                             </div>
+                        </FormGroup>
+                        <FormGroup>
                             <ControlLabel bsClass="col-md-3 control-label">
                                 School
                             </ControlLabel>
@@ -145,12 +250,20 @@ class Body extends Component {
                                     onChange={handleSchoolValueChange}
                                 />
                             </div>
+                        </FormGroup>
+                        <FormGroup>
                             <ControlLabel bsClass="col-md-3 control-label" htmlFor="studentNumber">
                                 Student Number
                             </ControlLabel>
                             <div className="col-md-9">
-                                <FormControl id="studentNumber" ref="studentNumber" type="text" placeholder="" />
+                                <FormControl
+                                    id="studentNumber"
+                                    inputRef={(ref) => {this.studentNumber = ref}}
+                                    type="text"
+                                    placeholder="" />
                             </div>
+                        </FormGroup>
+                        <FormGroup>
                             <ControlLabel bsClass="col-md-3 control-label">
                                 Course
                             </ControlLabel>
@@ -166,12 +279,32 @@ class Body extends Component {
                                     onChange={handleCourseValueChange}
                                 />
                             </div>
+                        </FormGroup>
+                        <FormGroup
+                            bsClass=
+                                {
+                                    passwordValue == ""
+                                        ?
+                                        "form-group has-error"
+                                        :
+                                        "form-group"
+                                }
+                        >
                             <ControlLabel bsClass="col-md-3 control-label" htmlFor="password">
-                                Password
+                                Password (required)
                             </ControlLabel>
                             <div className="col-md-9">
-                                <FormControl id="password" ref="password" type="password" placeholder="" />
+                                <FormControl
+                                    id="password"
+                                    inputRef={(ref) => {this.password = ref}}
+                                    type="password"
+                                    value={passwordValue}
+                                    onChange={handlePasswordValueChange}
+                                    placeholder=""
+                                />
                             </div>
+                        </FormGroup>
+                        <FormGroup>
                             <ControlLabel bsClass="col-md-3 control-label">
                                 Role
                             </ControlLabel>
