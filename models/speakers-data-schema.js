@@ -12,8 +12,57 @@ var speakersDataSchema = new Schema
         firstName: {type:String, default: ''},
         lastName: {type:String, default: ''},
         email: {type:String, default: ''},
+        profileImage: {
+            type:String,
+            default: 'https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/profile/default.png'
+        },
         position: {type:String, default: ''},
-        school: {type:String, default: ''},
+        school: {
+            type:String,
+            enum: [
+                'pup-manila',
+                'adu',
+                'au',
+                'ceu',
+                'dbtc',
+                'earist',
+                'feu',
+                'gardner',
+                'icct',
+                'icst',
+                'jru',
+                'neu',
+                'nu',
+                'plmar',
+                'plm',
+                'philsca',
+                'pup-batangas',
+                'rtu',
+                'sjtcp',
+                'sti',
+                'sti-global-city',
+                'tcu',
+                'tnhs',
+                'tip',
+                'tup',
+                'urs',
+                'ue',
+                'ust',
+                'wis',
+                'other'
+            ],
+            default: 'pup-manila'
+        },
+        course: {
+            type:String,
+            enum: [
+                'bscpe',
+                'bsit',
+                'bscs',
+                'other'
+            ],
+            default: 'bscpe'
+        },
         office: {type:String, default: ''},
         seminar: {
             type: Schema.Types.ObjectId,
