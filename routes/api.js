@@ -115,9 +115,12 @@ router.get('/speakers', function(req, res, next) {
         res.json({});
     }
     else {
-        speakersData.find({}, function(err) {
+        speakersData.find({}, function(err, results) {
             if(err) {
                 res.end(err);
+            }
+            else {
+                res.json(results);
             }
         });
     }
@@ -128,14 +131,26 @@ router.post('/speakers', function(req, res, next) {
         res.redirect('/');
     }
     else {
-        var speakerData = new speakersData(req.body);
-        speakerData.save(function(err, results) {
-            if(err) {
-                res.end(err);
-            }
-            else {
-                res.json(results);
-            }
+        var speakerData = req.body;
+        speakerData.forEach(function (speakerData) {
+            var speaker = {
+                firstName: speakerData.firstName,
+                lastName: speakerData.lastName,
+                email: speakerData.email,
+                position: speakerData.position,
+                school: speakerData.school,
+                course: speakerData.course,
+                office: speakerData.role
+            };
+            var newSpeaker = new speakersData(speaker);
+            newSpeaker.save(function(err, results) {
+                if(err) {
+                    res.end(err);
+                }
+                else {
+                    res.json(results);
+                }
+            });
         });
     }
 });
