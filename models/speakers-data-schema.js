@@ -11,6 +11,7 @@ var speakersDataSchema = new Schema
     {
         firstName: {type:String, default: ''},
         lastName: {type:String, default: ''},
+        email: {type:String, default: ''},
         position: {type:String, default: ''},
         school: {type:String, default: ''},
         office: {type:String, default: ''},
