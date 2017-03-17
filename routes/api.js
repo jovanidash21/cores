@@ -101,14 +101,21 @@ router.post('/seminars', function(req, res, next) {
         res.redirect('/');
     }
     else {
-        var seminarData = new seminarsData(req.body);
-        seminarData.save(function(err, results) {
-            if(err) {
-                res.end(err);
-            }
-            else {
-                res.json(results);
-            }
+        var seminarData = req.body;
+        seminarData.forEach(function (seminarData) {
+            var seminar = {
+                title: seminarData.title,
+                location: seminarData.location,
+            };
+            var newSeminar = new seminarsData(seminar);
+            newSeminar.save(function(err, results) {
+                if(err) {
+                    res.end(err);
+                }
+                else {
+                    res.json(results);
+                }
+            });
         });
     }
 });
