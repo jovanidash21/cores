@@ -35,14 +35,6 @@ class NewSpeakerForm extends Component {
 }
 
 export default connect(() => {
-    const refreshSpeakersData = {
-        speakersDataFetch: {
-            url: `/api/users`,
-            force: true,
-            refreshing: true
-        }
-    };
-
     return {
         addNewSpeaker: (newSpeaker) => ({
             addNewSpeakerFetch: {
@@ -50,8 +42,7 @@ export default connect(() => {
                 method: 'POST',
                 force: true,
                 refreshing: true,
-                body: JSON.stringify(newSpeaker),
-                andThen: () => (refreshSpeakersData)
+                body: JSON.stringify(newSpeaker)
             }
         })
     }

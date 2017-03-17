@@ -37,21 +37,14 @@ class NewUserForm extends Component {
 }
 
 export default connect(() => {
-    const refreshUsersData = {
-        usersDataFetch: {
-            url: `/api/users`,
-            force: true,
-            refreshing: true
-        }
-    };
-
     return {
         addNewUser: (newUser) => ({
             addNewUserFetch: {
                 url: `/api/users`,
                 method: 'POST',
-                body: JSON.stringify(newUser),
-                then: () => (refreshUsersData)
+                force: true,
+                refreshing: true,
+                body: JSON.stringify(newUser)
             }
         })
     }

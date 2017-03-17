@@ -36,14 +36,6 @@ class NewSeminarForm extends React.Component {
 }
 
 export default connect(() => {
-    const refreshSeminarsData = {
-        seminarsDataFetch: {
-            url: `/api/seminars`,
-            force: true,
-            refreshing: true
-        }
-    };
-
     return {
         addNewSeminar: (newSeminar) => ({
             addNewSeminarFetch: {
@@ -51,8 +43,7 @@ export default connect(() => {
                 method: 'POST',
                 force: true,
                 refreshing: true,
-                body: JSON.stringify(newSeminar),
-                then: () => (refreshSeminarsData)
+                body: JSON.stringify(newSeminar)
             }
         })
     }

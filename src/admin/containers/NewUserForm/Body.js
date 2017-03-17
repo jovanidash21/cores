@@ -131,7 +131,6 @@ class Body extends Component {
                             <div className="col-md-9">
                                 <FormControl
                                     id="username"
-                                    inputRef={(ref) => {this.username = ref}}
                                     type="text"
                                     value={usernameValue}
                                     onChange={handleUsernameValueChange}
@@ -155,7 +154,6 @@ class Body extends Component {
                             <div className="col-md-9">
                                 <FormControl
                                     id="email"
-                                    inputRef={(ref) => {this.email = ref}}
                                     type="email"
                                     value={emailValue}
                                     onChange={handleEmailValueChange}
@@ -296,7 +294,6 @@ class Body extends Component {
                             <div className="col-md-9">
                                 <FormControl
                                     id="password"
-                                    inputRef={(ref) => {this.password = ref}}
                                     type="password"
                                     value={passwordValue}
                                     onChange={handlePasswordValueChange}
