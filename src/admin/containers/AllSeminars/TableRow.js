@@ -13,16 +13,16 @@ class TableRow extends Component {
                     {seminar.speaker}
                 </td>
                 <td>
-                    {user.schedule}
+                    {seminar.schedule}
                 </td>
                 <td>
-                    {user.location}
+                    {seminar.location}
                 </td>
                 <td>
-                    {user.createdAt}
+                    {seminar.createdAt}
                 </td>
                 <td>
-                    {user.updatedAt}
+                    {seminar.updatedAt}
                 </td>
             </tr>
         )
