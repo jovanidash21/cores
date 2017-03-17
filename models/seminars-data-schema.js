@@ -15,7 +15,7 @@ var seminarsDataSchema = new Schema
             type: Schema.Types.ObjectId,
             ref: 'speakersData'
         },
-        schedule: {type:Date, default: ''},
+        schedule: {type:Date, default: Date.now},
         location: {
             type:String,
             enum: [

@@ -4,7 +4,20 @@ import CardHeader from './CardHeader';
 import Body from './Body';
 
 class NewSeminarForm extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.handleAddNewSeminarSubmit = this.handleAddNewSeminarSubmit.bind(this);
+    }
+    handleAddNewSeminarSubmit(newSeminar) {
+        const { addNewSeminar } = this.props;
+
+        addNewSeminar(newSeminar);
+    }
+
     render() {
+        const { handleAddNewSeminarSubmit } = this;
+
         return(
             <div className="row">
                 <div className="col-md-12">
@@ -12,8 +25,7 @@ class NewSeminarForm extends React.Component {
                         <CardHeader />
                         <div className="card-body">
                             <form className="form form-horizontal">
-                                <Body />
-                                <Footer />
+                                <Body handleAddNewSeminarSubmit={handleAddNewSeminarSubmit} />
                             </form>
                         </div>
                     </div>
@@ -33,10 +45,12 @@ export default connect(() => {
     };
 
     return {
-        addNewSeminar: (newUser, password) => ({
+        addNewSeminar: (newSeminar) => ({
             addNewSeminarFetch: {
                 url: `/api/seminars`,
                 method: 'POST',
+                force: true,
+                refreshing: true,
                 body: JSON.stringify(newSeminar),
                 then: () => (refreshSeminarsData)
             }
