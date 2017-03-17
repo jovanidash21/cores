@@ -16,7 +16,20 @@ var seminarsDataSchema = new Schema
             ref: 'speakersData'
         },
         schedule: {type:Date, default: ''},
-        location: {type:String, default: ''},
+        location: {
+            type:String,
+            enum: [
+                'none',
+                'bulwagang-balagtas',
+                'claro-m-recto',
+                'ictc',
+                'pup-theater',
+                'avr-cea',
+                'avr-cot',
+                'manila-room'
+            ],
+            default: 'none'
+        },
         registrants: [{
             type: Schema.Types.ObjectId,
             ref: 'usersData'
