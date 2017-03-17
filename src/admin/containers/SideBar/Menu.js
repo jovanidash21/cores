@@ -53,7 +53,7 @@ class Menu extends Component {
                                 </li>
                                 <li>
                                     <Link to="/admin/speakers">
-                                        Add Speakers
+                                        All Speakers
                                     </Link>
                                 </li>
                                 <li>
