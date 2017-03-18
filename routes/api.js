@@ -80,6 +80,24 @@ router.post('/users', function(req, res, next) {
     }
 });
 
+router.get('/seminar/:seminarID', function(req, res, next) {
+    if (req.user === undefined) {
+        res.json({});
+    }
+    else {
+        var seminarID = req.params.seminarID;
+
+        seminarsData.findById(seminarID, function(err, results) {
+            if(err) {
+                res.end(err);
+            }
+            else {
+                res.json([results]);
+            }
+        });
+    }
+});
+
 router.get('/seminars', function(req, res, next) {
     if (req.user === undefined) {
         res.json({});
