@@ -1,9 +1,9 @@
 import React from 'react';
 import EditUserFormContainer from '../containers/EditUserForm/Index';
 
-const EditUserForm  = () => {
+const EditUserForm  = (props) => {
     return (
-        <EditUserFormContainer />
+        <EditUserFormContainer userID={props.params.userID} />
     )
 };
 
