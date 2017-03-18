@@ -1,9 +1,9 @@
 import React from 'react';
 import SeminarProfileContainer from '../containers/SeminarProfile/Index';
 
-const SeminarProfile  = () => {
+const SeminarProfile  = (props) => {
     return (
-        <SeminarProfileContainer />
+        <SeminarProfileContainer seminarID={props.params.seminarID} />
     )
 };
 
