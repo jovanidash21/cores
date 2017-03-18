@@ -31,6 +31,38 @@ router.get('/user/:userID', function(req, res, next) {
     }
 });
 
+router.patch('/user/:userID', function(req, res, next) {
+    if (req.user === undefined) {
+        res.json({});
+    }
+    else {
+        var userID = req.params.userID;
+        var userData = req.body;
+        userData.forEach(function (userData) {
+            var user = {
+                username: userData.username,
+                email: userData.email,
+                firstName: userData.firstName,
+                lastName: userData.lastName,
+                gender: userData.gender,
+                school: userData.school,
+                studentNumber: userData.studentNumber,
+                course: userData.course,
+                role: userData.role
+            };
+
+            usersData.findByIdAndUpdate(userID, user, function(err, results) {
+                if(err) {
+                    res.end(err);
+                }
+                else {
+                    res.json([results]);
+                }
+            });
+        });
+    }
+});
+
 router.get('/users', function(req, res, next) {
     if (req.user === undefined) {
         res.json({});
