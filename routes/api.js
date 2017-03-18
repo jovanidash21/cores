@@ -138,6 +138,24 @@ router.post('/seminars', function(req, res, next) {
     }
 });
 
+router.get('/speaker/:speakerID', function(req, res, next) {
+    if (req.user === undefined) {
+        res.json({});
+    }
+    else {
+        var speakerID = req.params.speakerID;
+
+        speakersData.findById(speakerID, function(err, results) {
+            if(err) {
+                res.end(err);
+            }
+            else {
+                res.json([results]);
+            }
+        });
+    }
+});
+
 router.get('/speakers', function(req, res, next) {
     if (req.user === undefined) {
         res.json({});
