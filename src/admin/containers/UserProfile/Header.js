@@ -4,7 +4,6 @@ class Header extends Component {
     render() {
         const { user } = this.props;
 
-        console.log(user.firstName);
         return(
             <div className="row">
                 <div className="col-lg-12">
