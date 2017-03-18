@@ -26,6 +26,10 @@ body .app-container > div > div.row
     padding-left: 30px;
     padding-right: 30px;
 }
+body .app-container > div > div.row > [class*="col-"]
+{
+    margin-bottom: 30px;
+}
 .select2
 {
     width: 100% !important;

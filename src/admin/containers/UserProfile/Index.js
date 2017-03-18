@@ -3,6 +3,7 @@ import { connect } from 'react-refetch';
 import LoadingAnimation from '../LoadingAnimation/Index';
 import Error from '../Error/Index';
 import Header from './Header';
+import Body from './Body';
 
 class UserProfile extends Component {
     render() {
@@ -18,7 +19,10 @@ class UserProfile extends Component {
             const [user] = userProfileDataFetch.value;
 
             return(
-                <Header user={user}/>
+                <div>
+                    <Header user={user} />
+                    <Body user={user} />
+                </div>
             )
         }
     }
