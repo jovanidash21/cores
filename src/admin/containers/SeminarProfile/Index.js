@@ -8,6 +8,17 @@ import DetailsBody from './DetailsBody';
 import RegistrantsBody from './RegistrantsBody';
 
 class SeminarProfile extends Component {
+    constructor(props) {
+        super(props);
+
+        this.handleDeleteSeminarSubmit = this.handleDeleteSeminarSubmit.bind(this);
+    }
+    handleDeleteSeminarSubmit(seminarID) {
+        const { deleteSeminar } = this.props;
+
+        deleteSeminar(seminarID);
+    }
+
     render() {
         const { seminarProfileDataFetch } = this.props;
 
@@ -19,10 +30,14 @@ class SeminarProfile extends Component {
         }
         else if (seminarProfileDataFetch.fulfilled) {
             const [seminar] = seminarProfileDataFetch.value;
+            const { handleDeleteSeminarSubmit } = this;
 
             return(
                 <div>
-                    <Menu seminar={seminar} />
+                    <Menu
+                        seminar={seminar}
+                        handleDeleteSeminarSubmit={handleDeleteSeminarSubmit}
+                    />
                     <Header seminar={seminar} />
                     <DetailsBody seminar={seminar} />
                     <RegistrantsBody seminar={seminar} />
@@ -34,6 +49,14 @@ class SeminarProfile extends Component {
 
 export default connect((props) => {
     return {
-        seminarProfileDataFetch: `/api/seminar/${props.seminarID}`
+        seminarProfileDataFetch: `/api/seminar/${props.seminarID}`,
+        deleteSeminar: (seminarID) => ({
+            deleteSeminarFetch: {
+                url: `/api/seminar/${seminarID}`,
+                method: 'DELETE',
+                force: true,
+                refreshing: true
+            }
+        })
     }
 })(SeminarProfile);
