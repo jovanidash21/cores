@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-refetch';
 import LoadingAnimation from '../LoadingAnimation/Index';
 import Error from '../Error/Index';
+import Menu from './Menu';
 import Header from './Header';
 import Body from './Body';
 
@@ -20,6 +21,7 @@ class SpeakerProfile extends Component {
 
             return(
                 <div>
+                    <Menu speaker={speaker} />
                     <Header speaker={speaker} />
                     <Body speaker={speaker} />
                 </div>
