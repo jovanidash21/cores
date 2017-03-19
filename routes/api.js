@@ -171,6 +171,23 @@ router.patch('/seminar/:seminarID', function(req, res, next) {
     }
 });
 
+router.delete('/seminar/:seminarID', function(req, res, next) {
+    if (req.user === undefined) {
+        res.json({});
+    }
+    else {
+        var seminarID = req.params.seminarID;
+        seminarsData.findByIdAndRemove(seminarID, function(err) {
+            if(err) {
+                res.end(err);
+            }
+            else {
+                res.end();
+            }
+        });
+    }
+});
+
 router.get('/seminars', function(req, res, next) {
     if (req.user === undefined) {
         res.json({});
