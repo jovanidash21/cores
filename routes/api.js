@@ -130,6 +130,30 @@ router.get('/seminar/:seminarID', function(req, res, next) {
     }
 });
 
+router.patch('/seminar/:seminarID', function(req, res, next) {
+    if (req.user === undefined) {
+        res.json({});
+    }
+    else {
+        var seminarID = req.params.seminarID;
+        var seminarData = req.body;
+        seminarData.forEach(function (seminarData) {
+            var seminar = {
+                title: seminarData.title,
+                location: seminarData.location,
+            };
+            seminarsData.findByIdAndUpdate(seminarID, seminar, function(err, results) {
+                if(err) {
+                    res.end(err);
+                }
+                else {
+                    res.json([results]);
+                }
+            });
+        });
+    }
+});
+
 router.get('/seminars', function(req, res, next) {
     if (req.user === undefined) {
         res.json({});
