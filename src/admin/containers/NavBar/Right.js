@@ -114,7 +114,7 @@ class Right extends Component {
                 </li>
                 <li className="dropdown profile">
                     <a href="/html/pages/profile.html" className="dropdown-toggle"  data-toggle="dropdown">
-                        <img className="profile-img" src="/images/profile/jovani-warguez.png" />
+                        <img className="profile-img" src={user.profileImage} />
                         <div className="title">Profile</div>
                     </a>
                     <div className="dropdown-menu">
