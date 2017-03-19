@@ -63,6 +63,23 @@ router.patch('/user/:userID', function(req, res, next) {
     }
 });
 
+router.delete('/user/:userID', function(req, res, next) {
+    if (req.user === undefined) {
+        res.json({});
+    }
+    else {
+        var userID = req.params.userID;
+        usersData.findByIdAndRemove(userID, function(err) {
+            if(err) {
+                res.end(err);
+            }
+            else {
+                res.end();
+            }
+        });
+    }
+});
+
 router.get('/users', function(req, res, next) {
     if (req.user === undefined) {
         res.json({});
