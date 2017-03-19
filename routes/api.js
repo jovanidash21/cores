@@ -20,14 +20,16 @@ router.get('/user/:userID', function(req, res, next) {
     else {
         var userID = req.params.userID;
 
-        usersData.findById(userID, function(err, results) {
-            if(err) {
-                res.end(err);
-            }
-            else {
-                res.json([results]);
-            }
-        });
+        usersData.findById(userID)
+            .populate('seminars')
+            .exec(function(err, results) {
+                if(err) {
+                    res.end(err);
+                }
+                else {
+                    res.json([results]);
+                }
+            });
     }
 });
 
@@ -138,14 +140,16 @@ router.get('/seminar/:seminarID', function(req, res, next) {
     else {
         var seminarID = req.params.seminarID;
 
-        seminarsData.findById(seminarID, function(err, results) {
-            if(err) {
-                res.end(err);
-            }
-            else {
-                res.json([results]);
-            }
-        });
+        seminarsData.findById(seminarID)
+            .populate(['speaker', 'registrants'])
+            .exec(function(err, results) {
+                if(err) {
+                    res.end(err);
+                }
+                else {
+                    res.json([results]);
+                }
+            });
     }
 });
 
@@ -239,14 +243,16 @@ router.get('/speaker/:speakerID', function(req, res, next) {
     else {
         var speakerID = req.params.speakerID;
 
-        speakersData.findById(speakerID, function(err, results) {
-            if(err) {
-                res.end(err);
-            }
-            else {
-                res.json([results]);
-            }
-        });
+        speakersData.findById(speakerID)
+            .populate('seminar')
+            .exec(function(err, results) {
+                if(err) {
+                    res.end(err);
+                }
+                else {
+                    res.json([results]);
+                }
+            });
     }
 });
 
