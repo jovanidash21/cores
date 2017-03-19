@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 import moment from 'moment-timezone';
 import {
     FormGroup,
@@ -64,7 +65,10 @@ class Body extends Component {
     handleEditUserSubmit(event) {
         event.preventDefault();
 
-        const { handleEditUserSubmit } = this.props;
+        const {
+            user,
+            handleEditUserSubmit
+        } = this.props;
         let editUser = [];
         let username = this.state.usernameValue;
         let email = this.state.emailValue;
@@ -100,6 +104,7 @@ class Body extends Component {
                 role
             });
             handleEditUserSubmit(editUser);
+            browserHistory.push('/admin/user/' + user._id);
         }
     }
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 import {
     FormGroup,
     ControlLabel,
@@ -45,7 +46,10 @@ class Body extends Component {
     handleEditSpeakerSubmit(event) {
         event.preventDefault();
 
-        const { handleEditSpeakerSubmit } = this.props;
+        const {
+            speaker,
+            handleEditSpeakerSubmit
+        } = this.props;
         let editSpeaker = [];
         let firstName = this.state.firstNameValue;
         let lastName = this.state.lastNameValue;
@@ -73,6 +77,7 @@ class Body extends Component {
                 office
             });
             handleEditSpeakerSubmit(editSpeaker);
+            browserHistory.push('/admin/speaker' + speaker._id);
         }
     }
 

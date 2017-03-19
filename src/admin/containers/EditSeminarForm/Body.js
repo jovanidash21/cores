@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 import moment from 'moment-timezone';
 import {
     FormGroup,
@@ -38,7 +39,10 @@ class Body extends Component {
     handleEditSeminarSubmit(event) {
         event.preventDefault();
 
-        const { handleEditSeminarSubmit } = this.props;
+        const {
+            seminar,
+            handleEditSeminarSubmit
+        } = this.props;
         let editSeminar = [];
         let title = this.state.titleValue;
         let schedule = this.state.scheduleValue;
@@ -54,6 +58,7 @@ class Body extends Component {
                 location
             });
             handleEditSeminarSubmit(editSeminar);
+            browserHistory.push('/admin/seminar/' + seminar._id);
         }
     }
 
