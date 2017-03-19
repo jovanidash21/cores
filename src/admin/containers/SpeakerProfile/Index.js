@@ -7,6 +7,17 @@ import Header from './Header';
 import Body from './Body';
 
 class SpeakerProfile extends Component {
+    constructor(props) {
+        super(props);
+
+        this.handleDeleteSpeakerSubmit = this.handleDeleteSpeakerSubmit.bind(this);
+    }
+    handleDeleteSpeakerSubmit(speakerID) {
+        const { deleteSpeaker } = this.props;
+
+        deleteSpeaker(speakerID);
+    }
+
     render() {
         const { speakerProfileDataFetch } = this.props;
 
@@ -18,10 +29,14 @@ class SpeakerProfile extends Component {
         }
         else if (speakerProfileDataFetch.fulfilled) {
             const [speaker] = speakerProfileDataFetch.value;
+            const { handleDeleteSpeakerSubmit } = this;
 
             return(
                 <div>
-                    <Menu speaker={speaker} />
+                    <Menu
+                        speaker={speaker}
+                        handleDeleteSpeakerSubmit={handleDeleteSpeakerSubmit}
+                    />
                     <Header speaker={speaker} />
                     <Body speaker={speaker} />
                 </div>
@@ -32,6 +47,14 @@ class SpeakerProfile extends Component {
 
 export default connect((props) => {
     return {
-        speakerProfileDataFetch: `/api/speaker/${props.speakerID}`
+        speakerProfileDataFetch: `/api/speaker/${props.speakerID}`,
+        deleteSpeaker: (speakerID) => ({
+            deleteSpeakerFetch: {
+                url: `/api/speaker/${speakerID}`,
+                method: 'DELETE',
+                force: true,
+                refreshing: true
+            }
+        })
     }
 })(SpeakerProfile);
