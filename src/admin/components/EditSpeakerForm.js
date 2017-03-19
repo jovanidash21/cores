@@ -1,9 +1,9 @@
 import React from 'react';
 import EditSpeakerFormContainer from '../containers/EditSpeakerForm/Index';
 
-const EditSpeakerForm  = () => {
+const EditSpeakerForm  = (props) => {
     return (
-        <EditSpeakerFormContainer />
+        <EditSpeakerFormContainer speakerID={props.params.speakerID} />
     )
 };
 
