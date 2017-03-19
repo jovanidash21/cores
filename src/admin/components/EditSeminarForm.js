@@ -1,9 +1,9 @@
 import React from 'react';
 import EditSeminarFormContainer from '../containers/EditSeminarForm/Index';
 
-const EditSeminarForm  = () => {
+const EditSeminarForm  = (props) => {
     return (
-        <EditSeminarFormContainer />
+        <EditSeminarFormContainer seminarID={props.params.seminarID} />
     )
 };
 
