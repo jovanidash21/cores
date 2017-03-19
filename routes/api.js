@@ -258,6 +258,23 @@ router.patch('/speaker/:speakerID', function(req, res, next) {
     }
 });
 
+router.delete('/speaker/:speakerID', function(req, res, next) {
+    if (req.user === undefined) {
+        res.json({});
+    }
+    else {
+        var speakerID = req.params.speakerID;
+        speakersData.findByIdAndRemove(speakerID, function(err) {
+            if(err) {
+                res.end(err);
+            }
+            else {
+                res.end();
+            }
+        });
+    }
+});
+
 router.get('/speakers', function(req, res, next) {
     if (req.user === undefined) {
         res.json({});
