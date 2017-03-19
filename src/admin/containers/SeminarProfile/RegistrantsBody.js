@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 class RegistrantsBody extends Component {
     render() {
@@ -12,7 +13,17 @@ class RegistrantsBody extends Component {
                             <div className="card-title">Registrants</div>
                         </div>
                         <div className="card-body">
-
+                            <ul>
+                                {
+                                    seminar.registrants.map(seminarRegistrants =>
+                                        <li>
+                                            <Link to={'/admin/user/' + seminarRegistrants._id}>
+                                                {seminarRegistrants.username}
+                                            </Link>
+                                        </li>
+                                    )
+                                }
+                            </ul>
                         </div>
                     </div>
                 </div>

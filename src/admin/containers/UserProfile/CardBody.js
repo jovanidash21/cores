@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import moment from 'moment-timezone';
 
 class CardBody extends Component {
@@ -100,9 +101,17 @@ class CardBody extends Component {
                                 Seminars
                             </div>
                             <div className="section-body">
-                                {
-                                    user.school
-                                }
+                                <ul>
+                                    {
+                                        user.seminars.map(userSeminar =>
+                                            <li>
+                                                <Link to={'/admin/seminar/' + userSeminar._id}>
+                                                    {userSeminar.title}
+                                                </Link>
+                                            </li>
+                                        )
+                                    }
+                                </ul>
                             </div>
                         </div>
                     </div>

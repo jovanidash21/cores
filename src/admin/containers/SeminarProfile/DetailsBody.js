@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import moment from 'moment-timezone';
 
 class DetailsBody extends Component {
@@ -20,7 +21,13 @@ class DetailsBody extends Component {
                                             Speaker
                                         </div>
                                         <div className="section-body">
-                                            Jovani Warguez
+                                            <p>
+                                                <Link to={'/admin/speaker/' + seminar.speaker._id}>
+                                                    {seminar.speaker.firstName}
+                                                    &nbsp;
+                                                    {seminar.speaker.lastName}
+                                                </Link>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>

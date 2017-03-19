@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 class CardBody extends Component {
     render() {
@@ -61,7 +62,11 @@ class CardBody extends Component {
                                 Seminar
                             </div>
                             <div className="section-body">
-                                Seminar 1
+                                <p>
+                                    <Link to={'/admin/seminar/' + speaker.seminar._id}>
+                                        {speaker.seminar.title}
+                                    </Link>
+                                </p>
                             </div>
                         </div>
                     </div>
