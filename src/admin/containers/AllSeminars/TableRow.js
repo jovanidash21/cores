@@ -27,10 +27,18 @@ class TableRow extends Component {
                     {seminar.location}
                 </td>
                 <td>
-                    {seminar.createdAt}
+                    {
+                        moment(seminar.createdAt)
+                            .tz("Asia/Manila")
+                            .format("MM/DD/YYYY hh:mm A")
+                    }
                 </td>
                 <td>
-                    {seminar.updatedAt}
+                    {
+                        moment(seminar.updatedAt)
+                            .tz("Asia/Manila")
+                            .format("MM/DD/YYYY hh:mm A")
+                    }
                 </td>
             </tr>
         )
