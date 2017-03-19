@@ -6,6 +6,8 @@ import {
     Button
 } from 'react-bootstrap';
 import Select2 from 'react-select2-wrapper';
+import DateTime from 'react-datetime';
+import 'react-datetime/css/react-datetime.css'
 
 class Body extends Component {
     constructor(props) {
@@ -14,6 +16,7 @@ class Body extends Component {
         this.state = {
             usernameValue: '',
             emailValue: '',
+            birthDateValue: '',
             genderValue: 'male',
             schoolValue: 'pup-manila',
             courseValue: 'bscpe',
@@ -22,6 +25,7 @@ class Body extends Component {
         };
         this.handleUsernameValueChange = this.handleUsernameValueChange.bind(this);
         this.handleEmailValueChange = this.handleEmailValueChange.bind(this);
+        this.handleBirthDateValueChange = this.handleBirthDateValueChange.bind(this);
         this.handleGenderValueChange = this.handleGenderValueChange.bind(this);
         this.handleSchoolValueChange = this.handleSchoolValueChange.bind(this);
         this.handleCourseValueChange = this.handleCourseValueChange.bind(this);
@@ -34,6 +38,9 @@ class Body extends Component {
     }
     handleEmailValueChange(event) {
         this.setState({emailValue: event.target.value})
+    }
+    handleBirthDateValueChange(newDate) {
+        this.setState({birthDateValue: newDate});
     }
     handleGenderValueChange(event) {
         this.setState({genderValue: event.target.value})
@@ -59,6 +66,7 @@ class Body extends Component {
         let email = this.state.emailValue;
         let firstName = this.firstName.value;
         let lastName = this.lastName.value;
+        let birthDate = this.state.birthDateValue;
         let gender = this.state.genderValue;
         let school = this.state.schoolValue;
         let studentNumber = this.studentNumber.value;
@@ -79,6 +87,7 @@ class Body extends Component {
                 email,
                 firstName,
                 lastName,
+                birthDate,
                 gender,
                 school,
                 studentNumber,
@@ -94,6 +103,7 @@ class Body extends Component {
         const {
             handleUsernameValueChange,
             handleEmailValueChange,
+            handleBirthDateValueChange,
             handleGenderValueChange,
             handleSchoolValueChange,
             handleCourseValueChange,
@@ -104,6 +114,7 @@ class Body extends Component {
         const {
             usernameValue,
             emailValue,
+            birthDateValue,
             genderValue,
             schoolValue,
             courseValue,
@@ -184,6 +195,18 @@ class Body extends Component {
                                     inputRef={(ref) => {this.lastName = ref}}
                                     type="text"
                                     placeholder=""
+                                />
+                            </div>
+                        </FormGroup>
+                        <FormGroup>
+                            <ControlLabel bsClass="col-md-3 control-label">
+                                Birth Date
+                            </ControlLabel>
+                            <div className="col-md-9">
+                                <DateTime
+                                    defaultValue={birthDateValue}
+                                    onChange={handleBirthDateValueChange}
+                                    timeFormat={false}
                                 />
                             </div>
                         </FormGroup>

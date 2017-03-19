@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
+import moment from 'moment-timezone';
 
 class TableRow extends Component {
     render() {
@@ -7,13 +9,19 @@ class TableRow extends Component {
         return(
             <tr>
                 <td>
-                    {seminar.title}
-                    </td>
+                    <Link to={'/admin/seminar/' + seminar._id}>
+                        {seminar.title}
+                    </Link>
+                </td>
                 <td>
                     {seminar.speaker}
                 </td>
                 <td>
-                    {seminar.schedule}
+                    {
+                        moment(seminar.schedule)
+                            .tz("Asia/Manila")
+                            .format("MM/DD/YYYY hh:mm A")
+                    }
                 </td>
                 <td>
                     {seminar.location}

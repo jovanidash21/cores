@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 class TableRow extends Component {
     render() {
@@ -7,10 +8,14 @@ class TableRow extends Component {
         return(
             <tr>
                 <td>
-                    {speaker.firstName}
+                    <Link to={'/admin/speaker/' + speaker._id}>
+                        {speaker.firstName}
+                    </Link>
                 </td>
                 <td>
-                    {speaker.lastName}
+                    <Link to={'/admin/speaker/' + speaker._id}>
+                        {speaker.lastName}
+                    </Link>
                 </td>
                 <td>
                     {speaker.position}

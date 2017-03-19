@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment-timezone';
 
 class DetailsBody extends Component {
     render() {
@@ -30,7 +31,9 @@ class DetailsBody extends Component {
                                         </div>
                                         <div className="section-body">
                                             {
-                                                seminar.schedule
+                                                moment(seminar.schedule)
+                                                    .tz("Asia/Manila")
+                                                    .format("MM/DD/YYYY hh:mm A")
                                             }
                                         </div>
                                     </div>

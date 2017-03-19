@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment-timezone';
 import {
     FormGroup,
     ControlLabel,
@@ -6,22 +7,30 @@ import {
     Button
 } from 'react-bootstrap';
 import Select2 from 'react-select2-wrapper';
+import DateTime from 'react-datetime';
+import 'react-datetime/css/react-datetime.css'
 
 class Body extends Component {
     constructor(props) {
         super(props);
 
         const { seminar } = this.props;
+        let schedule = moment(seminar.schedule).tz("Asia/Manila").format("MM/DD/YYYY hh:mm A");
         this.state = {
             titleValue: seminar.title,
+            scheduleValue: schedule,
             locationValue: seminar.location
         };
         this.handleTitleValueChange = this.handleTitleValueChange.bind(this);
+        this.handleScheduleValueChange = this.handleScheduleValueChange.bind(this);
         this.handleLocationValueChange = this.handleLocationValueChange.bind(this);
         this.handleEditSeminarSubmit = this.handleEditSeminarSubmit.bind(this);
     }
     handleTitleValueChange(event) {
         this.setState({titleValue: event.target.value})
+    }
+    handleScheduleValueChange(newDate) {
+        this.setState({scheduleValue: newDate});
     }
     handleLocationValueChange(event) {
         this.setState({locationValue: event.target.value})
@@ -32,6 +41,7 @@ class Body extends Component {
         const { handleEditSeminarSubmit } = this.props;
         let editSeminar = [];
         let title = this.state.titleValue;
+        let schedule = this.state.scheduleValue;
         let location = this.state.locationValue;
 
         if (title == '') {
@@ -40,6 +50,7 @@ class Body extends Component {
         else {
             editSeminar.push({
                 title,
+                schedule,
                 location
             });
             handleEditSeminarSubmit(editSeminar);
@@ -49,11 +60,13 @@ class Body extends Component {
     render() {
         const {
             handleTitleValueChange,
+            handleScheduleValueChange,
             handleLocationValueChange,
             handleEditSeminarSubmit
         } = this;
         const {
             titleValue,
+            scheduleValue,
             locationValue
         } = this.state;
 
@@ -81,6 +94,17 @@ class Body extends Component {
                                     value={titleValue}
                                     onChange={handleTitleValueChange}
                                     placeholder=""
+                                />
+                            </div>
+                        </FormGroup>
+                        <FormGroup>
+                            <ControlLabel bsClass="col-md-3 control-label">
+                                Schedule
+                            </ControlLabel>
+                            <div className="col-md-9">
+                                <DateTime
+                                    defaultValue={scheduleValue}
+                                    onChange={handleScheduleValueChange}
                                 />
                             </div>
                         </FormGroup>

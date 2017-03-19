@@ -6,6 +6,8 @@ import {
     Button
 } from 'react-bootstrap';
 import Select2 from 'react-select2-wrapper';
+import DateTime from 'react-datetime';
+import 'react-datetime/css/react-datetime.css'
 
 class Body extends Component {
     constructor(props) {
@@ -13,14 +15,19 @@ class Body extends Component {
 
         this.state = {
             titleValue: '',
+            scheduleValue: '',
             locationValue: 'none'
         };
         this.handleTitleValueChange = this.handleTitleValueChange.bind(this);
+        this.handleScheduleValueChange = this.handleScheduleValueChange.bind(this);
         this.handleLocationValueChange = this.handleLocationValueChange.bind(this);
         this.handleAddNewSeminarSubmit = this.handleAddNewSeminarSubmit.bind(this);
     }
     handleTitleValueChange(event) {
         this.setState({titleValue: event.target.value})
+    }
+    handleScheduleValueChange(newDate) {
+        this.setState({scheduleValue: newDate});
     }
     handleLocationValueChange(event) {
         this.setState({locationValue: event.target.value})
@@ -31,6 +38,7 @@ class Body extends Component {
         const { handleAddNewSeminarSubmit } = this.props;
         let newSeminar = [];
         let title = this.state.titleValue;
+        let schedule = this.state.scheduleValue;
         let location = this.state.locationValue;
 
         if (title == '') {
@@ -39,6 +47,7 @@ class Body extends Component {
         else {
             newSeminar.push({
                 title,
+                schedule,
                 location
             });
             handleAddNewSeminarSubmit(newSeminar);
@@ -48,11 +57,13 @@ class Body extends Component {
     render() {
         const {
             handleTitleValueChange,
+            handleScheduleValueChange,
             handleLocationValueChange,
             handleAddNewSeminarSubmit
         } = this;
         const {
             titleValue,
+            scheduleValue,
             locationValue
         } = this.state;
 
@@ -80,6 +91,17 @@ class Body extends Component {
                                     value={titleValue}
                                     onChange={handleTitleValueChange}
                                     placeholder=""
+                                />
+                            </div>
+                        </FormGroup>
+                        <FormGroup>
+                            <ControlLabel bsClass="col-md-3 control-label">
+                                Schedule
+                            </ControlLabel>
+                            <div className="col-md-9">
+                                <DateTime
+                                    defaultValue={scheduleValue}
+                                    onChange={handleScheduleValueChange}
                                 />
                             </div>
                         </FormGroup>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment-timezone';
 
 class CardBody extends Component {
     render() {
@@ -38,7 +39,9 @@ class CardBody extends Component {
                             </div>
                             <div className="section-body">
                                 {
-                                    user.birthDate
+                                    moment(user.birthDate)
+                                        .tz("Asia/Manila")
+                                        .format("MM/DD/YYYY")
                                 }
                             </div>
                         </div>

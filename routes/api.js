@@ -44,6 +44,7 @@ router.patch('/user/:userID', function(req, res, next) {
                 email: userData.email,
                 firstName: userData.firstName,
                 lastName: userData.lastName,
+                birthDate: userData.birthDate,
                 gender: userData.gender,
                 school: userData.school,
                 studentNumber: userData.studentNumber,
@@ -109,6 +110,7 @@ router.post('/users', function(req, res, next) {
                 email: userData.email,
                 firstName: userData.firstName,
                 lastName: userData.lastName,
+                birthDate: userData.birthDate,
                 gender: userData.gender,
                 school: userData.school,
                 studentNumber: userData.studentNumber,
@@ -158,6 +160,7 @@ router.patch('/seminar/:seminarID', function(req, res, next) {
             var seminar = {
                 title: seminarData.title,
                 location: seminarData.location,
+                schedule: seminarData.schedule
             };
             seminarsData.findByIdAndUpdate(seminarID, seminar, function(err, results) {
                 if(err) {
@@ -213,6 +216,7 @@ router.post('/seminars', function(req, res, next) {
         seminarData.forEach(function (seminarData) {
             var seminar = {
                 title: seminarData.title,
+                schedule: seminarData.schedule,
                 location: seminarData.location,
             };
             var newSeminar = new seminarsData(seminar);

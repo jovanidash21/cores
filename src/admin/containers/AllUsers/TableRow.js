@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
+import moment from 'moment-timezone';
+
 
 class TableRow extends Component {
     render() {
@@ -7,8 +10,10 @@ class TableRow extends Component {
         return(
             <tr>
                 <td>
-                    {user.username}
-                    </td>
+                    <Link to={'/admin/user/' + user._id}>
+                        {user.username}
+                    </Link>
+                </td>
                 <td>
                     {user.firstName}
                 </td>
@@ -22,10 +27,18 @@ class TableRow extends Component {
                     {user.role}
                 </td>
                 <td>
-                    {user.createdAt}
+                    {
+                        moment(user.createdAt)
+                            .tz("Asia/Manila")
+                            .format("MM/DD/YYYY hh:mm A")
+                    }
                 </td>
                 <td>
-                    {user.updatedAt}
+                    {
+                        moment(user.updatedAt)
+                            .tz("Asia/Manila")
+                            .format("MM/DD/YYYY hh:mm A")
+                    }
                 </td>
             </tr>
         )

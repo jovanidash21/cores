@@ -59,7 +59,7 @@ export default connect((props) => {
     return {
         userUpdateDataFetch: `/api/user/${props.userID}`,
         updateUser: (editUser) => ({
-            editUserFetch: {
+            updateUserFetch: {
                 url: `/api/user/${props.userID}`,
                 method: 'PATCH',
                 force: true,
