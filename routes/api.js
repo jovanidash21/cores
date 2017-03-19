@@ -188,6 +188,35 @@ router.get('/speaker/:speakerID', function(req, res, next) {
     }
 });
 
+router.patch('/speaker/:speakerID', function(req, res, next) {
+    if (req.user === undefined) {
+        res.json({});
+    }
+    else {
+        var speakerID = req.params.speakerID;
+        var speakerData = req.body;
+        speakerData.forEach(function (speakerData) {
+            var speaker = {
+                firstName: speakerData.firstName,
+                lastName: speakerData.lastName,
+                email: speakerData.email,
+                school: speakerData.school,
+                course: speakerData.course,
+                office: speakerData.office
+            };
+
+            speakersData.findByIdAndUpdate(speakerID, speaker, function(err, results) {
+                if(err) {
+                    res.end(err);
+                }
+                else {
+                    res.json([results]);
+                }
+            });
+        });
+    }
+});
+
 router.get('/speakers', function(req, res, next) {
     if (req.user === undefined) {
         res.json({});
