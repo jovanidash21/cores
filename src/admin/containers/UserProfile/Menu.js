@@ -3,7 +3,24 @@ import { Link } from 'react-router';
 import { Button } from 'react-bootstrap';
 
 class Menu extends Component {
+    constructor(props) {
+        super(props);
+
+        this.handleDeleteUserSubmit = this.handleDeleteUserSubmit.bind(this);
+    }
+    handleDeleteUserSubmit(event) {
+        event.preventDefault();
+
+        const {
+            user,
+            handleDeleteUserSubmit
+        } = this.props;
+
+        handleDeleteUserSubmit(user._id);
+    }
+
     render() {
+        const { handleDeleteUserSubmit } = this;
         const { user } = this.props;
 
         return(
@@ -14,6 +31,10 @@ class Menu extends Component {
                             Edit User
                         </Button>
                     </Link>
+                    &nbsp;
+                    <Button bsSize="large" bsStyle="danger" onClick={handleDeleteUserSubmit} >
+                        Delete User
+                    </Button>
                 </div>
             </div>
         )

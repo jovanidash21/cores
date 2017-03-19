@@ -7,6 +7,17 @@ import Header from './Header';
 import Body from './Body';
 
 class UserProfile extends Component {
+    constructor(props) {
+        super(props);
+
+        this.handleDeleteUserSubmit = this.handleDeleteUserSubmit.bind(this);
+    }
+    handleDeleteUserSubmit(userID) {
+        const { deleteUser } = this.props;
+
+        deleteUser(userID);
+    }
+
     render() {
         const { userProfileDataFetch } = this.props;
 
@@ -18,10 +29,14 @@ class UserProfile extends Component {
         }
         else if (userProfileDataFetch.fulfilled) {
             const [user] = userProfileDataFetch.value;
+            const { handleDeleteUserSubmit } = this;
 
             return(
                 <div>
-                    <Menu user={user} />
+                    <Menu
+                        user={user}
+                        handleDeleteUserSubmit={handleDeleteUserSubmit}
+                    />
                     <Header user={user} />
                     <Body user={user} />
                 </div>
@@ -32,6 +47,14 @@ class UserProfile extends Component {
 
 export default connect((props) => {
     return {
-        userProfileDataFetch: `/api/user/${props.userID}`
+        userProfileDataFetch: `/api/user/${props.userID}`,
+        deleteUser: (userID) => ({
+            deleteUserFetch: {
+                url: `/api/user/${userID}`,
+                method: 'DELETE',
+                force: true,
+                refreshing: true
+            }
+        })
     }
 })(UserProfile);
