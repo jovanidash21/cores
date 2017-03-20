@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-refetch';
+import { connect, PromiseState } from 'react-refetch';
 import LoadingAnimation from '../LoadingAnimation/Index';
 import Error from '../Error/Index';
 import Menu from './Menu';
@@ -19,16 +19,21 @@ class EditSpeakerForm extends Component {
     }
 
     render() {
-        const { speakerUpdateDataFetch } = this.props;
+        const {
+            speakerUpdateDataFetch,
+            seminarsDataFetch
+        } = this.props;
+        const allSeminarsDataFetch = PromiseState.all([seminarsDataFetch]);
 
-        if (speakerUpdateDataFetch.pending) {
+        if (speakerUpdateDataFetch.pending || allSeminarsDataFetch.pending) {
             return <LoadingAnimation />
         }
-        else if (speakerUpdateDataFetch.rejected) {
+        else if (speakerUpdateDataFetch.rejected || allSeminarsDataFetch.rejected) {
             return <Error error={speakerUpdateDataFetch.reason} />
         }
-        else if (speakerUpdateDataFetch.fulfilled) {
+        else if (speakerUpdateDataFetch.fulfilled && allSeminarsDataFetch.fulfilled) {
             const [speaker] = speakerUpdateDataFetch.value;
+            const [seminars] = allSeminarsDataFetch.value;
             const { handleEditSpeakerSubmit } = this;
 
             return(
@@ -42,6 +47,7 @@ class EditSpeakerForm extends Component {
                                     <form className="form form-horizontal">
                                         <Body
                                             speaker={speaker}
+                                            seminars={seminars}
                                             handleEditSpeakerSubmit={handleEditSpeakerSubmit}
                                         />
                                     </form>
@@ -58,6 +64,7 @@ class EditSpeakerForm extends Component {
 export default connect((props) => {
     return {
         speakerUpdateDataFetch: `/api/speaker/${props.speakerID}`,
+        seminarsDataFetch: `/api/seminars`,
         updateSpeaker: (editSpeaker) => ({
             updateSpeakerFetch: {
                 url: `/api/speaker/${props.speakerID}`,

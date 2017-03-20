@@ -324,15 +324,27 @@ router.patch('/speaker/:speakerID', function(req, res, next) {
                 email: speakerData.email,
                 school: speakerData.school,
                 course: speakerData.course,
-                office: speakerData.office
+                office: speakerData.office,
+                seminar: speakerData.seminar
             };
 
-            speakersData.findByIdAndUpdate(speakerID, speaker, function(err, results) {
+            speakersData.findByIdAndUpdate(speakerID, speaker, function(err, speaker) {
                 if(err) {
                     res.end(err);
                 }
                 else {
-                    res.json([results]);
+                    seminarsData.findByIdAndUpdate(
+                        speakerData.seminar,
+                        { speaker: speaker._id },
+                        function(err) {
+                            if(err) {
+                                res.end(err);
+                            }
+                            else {
+                                res.end();
+                            }
+                        }
+                    );
                 }
             });
         });

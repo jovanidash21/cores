@@ -12,20 +12,34 @@ class Body extends Component {
     constructor(props) {
         super(props);
 
-        const { speaker } = this.props;
+        const {
+            speaker,
+            seminars
+        } = this.props;
+        let seminarsData = [];
+
+        for (var i = 0; i < seminars.length; i++) {
+            seminarsData.push({
+                text: seminars[i].title,
+                id: seminars[i]._id
+            });
+        }
 
         this.state = {
             firstNameValue: speaker.firstName,
             lastNameValue: speaker.lastName,
             emailValue: speaker.email,
             schoolValue: speaker.school,
-            courseValue: speaker.course
+            courseValue: speaker.course,
+            seminarsData: seminarsData,
+            seminarValue: speaker.seminar._id,
         };
         this.handleFirstNameValueChange = this.handleFirstNameValueChange.bind(this);
         this.handleLastNameValueChange = this.handleLastNameValueChange.bind(this);
         this.handleEmailValueChange = this.handleEmailValueChange.bind(this);
         this.handleSchoolValueChange = this.handleSchoolValueChange.bind(this);
         this.handleCourseValueChange = this.handleCourseValueChange.bind(this);
+        this.handleSeminarValueChange = this.handleSeminarValueChange.bind(this);
         this.handleEditSpeakerSubmit = this.handleEditSpeakerSubmit.bind(this);
     }
     handleFirstNameValueChange(event) {
@@ -43,6 +57,9 @@ class Body extends Component {
     handleCourseValueChange(event) {
         this.setState({courseValue: event.target.value})
     }
+    handleSeminarValueChange(event) {
+        this.setState({seminarValue: event.target.value})
+    }
     handleEditSpeakerSubmit(event) {
         event.preventDefault();
 
@@ -58,6 +75,7 @@ class Body extends Component {
         let school = this.state.schoolValue;
         let course = this.state.courseValue;
         let office = this.office.value;
+        let seminar = this.state.seminarValue;
 
         if (
             (firstName == '' ) ||
@@ -74,10 +92,11 @@ class Body extends Component {
                 position,
                 school,
                 course,
-                office
+                office,
+                seminar
             });
             handleEditSpeakerSubmit(editSpeaker);
-            browserHistory.push('/admin/speaker' + speaker._id);
+            browserHistory.push('/admin/speaker/' + speaker._id);
         }
     }
 
@@ -88,6 +107,7 @@ class Body extends Component {
             handleEmailValueChange,
             handleSchoolValueChange,
             handleCourseValueChange,
+            handleSeminarValueChange,
             handleEditSpeakerSubmit
         } = this;
         const { speaker } = this.props;
@@ -96,7 +116,9 @@ class Body extends Component {
             lastNameValue,
             emailValue,
             schoolValue,
-            courseValue
+            courseValue,
+            seminarsData,
+            seminarValue,
         } = this.state;
 
         return(
@@ -257,6 +279,18 @@ class Body extends Component {
                                     type="text"
                                     defaultValue={speaker.office}
                                     placeholder=""
+                                />
+                            </div>
+                        </FormGroup>
+                        <FormGroup>
+                            <ControlLabel bsClass="col-md-3 control-label">
+                                Seminar
+                            </ControlLabel>
+                            <div className="col-md-9">
+                                <Select2
+                                    defaultValue={seminarValue}
+                                    data={seminarsData}
+                                    onChange={handleSeminarValueChange}
                                 />
                             </div>
                         </FormGroup>
