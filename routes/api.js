@@ -117,16 +117,31 @@ router.post('/users', function(req, res, next) {
                 school: userData.school,
                 studentNumber: userData.studentNumber,
                 course: userData.course,
+                seminars: userData.seminars,
                 role: userData.role
             };
             var password = userData.password;
 
-            usersData.register(new usersData(user), password, function(err, results) {
+            usersData.register(new usersData(user), password, function(err, user) {
                 if(err) {
                     res.end(err);
                 }
                 else {
-                    res.json(results);
+                    userData.seminars.forEach(function (seminarID){
+                        seminarsData.findByIdAndUpdate(
+                            seminarID,
+                            { $push: { registrants: user._id }},
+                            { safe: true, upsert: true, new: true },
+                            function(err) {
+                                if(err) {
+                                    res.end(err);
+                                }
+                                else {
+                                    res.end();
+                                }
+                            }
+                        );
+                    });
                 }
             });
         });

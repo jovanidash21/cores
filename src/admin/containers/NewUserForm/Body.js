@@ -14,6 +14,16 @@ class Body extends Component {
     constructor(props) {
         super(props);
 
+        const { seminars } = this.props;
+        let seminarsData = [];
+
+        for (var i = 0; i < seminars.length; i++) {
+            seminarsData.push({
+                text: seminars[i].title,
+                id: seminars[i]._id
+            });
+        }
+
         this.state = {
             usernameValue: '',
             emailValue: '',
@@ -21,6 +31,7 @@ class Body extends Component {
             genderValue: 'male',
             schoolValue: 'pup-manila',
             courseValue: 'bscpe',
+            seminarsData: seminarsData,
             passwordValue: '',
             roleValue: 'registrant'
         };
@@ -72,8 +83,14 @@ class Body extends Component {
         let school = this.state.schoolValue;
         let studentNumber = this.studentNumber.value;
         let course = this.state.courseValue;
+        let seminarsValue = this.refs.seminarsValue.el.select2('data');
+        let seminars = [];
         let password = this.state.passwordValue;
         let role = this.state.roleValue;
+
+        for (var i = 0; i < seminarsValue.length; i++) {
+            seminars.push(seminarsValue[i].id);
+        }
 
         if (
             (username == '' ) ||
@@ -93,6 +110,7 @@ class Body extends Component {
                 school,
                 studentNumber,
                 course,
+                seminars,
                 password,
                 role
             });
@@ -120,6 +138,7 @@ class Body extends Component {
             genderValue,
             schoolValue,
             courseValue,
+            seminarsData,
             passwordValue,
             roleValue
         } = this.state;
@@ -300,6 +319,18 @@ class Body extends Component {
                                         {text: 'Other', id: 'other'}
                                     ]}
                                     onChange={handleCourseValueChange}
+                                />
+                            </div>
+                        </FormGroup>
+                        <FormGroup>
+                            <ControlLabel bsClass="col-md-3 control-label">
+                                Seminars
+                            </ControlLabel>
+                            <div className="col-md-9">
+                                <Select2
+                                    multiple
+                                    data={seminarsData}
+                                    ref="seminarsValue"
                                 />
                             </div>
                         </FormGroup>
