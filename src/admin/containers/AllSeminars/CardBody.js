@@ -11,7 +11,6 @@ class CardBody extends Component {
                     <thead>
                     <tr>
                         <th>Title</th>
-                        <th>Speaker</th>
                         <th>Schedule</th>
                         <th>Location</th>
                         <th>Date Created</th>

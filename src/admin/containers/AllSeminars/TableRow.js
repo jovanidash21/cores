@@ -14,9 +14,6 @@ class TableRow extends Component {
                     </Link>
                 </td>
                 <td>
-                    {seminar.speaker}
-                </td>
-                <td>
                     {
                         moment(seminar.schedule)
                             .tz("Asia/Manila")
