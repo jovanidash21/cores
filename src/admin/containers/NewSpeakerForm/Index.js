@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-refetch';
+import { connect, PromiseState } from 'react-refetch';
+import LoadingAnimation from '../LoadingAnimation/Index';
+import Error from '../Error/Index';
 import CardHeader from './CardHeader';
 import Body from './Body';
 
@@ -14,28 +16,44 @@ class NewSpeakerForm extends Component {
 
         addNewSpeaker(newSpeaker);
     }
-    render() {
-        const { handleAddNewSpeakerSubmit } = this;
 
-        return(
-            <div className="row">
-                <div className="col-md-12">
-                    <div className="card">
-                        <CardHeader />
-                        <div className="card-body">
-                            <form className="form form-horizontal">
-                                <Body handleAddNewSpeakerSubmit={handleAddNewSpeakerSubmit} />
-                            </form>
+    render() {
+        const { seminarsDataFetch } = this.props;
+        const allSeminarsDataFetch = PromiseState.all([seminarsDataFetch]);
+
+        if (allSeminarsDataFetch.pending) {
+            return <LoadingAnimation />
+        }
+        else if (allSeminarsDataFetch.rejected) {
+            return <Error error={allSeminarsDataFetch.reason} />
+        }
+        else if (allSeminarsDataFetch.fulfilled) {
+            const [seminars] = allSeminarsDataFetch.value;
+            const { handleAddNewSpeakerSubmit } = this;
+
+            return(
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="card">
+                            <CardHeader />
+                            <div className="card-body">
+                                <form className="form form-horizontal">
+                                    <Body
+                                        seminars={seminars}
+                                        handleAddNewSpeakerSubmit={handleAddNewSpeakerSubmit} />
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        )
+            )
+        }
     }
 }
 
 export default connect(() => {
     return {
+        seminarsDataFetch: `/api/seminars`,
         addNewSpeaker: (newSpeaker) => ({
             addNewSpeakerFetch: {
                 url: `/api/speakers`,

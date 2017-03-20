@@ -359,15 +359,27 @@ router.post('/speakers', function(req, res, next) {
                 position: speakerData.position,
                 school: speakerData.school,
                 course: speakerData.course,
-                office: speakerData.role
+                office: speakerData.role,
+                seminar: speakerData.seminar
             };
             var newSpeaker = new speakersData(speaker);
-            newSpeaker.save(function(err, results) {
+            newSpeaker.save(function(err, speaker) {
                 if(err) {
                     res.end(err);
                 }
                 else {
-                    res.json(results);
+                    seminarsData.findByIdAndUpdate(
+                        speakerData.seminar,
+                        { speaker: speaker._id },
+                        function(err) {
+                            if(err) {
+                                res.end(err);
+                            }
+                            else {
+                                res.end();
+                            }
+                        }
+                    );
                 }
             });
         });
