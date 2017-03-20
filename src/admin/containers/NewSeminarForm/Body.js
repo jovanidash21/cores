@@ -14,18 +14,34 @@ class Body extends Component {
     constructor(props) {
         super(props);
 
+        const { speakers } = this.props;
+        let speakersData = [];
+
+        for (var i = 0; i < speakers.length; i++) {
+            speakersData.push({
+                text: speakers[i].firstName + " " + speakers[i].lastName,
+                id: speakers[i]._id
+            });
+        }
+
         this.state = {
             titleValue: '',
+            speakersData: speakersData,
+            speakerValue: '',
             scheduleValue: '',
             locationValue: 'none'
         };
         this.handleTitleValueChange = this.handleTitleValueChange.bind(this);
+        this.handleSpeakerValueChange = this.handleSpeakerValueChange.bind(this);
         this.handleScheduleValueChange = this.handleScheduleValueChange.bind(this);
         this.handleLocationValueChange = this.handleLocationValueChange.bind(this);
         this.handleAddNewSeminarSubmit = this.handleAddNewSeminarSubmit.bind(this);
     }
     handleTitleValueChange(event) {
         this.setState({titleValue: event.target.value})
+    }
+    handleSpeakerValueChange(event) {
+        this.setState({speakerValue: event.target.value})
     }
     handleScheduleValueChange(newDate) {
         this.setState({scheduleValue: newDate});
@@ -39,15 +55,18 @@ class Body extends Component {
         const { handleAddNewSeminarSubmit } = this.props;
         let newSeminar = [];
         let title = this.state.titleValue;
+        let speaker = this.state.speakerValue;
         let schedule = this.state.scheduleValue;
         let location = this.state.locationValue;
 
+        console.log(speaker);
         if (title == '') {
             alert("Please fill out all the required fields");
         }
         else {
             newSeminar.push({
                 title,
+                speaker,
                 schedule,
                 location
             });
@@ -59,12 +78,15 @@ class Body extends Component {
     render() {
         const {
             handleTitleValueChange,
+            handleSpeakerValueChange,
             handleScheduleValueChange,
             handleLocationValueChange,
             handleAddNewSeminarSubmit
         } = this;
         const {
             titleValue,
+            speakersData,
+            speakerValue,
             scheduleValue,
             locationValue
         } = this.state;
@@ -93,6 +115,18 @@ class Body extends Component {
                                     value={titleValue}
                                     onChange={handleTitleValueChange}
                                     placeholder=""
+                                />
+                            </div>
+                        </FormGroup>
+                        <FormGroup>
+                            <ControlLabel bsClass="col-md-3 control-label">
+                                Speaker
+                            </ControlLabel>
+                            <div className="col-md-9">
+                                <Select2
+                                    defaultValue={speakerValue}
+                                    data={speakersData}
+                                    onChange={handleSpeakerValueChange}
                                 />
                             </div>
                         </FormGroup>

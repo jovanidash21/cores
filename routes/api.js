@@ -235,16 +235,28 @@ router.post('/seminars', function(req, res, next) {
         seminarData.forEach(function (seminarData) {
             var seminar = {
                 title: seminarData.title,
+                speaker: seminarData.speaker,
                 schedule: seminarData.schedule,
                 location: seminarData.location,
             };
             var newSeminar = new seminarsData(seminar);
-            newSeminar.save(function(err, results) {
+            newSeminar.save(function(err, seminar) {
                 if(err) {
                     res.end(err);
                 }
                 else {
-                    res.json(results);
+                    speakersData.findByIdAndUpdate(
+                        seminarData.speaker,
+                        { seminar: seminar._id },
+                        function(err) {
+                            if(err) {
+                                res.end(err);
+                            }
+                            else {
+                                res.end();
+                            }
+                        }
+                    );
                 }
             });
         });
