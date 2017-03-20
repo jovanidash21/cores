@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-refetch';
+import { connect, PromiseState } from 'react-refetch';
 import LoadingAnimation from '../LoadingAnimation/Index';
 import Error from '../Error/Index';
 import Menu from './Menu';
@@ -19,16 +19,21 @@ class EditUserForm extends Component {
     }
 
     render() {
-        const { userUpdateDataFetch } = this.props;
+        const {
+            userUpdateDataFetch,
+            seminarsDataFetch
+        } = this.props;
+        const allSeminarsDataFetch = PromiseState.all([seminarsDataFetch]);
 
-        if (userUpdateDataFetch.pending) {
+        if (userUpdateDataFetch.pending || allSeminarsDataFetch.pending) {
             return <LoadingAnimation />
         }
-        else if (userUpdateDataFetch.rejected) {
+        else if (userUpdateDataFetch.rejected || allSeminarsDataFetch.rejected) {
             return <Error error={userUpdateDataFetch.reason} />
         }
-        else if (userUpdateDataFetch.fulfilled) {
+        else if (userUpdateDataFetch.fulfilled && allSeminarsDataFetch.fulfilled) {
             const [user] = userUpdateDataFetch.value;
+            const [seminars] = allSeminarsDataFetch.value;
             const { handleEditUserSubmit } = this;
 
             return(
@@ -42,6 +47,7 @@ class EditUserForm extends Component {
                                     <form className="form form-horizontal">
                                         <Body
                                             user={user}
+                                            seminars={seminars}
                                             handleEditUserSubmit={handleEditUserSubmit}
                                         />
                                     </form>
@@ -58,6 +64,7 @@ class EditUserForm extends Component {
 export default connect((props) => {
     return {
         userUpdateDataFetch: `/api/user/${props.userID}`,
+        seminarsDataFetch: `/api/seminars`,
         updateUser: (editUser) => ({
             updateUserFetch: {
                 url: `/api/user/${props.userID}`,

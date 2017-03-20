@@ -15,8 +15,24 @@ class Body extends Component {
     constructor(props) {
         super(props);
 
-        const { user } = this.props
+        const {
+            user,
+            seminars
+        } = this.props;
         let birthDate = moment(user.birthDate).tz("Asia/Manila").format("MM/DD/YYYY");
+        let userSeminarsValue = [];
+        let seminarsData = [];
+
+        for (var i = 0; i < user.seminars.length; i++) {
+            userSeminarsValue.push(user.seminars[i]._id);
+        }
+
+        for (var j = 0; j < seminars.length; j++) {
+            seminarsData.push({
+                text: seminars[j].title,
+                id: seminars[j]._id
+            });
+        }
 
         this.state = {
             usernameValue: user.username,
@@ -25,6 +41,8 @@ class Body extends Component {
             genderValue: user.gender,
             schoolValue: user.school,
             courseValue: user.course,
+            userSeminarsValue: userSeminarsValue,
+            seminarsData: seminarsData,
             passwordValue: user.password,
             roleValue: user.role
         };
@@ -79,8 +97,14 @@ class Body extends Component {
         let school = this.state.schoolValue;
         let studentNumber = this.studentNumber.value;
         let course = this.state.courseValue;
+        let seminarsValue = this.refs.seminarsValue.el.select2('data');
+        let seminars = [];
         let password = this.state.passwordValue;
         let role = this.state.roleValue;
+
+        for (var i = 0; i < seminarsValue.length; i++) {
+            seminars.push(seminarsValue[i].id);
+        }
 
         if (
             (username == '' ) ||
@@ -100,6 +124,7 @@ class Body extends Component {
                 school,
                 studentNumber,
                 course,
+                seminars,
                 password,
                 role
             });
@@ -128,6 +153,8 @@ class Body extends Component {
             genderValue,
             schoolValue,
             courseValue,
+            userSeminarsValue,
+            seminarsData,
             passwordValue,
             roleValue
         } = this.state;
@@ -311,6 +338,19 @@ class Body extends Component {
                                         {text: 'Other', id: 'other'}
                                     ]}
                                     onChange={handleCourseValueChange}
+                                />
+                            </div>
+                        </FormGroup>
+                        <FormGroup>
+                            <ControlLabel bsClass="col-md-3 control-label">
+                                Seminars
+                            </ControlLabel>
+                            <div className="col-md-9">
+                                <Select2
+                                    multiple
+                                    defaultValue={userSeminarsValue}
+                                    data={seminarsData}
+                                    ref="seminarsValue"
                                 />
                             </div>
                         </FormGroup>

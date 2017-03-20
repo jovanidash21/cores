@@ -51,15 +51,30 @@ router.patch('/user/:userID', function(req, res, next) {
                 school: userData.school,
                 studentNumber: userData.studentNumber,
                 course: userData.course,
+                seminars: userData.seminars,
                 role: userData.role
             };
 
-            usersData.findByIdAndUpdate(userID, user, function(err, results) {
+            usersData.findByIdAndUpdate(userID, user, function(err, user) {
                 if(err) {
                     res.end(err);
                 }
                 else {
-                    res.json([results]);
+                    userData.seminars.forEach(function (seminarID){
+                        seminarsData.findByIdAndUpdate(
+                            seminarID,
+                            { $push: { registrants: user._id }},
+                            { safe: true, upsert: true, new: true },
+                            function(err) {
+                                if(err) {
+                                    res.end(err);
+                                }
+                                else {
+                                    res.end();
+                                }
+                            }
+                        );
+                    });
                 }
             });
         });
