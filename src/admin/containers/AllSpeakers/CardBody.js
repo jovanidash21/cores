@@ -15,7 +15,6 @@ class CardBody extends Component {
                         <th>Position</th>
                         <th>School</th>
                         <th>Office</th>
-                        <th>Seminar</th>
                         <th>Date Created</th>
                         <th>Last Update</th>
                     </tr>

@@ -28,9 +28,6 @@ class TableRow extends Component {
                     {speaker.office}
                 </td>
                 <td>
-                    {speaker.seminar}
-                </td>
-                <td>
                     {
                         moment(speaker.createdAt)
                             .tz("Asia/Manila")
