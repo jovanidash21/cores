@@ -15,20 +15,38 @@ class Body extends Component {
     constructor(props) {
         super(props);
 
-        const { seminar } = this.props;
+        const {
+            seminar,
+            speakers
+        } = this.props;
         let schedule = moment(seminar.schedule).tz("Asia/Manila").format("MM/DD/YYYY hh:mm A");
+        let speakersData = [];
+
+        for (var i = 0; i < speakers.length; i++) {
+            speakersData.push({
+                text: speakers[i].firstName + " " + speakers[i].lastName,
+                id: speakers[i]._id
+            });
+        }
+
         this.state = {
             titleValue: seminar.title,
+            speakersData: speakersData,
+            speakerValue: seminar.speaker._id,
             scheduleValue: schedule,
             locationValue: seminar.location
         };
         this.handleTitleValueChange = this.handleTitleValueChange.bind(this);
+        this.handleSpeakerValueChange = this.handleSpeakerValueChange.bind(this);
         this.handleScheduleValueChange = this.handleScheduleValueChange.bind(this);
         this.handleLocationValueChange = this.handleLocationValueChange.bind(this);
         this.handleEditSeminarSubmit = this.handleEditSeminarSubmit.bind(this);
     }
     handleTitleValueChange(event) {
         this.setState({titleValue: event.target.value})
+    }
+    handleSpeakerValueChange(event) {
+        this.setState({speakerValue: event.target.value})
     }
     handleScheduleValueChange(newDate) {
         this.setState({scheduleValue: newDate});
@@ -45,6 +63,7 @@ class Body extends Component {
         } = this.props;
         let editSeminar = [];
         let title = this.state.titleValue;
+        let speaker = this.state.speakerValue;
         let schedule = this.state.scheduleValue;
         let location = this.state.locationValue;
 
@@ -54,6 +73,7 @@ class Body extends Component {
         else {
             editSeminar.push({
                 title,
+                speaker,
                 schedule,
                 location
             });
@@ -65,12 +85,15 @@ class Body extends Component {
     render() {
         const {
             handleTitleValueChange,
+            handleSpeakerValueChange,
             handleScheduleValueChange,
             handleLocationValueChange,
             handleEditSeminarSubmit
         } = this;
         const {
             titleValue,
+            speakersData,
+            speakerValue,
             scheduleValue,
             locationValue
         } = this.state;
@@ -99,6 +122,18 @@ class Body extends Component {
                                     value={titleValue}
                                     onChange={handleTitleValueChange}
                                     placeholder=""
+                                />
+                            </div>
+                        </FormGroup>
+                        <FormGroup>
+                            <ControlLabel bsClass="col-md-3 control-label">
+                                Speaker
+                            </ControlLabel>
+                            <div className="col-md-9">
+                                <Select2
+                                    defaultValue={speakerValue}
+                                    data={speakersData}
+                                    onChange={handleSpeakerValueChange}
                                 />
                             </div>
                         </FormGroup>

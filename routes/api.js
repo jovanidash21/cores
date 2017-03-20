@@ -193,15 +193,27 @@ router.patch('/seminar/:seminarID', function(req, res, next) {
         seminarData.forEach(function (seminarData) {
             var seminar = {
                 title: seminarData.title,
+                speaker: seminarData.speaker,
                 location: seminarData.location,
                 schedule: seminarData.schedule
             };
-            seminarsData.findByIdAndUpdate(seminarID, seminar, function(err, results) {
+            seminarsData.findByIdAndUpdate(seminarID, seminar, function(err, seminar) {
                 if(err) {
                     res.end(err);
                 }
                 else {
-                    res.json([results]);
+                    speakersData.findByIdAndUpdate(
+                        seminarData.speaker,
+                        { seminar: seminar._id },
+                        function(err) {
+                            if(err) {
+                                res.end(err);
+                            }
+                            else {
+                                res.end();
+                            }
+                        }
+                    );
                 }
             });
         });
