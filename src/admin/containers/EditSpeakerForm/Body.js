@@ -16,12 +16,17 @@ class Body extends Component {
             speaker,
             seminars
         } = this.props;
+        let seminarsValue = [];
         let seminarsData = [];
 
-        for (var i = 0; i < seminars.length; i++) {
+        for (var i = 0; i < speaker.seminars.length; i++) {
+            seminarsValue.push(speaker.seminars[i]._id);
+        }
+
+        for (var j = 0; j < seminars.length; j++) {
             seminarsData.push({
-                text: seminars[i].title,
-                id: seminars[i]._id
+                text: seminars[j].title,
+                id: seminars[j]._id
             });
         }
 
@@ -31,15 +36,15 @@ class Body extends Component {
             emailValue: speaker.email,
             schoolValue: speaker.school,
             courseValue: speaker.course,
+            seminarsValue: seminarsValue,
             seminarsData: seminarsData,
-            seminarValue: speaker.seminar._id,
         };
         this.handleFirstNameValueChange = this.handleFirstNameValueChange.bind(this);
         this.handleLastNameValueChange = this.handleLastNameValueChange.bind(this);
         this.handleEmailValueChange = this.handleEmailValueChange.bind(this);
         this.handleSchoolValueChange = this.handleSchoolValueChange.bind(this);
         this.handleCourseValueChange = this.handleCourseValueChange.bind(this);
-        this.handleSeminarValueChange = this.handleSeminarValueChange.bind(this);
+        this.handleSeminarsValueChange = this.handleSeminarsValueChange.bind(this);
         this.handleEditSpeakerSubmit = this.handleEditSpeakerSubmit.bind(this);
     }
     handleFirstNameValueChange(event) {
@@ -57,8 +62,15 @@ class Body extends Component {
     handleCourseValueChange(event) {
         this.setState({courseValue: event.target.value})
     }
-    handleSeminarValueChange(event) {
-        this.setState({seminarValue: event.target.value})
+    handleSeminarsValueChange() {
+        let seminars = this.refs.seminars.el.select2('data');
+        let seminarsValue = [];
+
+        for (var i = 0; i < seminars.length; i++) {
+            seminarsValue.push(seminars[i].id);
+        }
+
+        this.setState({seminarsValue: seminarsValue})
     }
     handleEditSpeakerSubmit(event) {
         event.preventDefault();
@@ -75,7 +87,7 @@ class Body extends Component {
         let school = this.state.schoolValue;
         let course = this.state.courseValue;
         let office = this.office.value;
-        let seminar = this.state.seminarValue;
+        let seminars = this.state.seminarsValue;
 
         if (
             (firstName == '' ) ||
@@ -93,7 +105,7 @@ class Body extends Component {
                 school,
                 course,
                 office,
-                seminar
+                seminars
             });
             handleEditSpeakerSubmit(editSpeaker);
             browserHistory.push('/admin/speaker/' + speaker._id);
@@ -107,7 +119,7 @@ class Body extends Component {
             handleEmailValueChange,
             handleSchoolValueChange,
             handleCourseValueChange,
-            handleSeminarValueChange,
+            handleSeminarsValueChange,
             handleEditSpeakerSubmit
         } = this;
         const { speaker } = this.props;
@@ -117,8 +129,8 @@ class Body extends Component {
             emailValue,
             schoolValue,
             courseValue,
-            seminarsData,
-            seminarValue,
+            seminarsValue,
+            seminarsData
         } = this.state;
 
         return(
@@ -284,13 +296,15 @@ class Body extends Component {
                         </FormGroup>
                         <FormGroup>
                             <ControlLabel bsClass="col-md-3 control-label">
-                                Seminar
+                                Seminars
                             </ControlLabel>
                             <div className="col-md-9">
                                 <Select2
-                                    defaultValue={seminarValue}
+                                    multiple
+                                    defaultValue={seminarsValue}
                                     data={seminarsData}
-                                    onChange={handleSeminarValueChange}
+                                    onChange={handleSeminarsValueChange}
+                                    ref="seminars"
                                 />
                             </div>
                         </FormGroup>
