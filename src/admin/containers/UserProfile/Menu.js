@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import { Button } from 'react-bootstrap';
 
 class Menu extends Component {
@@ -17,6 +17,7 @@ class Menu extends Component {
         } = this.props;
 
         handleDeleteUserSubmit(user._id);
+        browserHistory.push('/admin/users');
     }
 
     render() {
