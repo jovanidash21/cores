@@ -87,12 +87,34 @@ router.delete('/user/:userID', function(req, res, next) {
     }
     else {
         var userID = req.params.userID;
-        usersData.findByIdAndRemove(userID, function(err) {
+        usersData.findById(userID, function(err, user){
             if(err) {
                 res.end(err);
             }
             else {
-                res.end();
+                user.seminars.forEach(function (userSeminar) {
+                    seminarsData.findByIdAndUpdate(
+                        userSeminar,
+                        { $pull: { registrants: userID }},
+                        { new: true, upsert: true },
+                        function(err) {
+                            if(err) {
+                                res.end(err);
+                            }
+                            else {
+                                res.end();
+                            }
+                        }
+                    );
+                });
+                user.remove(userID, function(err) {
+                    if(err) {
+                        res.end(err);
+                    }
+                    else {
+                        res.end();
+                    }
+                });
             }
         });
     }
