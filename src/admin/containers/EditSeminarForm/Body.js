@@ -140,7 +140,7 @@ class Body extends Component {
                         </FormGroup>
                         <FormGroup>
                             <ControlLabel bsClass="col-md-3 control-label">
-                                Speaker
+                                Speakers
                             </ControlLabel>
                             <div className="col-md-9">
                                 <Select2

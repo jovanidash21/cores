@@ -282,7 +282,7 @@ class Body extends Component {
                         </FormGroup>
                         <FormGroup>
                             <ControlLabel bsClass="col-md-3 control-label">
-                                Seminar
+                                Seminars
                             </ControlLabel>
                             <div className="col-md-9">
                                 <Select2
