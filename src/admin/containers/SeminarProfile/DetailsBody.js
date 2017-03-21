@@ -21,13 +21,17 @@ class DetailsBody extends Component {
                                             Speaker
                                         </div>
                                         <div className="section-body">
-                                            <p>
-                                                <Link to={'/admin/speaker/' + seminar.speaker._id}>
-                                                    {seminar.speaker.firstName}
-                                                    &nbsp;
-                                                    {seminar.speaker.lastName}
-                                                </Link>
-                                            </p>
+                                            {
+                                                seminar.speakers.map(seminarSpeaker =>
+                                                    <p>
+                                                        <Link to={'/admin/speaker/' + seminarSpeaker._id}>
+                                                            {seminarSpeaker.firstName}
+                                                            &nbsp;
+                                                            {seminarSpeaker.lastName}
+                                                        </Link>
+                                                    </p>
+                                                )
+                                            }
                                         </div>
                                     </div>
                                 </div>
