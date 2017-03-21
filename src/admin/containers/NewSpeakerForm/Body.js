@@ -28,15 +28,15 @@ class Body extends Component {
             emailValue: '',
             schoolValue: 'pup-manila',
             courseValue: 'bscpe',
-            seminarsData: seminarsData,
-            seminarValue: '',
+            seminarsValue: [],
+            seminarsData: seminarsData
         };
         this.handleFirstNameValueChange = this.handleFirstNameValueChange.bind(this);
         this.handleLastNameValueChange = this.handleLastNameValueChange.bind(this);
         this.handleEmailValueChange = this.handleEmailValueChange.bind(this);
         this.handleSchoolValueChange = this.handleSchoolValueChange.bind(this);
         this.handleCourseValueChange = this.handleCourseValueChange.bind(this);
-        this.handleSeminarValueChange = this.handleSeminarValueChange.bind(this);
+        this.handleSeminarsValueChange = this.handleSeminarsValueChange.bind(this);
         this.handleAddNewSpeakerSubmit = this.handleAddNewSpeakerSubmit.bind(this);
     }
     handleFirstNameValueChange(event) {
@@ -54,8 +54,15 @@ class Body extends Component {
     handleCourseValueChange(event) {
         this.setState({courseValue: event.target.value})
     }
-    handleSeminarValueChange(event) {
-        this.setState({seminarValue: event.target.value})
+    handleSeminarsValueChange() {
+        let seminars = this.refs.seminars.el.select2('data');
+        let seminarsValue = [];
+
+        for (var i = 0; i < seminars.length; i++) {
+            seminarsValue.push(seminars[i].id);
+        }
+
+        this.setState({seminarsValue: seminarsValue})
     }
     handleAddNewSpeakerSubmit(event) {
         event.preventDefault();
@@ -69,7 +76,7 @@ class Body extends Component {
         let school = this.state.schoolValue;
         let course = this.state.courseValue;
         let office = this.office.value;
-        let seminar = this.state.seminarValue;
+        let seminars = this.state.seminarsValue;
 
         if (
             (firstName == '' ) ||
@@ -87,7 +94,7 @@ class Body extends Component {
                 school,
                 course,
                 office,
-                seminar
+                seminars
             });
             handleAddNewSpeakerSubmit(newSpeaker);
             browserHistory.push('/admin/speakers');
@@ -101,7 +108,7 @@ class Body extends Component {
             handleEmailValueChange,
             handleSchoolValueChange,
             handleCourseValueChange,
-            handleSeminarValueChange,
+            handleSeminarsValueChange,
             handleAddNewSpeakerSubmit
         } = this;
         const {
@@ -110,8 +117,8 @@ class Body extends Component {
             emailValue,
             schoolValue,
             courseValue,
-            seminarsData,
-            seminarValue,
+            seminarsValue,
+            seminarsData
         } = this.state;
 
         return(
@@ -279,9 +286,11 @@ class Body extends Component {
                             </ControlLabel>
                             <div className="col-md-9">
                                 <Select2
-                                    defaultValue={seminarValue}
+                                    multiple
+                                    defaultValue={seminarsValue}
                                     data={seminarsData}
-                                    onChange={handleSeminarValueChange}
+                                    onChange={handleSeminarsValueChange}
+                                    ref="seminars"
                                 />
                             </div>
                         </FormGroup>
