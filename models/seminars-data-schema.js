@@ -11,10 +11,10 @@ var seminarsDataSchema = new Schema
 (
     {
         title: {type:String, default: ''},
-        speaker: {
+        speakers: [{
             type: Schema.Types.ObjectId,
             ref: 'speakersData'
-        },
+        }],
         schedule: {type:Date, default: Date.now},
         location: {
             type:String,

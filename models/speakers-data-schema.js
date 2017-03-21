@@ -64,10 +64,10 @@ var speakersDataSchema = new Schema
             default: 'bscpe'
         },
         office: {type:String, default: ''},
-        seminar: {
+        seminars: [{
             type: Schema.Types.ObjectId,
             ref: 'seminarsData'
-        },
+        }],
         socialLinks: [{
             website: {type: String, default: ''},
             facebook: {type: String, default: ''},
