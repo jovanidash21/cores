@@ -26,13 +26,13 @@ class Body extends Component {
 
         this.state = {
             titleValue: '',
+            speakersValue: [],
             speakersData: speakersData,
-            speakerValue: '',
             scheduleValue: '',
             locationValue: 'none'
         };
         this.handleTitleValueChange = this.handleTitleValueChange.bind(this);
-        this.handleSpeakerValueChange = this.handleSpeakerValueChange.bind(this);
+        this.handleSpeakersValueChange = this.handleSpeakersValueChange.bind(this);
         this.handleScheduleValueChange = this.handleScheduleValueChange.bind(this);
         this.handleLocationValueChange = this.handleLocationValueChange.bind(this);
         this.handleAddNewSeminarSubmit = this.handleAddNewSeminarSubmit.bind(this);
@@ -40,8 +40,15 @@ class Body extends Component {
     handleTitleValueChange(event) {
         this.setState({titleValue: event.target.value})
     }
-    handleSpeakerValueChange(event) {
-        this.setState({speakerValue: event.target.value})
+    handleSpeakersValueChange() {
+        let speakers = this.refs.speakers.el.select2('data');
+        let speakersValue = [];
+
+        for (var i = 0; i < speakers.length; i++) {
+            speakersValue.push(speakers[i].id);
+        }
+
+        this.setState({speakersValue: speakersValue})
     }
     handleScheduleValueChange(newDate) {
         this.setState({scheduleValue: newDate});
@@ -55,18 +62,17 @@ class Body extends Component {
         const { handleAddNewSeminarSubmit } = this.props;
         let newSeminar = [];
         let title = this.state.titleValue;
-        let speaker = this.state.speakerValue;
+        let speakers = this.state.speakersValue;
         let schedule = this.state.scheduleValue;
         let location = this.state.locationValue;
 
-        console.log(speaker);
         if (title == '') {
             alert("Please fill out all the required fields");
         }
         else {
             newSeminar.push({
                 title,
-                speaker,
+                speakers,
                 schedule,
                 location
             });
@@ -78,15 +84,15 @@ class Body extends Component {
     render() {
         const {
             handleTitleValueChange,
-            handleSpeakerValueChange,
+            handleSpeakersValueChange,
             handleScheduleValueChange,
             handleLocationValueChange,
             handleAddNewSeminarSubmit
         } = this;
         const {
             titleValue,
+            speakersValue,
             speakersData,
-            speakerValue,
             scheduleValue,
             locationValue
         } = this.state;
@@ -120,13 +126,15 @@ class Body extends Component {
                         </FormGroup>
                         <FormGroup>
                             <ControlLabel bsClass="col-md-3 control-label">
-                                Speaker
+                                Speakers
                             </ControlLabel>
                             <div className="col-md-9">
                                 <Select2
-                                    defaultValue={speakerValue}
+                                    multiple
+                                    defaultValue={speakersValue}
                                     data={speakersData}
-                                    onChange={handleSpeakerValueChange}
+                                    onChange={handleSpeakersValueChange}
+                                    ref="speakers"
                                 />
                             </div>
                         </FormGroup>
