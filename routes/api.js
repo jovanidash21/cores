@@ -76,7 +76,7 @@ router.patch('/user/:userID', function(req, res, next) {
                             }
                         );
                     });
-                    user.seminars.forEach(function (seminarID){
+                    userData.seminars.forEach(function (seminarID){
                         seminarsData.findByIdAndUpdate(
                             seminarID,
                             { $push: { registrants: user._id }},
