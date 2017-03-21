@@ -229,10 +229,11 @@ router.patch('/seminar/:seminarID', function(req, res, next) {
     else {
         var seminarID = req.params.seminarID;
         var seminarData = req.body;
+
         seminarData.forEach(function (seminarData) {
             var seminar = {
                 title: seminarData.title,
-                speaker: seminarData.speaker,
+                speakers: seminarData.speakers,
                 location: seminarData.location,
                 schedule: seminarData.schedule
             };
@@ -241,15 +242,33 @@ router.patch('/seminar/:seminarID', function(req, res, next) {
                     res.end(err);
                 }
                 else {
-                    speakersData.findByIdAndUpdate(
-                        seminarData.speaker,
-                        { seminar: seminar._id },
-                        function(err) {
-                            if(err) {
-                                res.end(err);
+                    seminar.speakers.forEach(function (speakerID){
+                        speakersData.findByIdAndUpdate(
+                            speakerID,
+                            { $pull: { seminars: seminar._id }},
+                            { new: true, upsert: true },
+                            function(err) {
+                                if(err) {
+                                    res.end(err);
+                                }
+                                else {
+                                    res.end();
+                                }
                             }
-                            else {
-                                res.end();
+                        );
+                    });
+                    seminarData.speakers.forEach(function (speakerID){
+                        speakersData.findByIdAndUpdate(
+                            speakerID,
+                            { $push: { seminars: seminar._id }},
+                            { new: true, safe: true, upsert: true },
+                            function(err) {
+                                if(err) {
+                                    res.end(err);
+                                }
+                                else {
+                                    res.end();
+                                }
                             }
                         }
                     );
