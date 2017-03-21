@@ -60,11 +60,26 @@ router.patch('/user/:userID', function(req, res, next) {
                     res.end(err);
                 }
                 else {
+                    user.seminars.forEach(function (seminarID){
+                        seminarsData.findByIdAndUpdate(
+                            seminarID,
+                            { $pull: { registrants: user._id }},
+                            { new: true, upsert: true },
+                            function(err) {
+                                if(err) {
+                                    res.end(err);
+                                }
+                                else {
+                                    res.end();
+                                }
+                            }
+                        );
+                    });
                     userData.seminars.forEach(function (seminarID){
                         seminarsData.findByIdAndUpdate(
                             seminarID,
                             { $push: { registrants: user._id }},
-                            { safe: true, upsert: true, new: true },
+                            { new: true, safe: true, upsert: true },
                             function(err) {
                                 if(err) {
                                     res.end(err);
