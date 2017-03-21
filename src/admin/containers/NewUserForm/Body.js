@@ -31,6 +31,7 @@ class Body extends Component {
             genderValue: 'male',
             schoolValue: 'pup-manila',
             courseValue: 'bscpe',
+            seminarsValue: [],
             seminarsData: seminarsData,
             passwordValue: '',
             roleValue: 'registrant'
@@ -41,6 +42,7 @@ class Body extends Component {
         this.handleGenderValueChange = this.handleGenderValueChange.bind(this);
         this.handleSchoolValueChange = this.handleSchoolValueChange.bind(this);
         this.handleCourseValueChange = this.handleCourseValueChange.bind(this);
+        this.handleSeminarsValueChange = this.handleSeminarsValueChange.bind(this);
         this.handlePasswordValueChange = this.handlePasswordValueChange.bind(this);
         this.handleRoleValueChange = this.handleRoleValueChange.bind(this);
         this.handleAddNewUserSubmit = this.handleAddNewUserSubmit.bind(this);
@@ -63,6 +65,16 @@ class Body extends Component {
     handleCourseValueChange(event) {
         this.setState({courseValue: event.target.value})
     }
+    handleSeminarsValueChange() {
+        let seminars = this.refs.seminars.el.select2('data');
+        let seminarsValue = [];
+
+        for (var i = 0; i < seminars.length; i++) {
+            seminarsValue.push(seminars[i].id);
+        }
+
+        this.setState({seminarsValue: seminarsValue})
+    }
     handlePasswordValueChange(event) {
         this.setState({passwordValue: event.target.value})
     }
@@ -83,14 +95,11 @@ class Body extends Component {
         let school = this.state.schoolValue;
         let studentNumber = this.studentNumber.value;
         let course = this.state.courseValue;
-        let seminarsValue = this.refs.seminarsValue.el.select2('data');
-        let seminars = [];
+        let seminars = this.state.seminarsValue;
+
+
         let password = this.state.passwordValue;
         let role = this.state.roleValue;
-
-        for (var i = 0; i < seminarsValue.length; i++) {
-            seminars.push(seminarsValue[i].id);
-        }
 
         if (
             (username == '' ) ||
@@ -127,6 +136,7 @@ class Body extends Component {
             handleGenderValueChange,
             handleSchoolValueChange,
             handleCourseValueChange,
+            handleSeminarsValueChange,
             handlePasswordValueChange,
             handleRoleValueChange,
             handleAddNewUserSubmit
@@ -138,6 +148,7 @@ class Body extends Component {
             genderValue,
             schoolValue,
             courseValue,
+            seminarsValue,
             seminarsData,
             passwordValue,
             roleValue
@@ -329,8 +340,10 @@ class Body extends Component {
                             <div className="col-md-9">
                                 <Select2
                                     multiple
+                                    defaultValue={seminarsValue}
                                     data={seminarsData}
-                                    ref="seminarsValue"
+                                    onChange={handleSeminarsValueChange}
+                                    ref="seminars"
                                 />
                             </div>
                         </FormGroup>
