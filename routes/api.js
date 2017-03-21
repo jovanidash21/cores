@@ -181,7 +181,7 @@ router.post('/users', function(req, res, next) {
                     res.end(err);
                 }
                 else {
-                    user.seminars.forEach(function (seminarID){
+                    userData.seminars.forEach(function (seminarID){
                         seminarsData.findByIdAndUpdate(
                             seminarID,
                             { $push: { registrants: user._id }},
