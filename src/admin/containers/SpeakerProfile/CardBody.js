@@ -62,11 +62,15 @@ class CardBody extends Component {
                                 Seminar
                             </div>
                             <div className="section-body">
-                                <p>
-                                    <Link to={'/admin/seminar/' + speaker.seminar._id}>
-                                        {speaker.seminar.title}
-                                    </Link>
-                                </p>
+                                {
+                                    speaker.seminars.map(speakerSeminar =>
+                                        <p>
+                                            <Link to={'/admin/seminar/' + speakerSeminar._id}>
+                                                {speakerSeminar.title}
+                                            </Link>
+                                        </p>
+                                    )
+                                }
                             </div>
                         </div>
                     </div>
