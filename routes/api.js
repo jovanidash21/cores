@@ -102,6 +102,7 @@ router.delete('/user/:userID', function(req, res, next) {
     }
     else {
         var userID = req.params.userID;
+
         usersData.findById(userID, function(err, user){
             if(err) {
                 res.end(err);
@@ -208,7 +209,7 @@ router.get('/seminar/:seminarID', function(req, res, next) {
         var seminarID = req.params.seminarID;
 
         seminarsData.findById(seminarID)
-            .populate(['speaker', 'registrants'])
+            .populate(['speakers', 'registrants'])
             .exec(function(err, results) {
                 if(err) {
                     res.end(err);
