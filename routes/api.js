@@ -336,7 +336,7 @@ router.get('/speaker/:speakerID', function(req, res, next) {
         var speakerID = req.params.speakerID;
 
         speakersData.findById(speakerID)
-            .populate('seminar')
+            .populate('seminars')
             .exec(function(err, results) {
                 if(err) {
                     res.end(err);
