@@ -20,24 +20,29 @@ class Body extends Component {
             speakers
         } = this.props;
         let schedule = moment(seminar.schedule).tz("Asia/Manila").format("MM/DD/YYYY hh:mm A");
+        let speakersValue = [];
         let speakersData = [];
 
-        for (var i = 0; i < speakers.length; i++) {
+        for (var i = 0; i < seminar.speakers.length; i++) {
+            speakersValue.push(seminar.speakers[i]._id);
+        }
+
+        for (var j = 0; j < speakers.length; j++) {
             speakersData.push({
-                text: speakers[i].firstName + " " + speakers[i].lastName,
-                id: speakers[i]._id
+                text: speakers[j].firstName + " " + speakers[j].lastName,
+                id: speakers[j]._id
             });
         }
 
         this.state = {
             titleValue: seminar.title,
+            speakersValue : speakersValue,
             speakersData: speakersData,
-            speakerValue: seminar.speaker._id,
             scheduleValue: schedule,
             locationValue: seminar.location
         };
         this.handleTitleValueChange = this.handleTitleValueChange.bind(this);
-        this.handleSpeakerValueChange = this.handleSpeakerValueChange.bind(this);
+        this.handleSpeakersValueChange = this.handleSpeakersValueChange.bind(this);
         this.handleScheduleValueChange = this.handleScheduleValueChange.bind(this);
         this.handleLocationValueChange = this.handleLocationValueChange.bind(this);
         this.handleEditSeminarSubmit = this.handleEditSeminarSubmit.bind(this);
@@ -45,8 +50,15 @@ class Body extends Component {
     handleTitleValueChange(event) {
         this.setState({titleValue: event.target.value})
     }
-    handleSpeakerValueChange(event) {
-        this.setState({speakerValue: event.target.value})
+    handleSpeakersValueChange() {
+        let speakers = this.refs.speakers.el.select2('data');
+        let speakersValue = [];
+
+        for (var i = 0; i < speakers.length; i++) {
+            speakersValue.push(speakers[i].id);
+        }
+
+        this.setState({speakersValue: speakersValue})
     }
     handleScheduleValueChange(newDate) {
         this.setState({scheduleValue: newDate});
@@ -63,7 +75,8 @@ class Body extends Component {
         } = this.props;
         let editSeminar = [];
         let title = this.state.titleValue;
-        let speaker = this.state.speakerValue;
+        let speakers = this.state.speakersValue;
+        let speaker = [];
         let schedule = this.state.scheduleValue;
         let location = this.state.locationValue;
 
@@ -73,7 +86,7 @@ class Body extends Component {
         else {
             editSeminar.push({
                 title,
-                speaker,
+                speakers,
                 schedule,
                 location
             });
@@ -85,15 +98,15 @@ class Body extends Component {
     render() {
         const {
             handleTitleValueChange,
-            handleSpeakerValueChange,
+            handleSpeakersValueChange,
             handleScheduleValueChange,
             handleLocationValueChange,
             handleEditSeminarSubmit
         } = this;
         const {
             titleValue,
+            speakersValue,
             speakersData,
-            speakerValue,
             scheduleValue,
             locationValue
         } = this.state;
@@ -131,9 +144,11 @@ class Body extends Component {
                             </ControlLabel>
                             <div className="col-md-9">
                                 <Select2
-                                    defaultValue={speakerValue}
+                                    multiple
+                                    defaultValue={speakersValue}
                                     data={speakersData}
-                                    onChange={handleSpeakerValueChange}
+                                    onChange={handleSpeakersValueChange}
+                                    ref="speakers"
                                 />
                             </div>
                         </FormGroup>
