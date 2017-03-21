@@ -40,6 +40,7 @@ router.patch('/user/:userID', function(req, res, next) {
     else {
         var userID = req.params.userID;
         var userData = req.body;
+
         userData.forEach(function (userData) {
             var user = {
                 username: userData.username,
@@ -75,7 +76,7 @@ router.patch('/user/:userID', function(req, res, next) {
                             }
                         );
                     });
-                    userData.seminars.forEach(function (seminarID){
+                    user.seminars.forEach(function (seminarID){
                         seminarsData.findByIdAndUpdate(
                             seminarID,
                             { $push: { registrants: user._id }},
