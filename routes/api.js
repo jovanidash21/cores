@@ -460,7 +460,7 @@ router.post('/speakers', function(req, res, next) {
                 school: speakerData.school,
                 course: speakerData.course,
                 office: speakerData.role,
-                seminar: speakerData.seminar
+                seminars: speakerData.seminars
             };
             var newSpeaker = new speakersData(speaker);
             newSpeaker.save(function(err, speaker) {
@@ -468,18 +468,21 @@ router.post('/speakers', function(req, res, next) {
                     res.end(err);
                 }
                 else {
-                    seminarsData.findByIdAndUpdate(
-                        speakerData.seminar,
-                        { speaker: speaker._id },
-                        function(err) {
-                            if(err) {
-                                res.end(err);
+                    speakerData.seminars.forEach(function (seminarID){
+                        seminarsData.findByIdAndUpdate(
+                            seminarID,
+                            { $push: { speakers: speaker._id }},
+                            { new: true, safe: true, upsert: true },
+                            function(err) {
+                                if(err) {
+                                    res.end(err);
+                                }
+                                else {
+                                    res.end();
+                                }
                             }
-                            else {
-                                res.end();
-                            }
-                        }
-                    );
+                        );
+                    });
                 }
             });
         });
