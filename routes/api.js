@@ -245,13 +245,14 @@ router.patch('/seminar/:seminarID', function(req, res, next) {
         var seminarData = req.body;
 
         seminarData.forEach(function (seminarData) {
-            var seminar = {
+            var editSeminar = {
                 title: seminarData.title,
                 speakers: seminarData.speakers,
                 location: seminarData.location,
                 schedule: seminarData.schedule
             };
-            seminarsData.findByIdAndUpdate(seminarID, seminar, function(err, seminar) {
+
+            seminarsData.findById(seminarID, function(err, seminar) {
                 if(err) {
                     res.end(err);
                 }
@@ -271,21 +272,35 @@ router.patch('/seminar/:seminarID', function(req, res, next) {
                             }
                         );
                     });
-                    seminarData.speakers.forEach(function (speakerID){
-                        speakersData.findByIdAndUpdate(
-                            speakerID,
-                            { $push: { seminars: seminar._id }},
-                            { new: true, safe: true, upsert: true },
-                            function(err) {
-                                if(err) {
+                    seminar.update({ $set: editSeminar}, function(err) {
+                        if (err) {
+                            res.end(err);
+                        }
+                        else {
+                            seminarsData.findById(seminarID, function(err, updateSeminar) {
+                                if (err) {
                                     res.end(err);
                                 }
                                 else {
-                                    res.end();
+                                    updateSeminar.speakers.forEach(function (speakerID){
+                                        speakersData.findByIdAndUpdate(
+                                            speakerID,
+                                            { $push: { seminars: seminar._id }},
+                                            { new: true, safe: true, upsert: true },
+                                            function(err) {
+                                                if(err) {
+                                                    res.end(err);
+                                                }
+                                                else {
+                                                    res.end();
+                                                }
+                                            }
+                                        );
+                                    });
                                 }
-                            }
+                            });
                         }
-                    );
+                    });
                 }
             });
         });
