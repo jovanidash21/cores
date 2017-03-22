@@ -313,119 +313,17 @@ router.delete('/seminar/:seminarID', function(req, res, next) {
     }
     else {
         var seminarID = req.params.seminarID;
-        seminarsData.findByIdAndRemove(seminarID, function(err) {
+
+        seminarsData.findById(seminarID, function(err, seminar){
             if(err) {
                 res.end(err);
             }
             else {
-                res.end();
-            }
-        });
-    }
-});
-
-router.get('/seminars', function(req, res, next) {
-    if (req.user === undefined) {
-        res.json({});
-    }
-    else {
-        seminarsData.find({}, function(err, results) {
-            if(err) {
-                res.end(err);
-            }
-            else {
-                res.json(results);
-            }
-        });
-    }
-});
-
-router.post('/seminars', function(req, res, next) {
-    if (req.user === undefined) {
-        res.redirect('/');
-    }
-    else {
-        var seminarData = req.body;
-        seminarData.forEach(function (seminarData) {
-            var seminar = {
-                title: seminarData.title,
-                speakers: seminarData.speakers,
-                schedule: seminarData.schedule,
-                location: seminarData.location,
-            };
-            var newSeminar = new seminarsData(seminar);
-            newSeminar.save(function(err, seminar) {
-                if(err) {
-                    res.end(err);
-                }
-                else {
-                    seminarData.speakers.forEach(function (speakerID){
-                        speakersData.findByIdAndUpdate(
-                            speakerID,
-                            { $push: { seminars: seminar._id }},
-                            { new: true, safe: true, upsert: true },
-                            function(err) {
-                                if(err) {
-                                    res.end(err);
-                                }
-                                else {
-                                    res.end();
-                                }
-                            }
-                        );
-                    });
-                }
-            });
-        });
-    }
-});
-
-router.get('/speaker/:speakerID', function(req, res, next) {
-    if (req.user === undefined) {
-        res.json({});
-    }
-    else {
-        var speakerID = req.params.speakerID;
-
-        speakersData.findById(speakerID)
-            .populate('seminars')
-            .exec(function(err, results) {
-                if(err) {
-                    res.end(err);
-                }
-                else {
-                    res.json([results]);
-                }
-            });
-    }
-});
-
-router.patch('/speaker/:speakerID', function(req, res, next) {
-    if (req.user === undefined) {
-        res.json({});
-    }
-    else {
-        var speakerID = req.params.speakerID;
-        var speakerData = req.body;
-        speakerData.forEach(function (speakerData) {
-            var speaker = {
-                firstName: speakerData.firstName,
-                lastName: speakerData.lastName,
-                email: speakerData.email,
-                school: speakerData.school,
-                course: speakerData.course,
-                office: speakerData.office,
-                seminar: speakerData.seminar
-            };
-
-            speakersData.findByIdAndUpdate(speakerID, speaker, function(err, speaker) {
-                if(err) {
-                    res.end(err);
-                }
-                else {
-                    seminarsData.findByIdAndUpdate(
-                        speakerData.seminar,
-                        { speaker: speaker._id },
+                seminar.registrants.forEach(function (seminarRegistrant){
+                    usersData.findByIdAndUpdate(
+                        seminarRegistrant,
+                        { $pull: { seminars: seminar._id }},
+                        { new: true, upsert: true },
                         function(err) {
                             if(err) {
                                 res.end(err);
@@ -435,8 +333,31 @@ router.patch('/speaker/:speakerID', function(req, res, next) {
                             }
                         }
                     );
-                }
-            });
+                });
+                seminar.speakers.forEach(function (seminarSpeaker){
+                    speakersData.findByIdAndUpdate(
+                        seminarSpeaker,
+                        { $pull: { seminars: seminar._id }},
+                        { new: true, upsert: true },
+                        function(err) {
+                            if(err) {
+                                res.end(err);
+                            }
+                            else {
+                                res.end();
+                            }
+                        }
+                    );
+                });
+                seminar.remove(function(err) {
+                    if(err) {
+                        res.end(err);
+                    }
+                    else {
+                        res.end();
+                    }
+                });
+            }
         });
     }
 });
