@@ -138,7 +138,7 @@ router.delete('/user/:userID', function(req, res, next) {
                         }
                     );
                 });
-                user.remove(userID, function(err) {
+                user.remove(function(err) {
                     if(err) {
                         res.end(err);
                     }
