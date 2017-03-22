@@ -520,12 +520,28 @@ router.delete('/speaker/:speakerID', function(req, res, next) {
     }
     else {
         var speakerID = req.params.speakerID;
+
         speakersData.findById(speakerID, function(err, speaker){
             if(err) {
                 res.end(err);
             }
             else {
-                seminarsData.findByIdAndRemove(seminarID, function(err) {
+                speaker.seminars.forEach(function (speakerSeminar){
+                    seminarsData.findByIdAndUpdate(
+                        speakerSeminar,
+                        { $pull: { speakers: speaker._id }},
+                        { new: true, upsert: true },
+                        function(err) {
+                            if(err) {
+                                res.end(err);
+                            }
+                            else {
+                                res.end();
+                            }
+                        }
+                    );
+                });
+                speaker.remove(function(err) {
                     if(err) {
                         res.end(err);
                     }
