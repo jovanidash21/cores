@@ -362,29 +362,12 @@ router.delete('/seminar/:seminarID', function(req, res, next) {
     }
 });
 
-router.delete('/speaker/:speakerID', function(req, res, next) {
+router.get('/seminars', function(req, res, next) {
     if (req.user === undefined) {
         res.json({});
     }
     else {
-        var speakerID = req.params.speakerID;
-        speakersData.findByIdAndRemove(speakerID, function(err) {
-            if(err) {
-                res.end(err);
-            }
-            else {
-                res.end();
-            }
-        });
-    }
-});
-
-router.get('/speakers', function(req, res, next) {
-    if (req.user === undefined) {
-        res.json({});
-    }
-    else {
-        speakersData.find({}, function(err, results) {
+        seminarsData.find({}, function(err, results) {
             if(err) {
                 res.end(err);
             }
@@ -400,28 +383,26 @@ router.post('/speakers', function(req, res, next) {
         res.redirect('/');
     }
     else {
-        var speakerData = req.body;
-        speakerData.forEach(function (speakerData) {
-            var speaker = {
-                firstName: speakerData.firstName,
-                lastName: speakerData.lastName,
-                email: speakerData.email,
-                position: speakerData.position,
-                school: speakerData.school,
-                course: speakerData.course,
-                office: speakerData.role,
-                seminars: speakerData.seminars
+        var seminarData = req.body;
+
+        seminarData.forEach(function (seminarData) {
+            var seminar = {
+                title: seminarData.title,
+                speakers: seminarData.speakers,
+                schedule: seminarData.schedule,
+                location: seminarData.location,
             };
-            var newSpeaker = new speakersData(speaker);
-            newSpeaker.save(function(err, speaker) {
+            var newSeminar = new seminarsData(seminar);
+
+            newSeminar.save(function(err, seminar) {
                 if(err) {
                     res.end(err);
                 }
                 else {
-                    speakerData.seminars.forEach(function (seminarID){
-                        seminarsData.findByIdAndUpdate(
-                            seminarID,
-                            { $push: { speakers: speaker._id }},
+                    seminar.speakers.forEach(function (speakerID){
+                        speakersData.findByIdAndUpdate(
+                            speakerID,
+                            { $push: { seminars: seminar._id }},
                             { new: true, safe: true, upsert: true },
                             function(err) {
                                 if(err) {
