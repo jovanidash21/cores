@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-refetch';
+import { browserHistory } from 'react-router';
 import LoadingAnimation from '../LoadingAnimation/Index';
 import Error from '../Error/Index';
 import Menu from './Menu';
@@ -16,6 +17,7 @@ class UserProfile extends Component {
         const { deleteUser } = this.props;
 
         deleteUser(userID);
+        browserHistory.push('/admin/users');
     }
 
     render() {

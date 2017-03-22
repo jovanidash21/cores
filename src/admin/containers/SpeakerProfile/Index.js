@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-refetch';
+import { browserHistory } from 'react-router';
 import LoadingAnimation from '../LoadingAnimation/Index';
 import Error from '../Error/Index';
 import Menu from './Menu';
@@ -16,6 +17,7 @@ class SpeakerProfile extends Component {
         const { deleteSpeaker } = this.props;
 
         deleteSpeaker(speakerID);
+        browserHistory.push('/admin/speakers');
     }
 
     render() {

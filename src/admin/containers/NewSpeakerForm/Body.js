@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { browserHistory } from 'react-router';
 import {
     FormGroup,
     ControlLabel,
@@ -97,7 +96,6 @@ class Body extends Component {
                 seminars
             });
             handleAddNewSpeakerSubmit(newSpeaker);
-            browserHistory.push('/admin/speakers');
         }
     }
 

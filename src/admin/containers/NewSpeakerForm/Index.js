@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect, PromiseState } from 'react-refetch';
+import { browserHistory } from 'react-router';
 import LoadingAnimation from '../LoadingAnimation/Index';
 import Error from '../Error/Index';
 import CardHeader from './CardHeader';
@@ -15,6 +16,7 @@ class NewSpeakerForm extends Component {
         const { addNewSpeaker } = this.props;
 
         addNewSpeaker(newSpeaker);
+        browserHistory.push('/admin/speakers');
     }
 
     render() {

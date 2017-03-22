@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect, PromiseState } from 'react-refetch';
+import { browserHistory } from 'react-router';
 import LoadingAnimation from '../LoadingAnimation/Index';
 import Error from '../Error/Index';
 import CardHeader from './CardHeader';
@@ -15,6 +16,7 @@ class NewSeminarForm extends React.Component {
         const { addNewSeminar } = this.props;
 
         addNewSeminar(newSeminar);
+        browserHistory.push('/admin/seminars');
     }
 
     render() {
