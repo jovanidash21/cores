@@ -447,34 +447,67 @@ router.patch('/speaker/:speakerID', function(req, res, next) {
     else {
         var speakerID = req.params.speakerID;
         var speakerData = req.body;
+
         speakerData.forEach(function (speakerData) {
-            var speaker = {
+            var editSpeaker = {
                 firstName: speakerData.firstName,
                 lastName: speakerData.lastName,
                 email: speakerData.email,
                 school: speakerData.school,
                 course: speakerData.course,
                 office: speakerData.office,
-                seminar: speakerData.seminar
+                seminars: speakerData.seminars
             };
 
-            speakersData.findByIdAndUpdate(speakerID, speaker, function(err, speaker) {
+            speakersData.findById(speakerID, function(err, speaker) {
                 if(err) {
                     res.end(err);
                 }
                 else {
-                    seminarsData.findByIdAndUpdate(
-                        speakerData.seminar,
-                        { speaker: speaker._id },
-                        function(err) {
-                            if(err) {
-                                res.end(err);
+                    speaker.seminars.forEach(function (seminarID){
+                        seminarsData.findByIdAndUpdate(
+                            seminarID,
+                            { $pull: { speakers: speaker._id }},
+                            { new: true, upsert: true },
+                            function(err) {
+                                if(err) {
+                                    res.end(err);
+                                }
+                                else {
+                                    res.end();
+                                }
                             }
-                            else {
-                                res.end();
-                            }
+                        );
+                    });
+                    speaker.update({ $set: editSpeaker}, function(err){
+                        if(err) {
+                            res.end(err);
                         }
-                    );
+                        else {
+                            speakersData.findById(speakerID, function(err, updateSpeaker) {
+                                if(err) {
+                                    res.end(err);
+                                }
+                                else {
+                                    updateSpeaker.seminars.forEach(function (seminarID){
+                                        seminarsData.findByIdAndUpdate(
+                                            seminarID,
+                                            { $push: { speakers: speaker._id }},
+                                            { new: true, safe: true, upsert: true },
+                                            function(err) {
+                                                if(err) {
+                                                    res.end(err);
+                                                }
+                                                else {
+                                                    res.end();
+                                                }
+                                            }
+                                        );
+                                    });
+                                }
+                            });
+                        }
+                    });
                 }
             });
         });
