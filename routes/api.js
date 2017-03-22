@@ -378,7 +378,7 @@ router.get('/seminars', function(req, res, next) {
     }
 });
 
-router.post('/speakers', function(req, res, next) {
+router.post('/seminars', function(req, res, next) {
     if (req.user === undefined) {
         res.redirect('/');
     }
@@ -403,6 +403,151 @@ router.post('/speakers', function(req, res, next) {
                         speakersData.findByIdAndUpdate(
                             speakerID,
                             { $push: { seminars: seminar._id }},
+                            { new: true, safe: true, upsert: true },
+                            function(err) {
+                                if(err) {
+                                    res.end(err);
+                                }
+                                else {
+                                    res.end();
+                                }
+                            }
+                        );
+                    });
+                }
+            });
+        });
+    }
+});
+
+router.get('/speaker/:speakerID', function(req, res, next) {
+    if (req.user === undefined) {
+        res.json({});
+    }
+    else {
+        var speakerID = req.params.speakerID;
+
+        speakersData.findById(speakerID)
+            .populate('seminars')
+            .exec(function(err, results) {
+                if(err) {
+                    res.end(err);
+                }
+                else {
+                    res.json([results]);
+                }
+            });
+    }
+});
+
+router.patch('/speaker/:speakerID', function(req, res, next) {
+    if (req.user === undefined) {
+        res.json({});
+    }
+    else {
+        var speakerID = req.params.speakerID;
+        var speakerData = req.body;
+        speakerData.forEach(function (speakerData) {
+            var speaker = {
+                firstName: speakerData.firstName,
+                lastName: speakerData.lastName,
+                email: speakerData.email,
+                school: speakerData.school,
+                course: speakerData.course,
+                office: speakerData.office,
+                seminar: speakerData.seminar
+            };
+
+            speakersData.findByIdAndUpdate(speakerID, speaker, function(err, speaker) {
+                if(err) {
+                    res.end(err);
+                }
+                else {
+                    seminarsData.findByIdAndUpdate(
+                        speakerData.seminar,
+                        { speaker: speaker._id },
+                        function(err) {
+                            if(err) {
+                                res.end(err);
+                            }
+                            else {
+                                res.end();
+                            }
+                        }
+                    );
+                }
+            });
+        });
+    }
+});
+
+router.delete('/speaker/:speakerID', function(req, res, next) {
+    if (req.user === undefined) {
+        res.json({});
+    }
+    else {
+        var speakerID = req.params.speakerID;
+        speakersData.findById(speakerID, function(err, speaker){
+            if(err) {
+                res.end(err);
+            }
+            else {
+                seminarsData.findByIdAndRemove(seminarID, function(err) {
+                    if(err) {
+                        res.end(err);
+                    }
+                    else {
+                        res.end();
+                    }
+                });
+            }
+        });
+    }
+});
+
+router.get('/speakers', function(req, res, next) {
+    if (req.user === undefined) {
+        res.json({});
+    }
+    else {
+        speakersData.find({}, function(err, results) {
+            if(err) {
+                res.end(err);
+            }
+            else {
+                res.json(results);
+            }
+        });
+    }
+});
+
+router.post('/speakers', function(req, res, next) {
+    if (req.user === undefined) {
+        res.redirect('/');
+    }
+    else {
+        var speakerData = req.body;
+        speakerData.forEach(function (speakerData) {
+            var speaker = {
+                firstName: speakerData.firstName,
+                lastName: speakerData.lastName,
+                email: speakerData.email,
+                position: speakerData.position,
+                school: speakerData.school,
+                course: speakerData.course,
+                office: speakerData.role,
+                seminars: speakerData.seminars
+            };
+            var newSpeaker = new speakersData(speaker);
+            newSpeaker.save(function(err, speaker) {
+                if(err) {
+                    res.end(err);
+                }
+                else {
+                    speakerData.seminars.forEach(function (seminarID){
+                        seminarsData.findByIdAndUpdate(
+                            seminarID,
+                            { $push: { speakers: speaker._id }},
                             { new: true, safe: true, upsert: true },
                             function(err) {
                                 if(err) {
