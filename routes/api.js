@@ -126,7 +126,7 @@ router.delete('/user/:userID', function(req, res, next) {
                 user.seminars.forEach(function (userSeminar) {
                     seminarsData.findByIdAndUpdate(
                         userSeminar,
-                        { $pull: { registrants: userID }},
+                        { $pull: { registrants: user._id }},
                         { new: true, upsert: true },
                         function(err) {
                             if(err) {
