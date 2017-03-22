@@ -41,22 +41,22 @@ router.patch('/user/:userID', function(req, res, next) {
         var userID = req.params.userID;
         var userData = req.body;
 
-        userData.forEach(function (userData) {
-            var user = {
-                username: userData.username,
-                email: userData.email,
-                firstName: userData.firstName,
-                lastName: userData.lastName,
-                birthDate: userData.birthDate,
-                gender: userData.gender,
-                school: userData.school,
-                studentNumber: userData.studentNumber,
-                course: userData.course,
-                seminars: userData.seminars,
-                role: userData.role
+        userData.forEach(function (userDataBody) {
+            var editUser = {
+                username: userDataBody.username,
+                email: userDataBody.email,
+                firstName: userDataBody.firstName,
+                lastName: userDataBody.lastName,
+                birthDate: userDataBody.birthDate,
+                gender: userDataBody.gender,
+                school: userDataBody.school,
+                studentNumber: userDataBody.studentNumber,
+                course: userDataBody.course,
+                seminars: userDataBody.seminars,
+                role: userDataBody.role
             };
 
-            usersData.findByIdAndUpdate(userID, user, function(err, user) {
+            usersData.findById(userID, function(err, user) {
                 if(err) {
                     res.end(err);
                 }
@@ -76,20 +76,34 @@ router.patch('/user/:userID', function(req, res, next) {
                             }
                         );
                     });
-                    userData.seminars.forEach(function (seminarID){
-                        seminarsData.findByIdAndUpdate(
-                            seminarID,
-                            { $push: { registrants: user._id }},
-                            { new: true, safe: true, upsert: true },
-                            function(err) {
+                    user.update({ $set: editUser}, function(err){
+                        if(err) {
+                            res.end(err);
+                        }
+                        else {
+                            usersData.findById(userID, function(err, updateUser) {
                                 if(err) {
                                     res.end(err);
                                 }
                                 else {
-                                    res.end();
+                                    updateUser.seminars.forEach(function (seminarID){
+                                        seminarsData.findByIdAndUpdate(
+                                            seminarID,
+                                            { $push: { registrants: user._id }},
+                                            { new: true, safe: true, upsert: true },
+                                            function(err) {
+                                                if(err) {
+                                                    res.end(err);
+                                                }
+                                                else {
+                                                    res.end();
+                                                }
+                                            }
+                                        );
+                                    });
                                 }
-                            }
-                        );
+                            });
+                        }
                     });
                 }
             });
