@@ -41,19 +41,19 @@ router.patch('/user/:userID', function(req, res, next) {
         var userID = req.params.userID;
         var userData = req.body;
 
-        userData.forEach(function (userDataBody) {
+        userData.forEach(function (userData) {
             var editUser = {
-                username: userDataBody.username,
-                email: userDataBody.email,
-                firstName: userDataBody.firstName,
-                lastName: userDataBody.lastName,
-                birthDate: userDataBody.birthDate,
-                gender: userDataBody.gender,
-                school: userDataBody.school,
-                studentNumber: userDataBody.studentNumber,
-                course: userDataBody.course,
-                seminars: userDataBody.seminars,
-                role: userDataBody.role
+                username: userData.username,
+                email: userData.email,
+                firstName: userData.firstName,
+                lastName: userData.lastName,
+                birthDate: userData.birthDate,
+                gender: userData.gender,
+                school: userData.school,
+                studentNumber: userData.studentNumber,
+                course: userData.course,
+                seminars: userData.seminars,
+                role: userData.role
             };
 
             usersData.findById(userID, function(err, user) {
@@ -123,9 +123,9 @@ router.delete('/user/:userID', function(req, res, next) {
                 res.end(err);
             }
             else {
-                user.seminars.forEach(function (userSeminar) {
+                user.seminars.forEach(function (seminarID) {
                     seminarsData.findByIdAndUpdate(
-                        userSeminar,
+                        seminarID,
                         { $pull: { registrants: user._id }},
                         { new: true, upsert: true },
                         function(err) {
@@ -319,9 +319,9 @@ router.delete('/seminar/:seminarID', function(req, res, next) {
                 res.end(err);
             }
             else {
-                seminar.registrants.forEach(function (seminarRegistrant){
+                seminar.registrants.forEach(function (userID){
                     usersData.findByIdAndUpdate(
-                        seminarRegistrant,
+                        userID,
                         { $pull: { seminars: seminar._id }},
                         { new: true, upsert: true },
                         function(err) {
@@ -334,9 +334,9 @@ router.delete('/seminar/:seminarID', function(req, res, next) {
                         }
                     );
                 });
-                seminar.speakers.forEach(function (seminarSpeaker){
+                seminar.speakers.forEach(function (speakerID){
                     speakersData.findByIdAndUpdate(
-                        seminarSpeaker,
+                        speakerID,
                         { $pull: { seminars: seminar._id }},
                         { new: true, upsert: true },
                         function(err) {
@@ -526,9 +526,9 @@ router.delete('/speaker/:speakerID', function(req, res, next) {
                 res.end(err);
             }
             else {
-                speaker.seminars.forEach(function (speakerSeminar){
+                speaker.seminars.forEach(function (seminarID){
                     seminarsData.findByIdAndUpdate(
-                        speakerSeminar,
+                        seminarID,
                         { $pull: { speakers: speaker._id }},
                         { new: true, upsert: true },
                         function(err) {
