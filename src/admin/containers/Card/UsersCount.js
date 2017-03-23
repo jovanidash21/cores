@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 class UsersCount extends Component {
     render() {
@@ -6,7 +7,7 @@ class UsersCount extends Component {
 
         return(
             <div className="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                <a className="card card-banner card-blue-light">
+                <Link to="/admin/speakers" className="card card-banner card-blue-light">
                     <div className="card-body">
                         <i className="icon fa fa-user fa-4x" />
                         <div className="content">
@@ -18,7 +19,7 @@ class UsersCount extends Component {
                             </div>
                         </div>
                     </div>
-                </a>
+                </Link>
             </div>
         )
     }

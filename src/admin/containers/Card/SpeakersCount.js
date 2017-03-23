@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 class SpeakersCount extends Component {
     render() {
@@ -6,7 +7,7 @@ class SpeakersCount extends Component {
 
         return(
             <div className="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                <a className="card card-banner card-yellow-light">
+                <Link to="/admin/speakers" className="card card-banner card-yellow-light">
                     <div className="card-body">
                         <i className="icon fa fa-microphone fa-4x" />
                         <div className="content">
@@ -18,7 +19,7 @@ class SpeakersCount extends Component {
                             </div>
                         </div>
                     </div>
-                </a>
+                </Link>
             </div>
         )
     }

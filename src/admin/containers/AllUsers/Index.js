@@ -34,7 +34,6 @@ class AllUsers extends Component {
 }
 
 export default connect(() => {
-    return {
-        usersDataFetch: `/api/users`
+    return {usersDataFetch: `/api/users`
     }
 })(AllUsers);

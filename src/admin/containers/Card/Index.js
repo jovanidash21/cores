@@ -40,8 +40,6 @@ class Card extends Component {
             const [speakers] = allSpeakersCountFetch.value;
             const [users] = allUsersCountFetch.value;
 
-            console.log('jocelle');
-
             return(
                 <div className="row">
                     <SeminarsCount seminars={seminars} />
