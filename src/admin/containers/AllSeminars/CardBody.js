@@ -1,30 +1,45 @@
 import React, { Component } from 'react';
-import TableRow from './TableRow';
+import { Link } from 'react-router';
+import SpicyDatatable from 'spicy-datatable';
+import moment from 'moment-timezone';
+import 'spicy-datatable/src/sample-styles.css'
 
 class CardBody extends Component {
     render() {
         const { seminars } = this.props;
+        const seminarsColumns = [
+            { key: 'title', label: 'Title' },
+            { key: 'schedule', label: 'Schedule' },
+            { key: 'location', label: 'Location' },
+            { key: 'createdAt', label: 'Date Created' },
+            { key: 'updatedAt', label: 'Last Update' }
+        ];
+        const seminarsRows = [];
+
+        for (var i = 0; i < seminars.length; i++) {
+            seminarsRows.push({
+                title:
+                    <Link to={'/admin/seminar/' + seminars[i]._id}>
+                        {seminars[i].title}
+                    </Link>,
+                schedule: seminars[i].schedule,
+                location: seminars[i].location,
+                createdAt: moment(seminars[i].createdAt)
+                    .tz("Asia/Manila")
+                    .format("MM/DD/YYYY hh:mm A"),
+                updatedAt: moment(seminars[i].updatedAt)
+                    .tz("Asia/Manila")
+                    .format("MM/DD/YYYY hh:mm A")
+            });
+        }
 
         return(
             <div className="card-body no-padding">
-                <table className="datatable table table-striped primary" cellSpacing="0" width="100%">
-                    <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Schedule</th>
-                        <th>Location</th>
-                        <th>Date Created</th>
-                        <th>Last Update</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {
-                        seminars.map(seminar =>
-                            <TableRow seminar={seminar} />
-                        )
-                    }
-                    </tbody>
-                </table>
+                <SpicyDatatable
+                    tableKey="seminarsTable"
+                    columns={seminarsColumns}
+                    rows={seminarsRows}
+                />
             </div>
         )
     }
