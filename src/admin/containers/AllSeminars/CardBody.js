@@ -22,7 +22,9 @@ class CardBody extends Component {
                     <Link to={'/admin/seminar/' + seminars[i]._id}>
                         {seminars[i].title}
                     </Link>,
-                schedule: seminars[i].schedule,
+                schedule: moment(seminars[i].schedule)
+                    .tz("Asia/Manila")
+                    .format("MM/DD/YYYY hh:mm A"),
                 location: seminars[i].location,
                 createdAt: moment(seminars[i].createdAt)
                     .tz("Asia/Manila")
