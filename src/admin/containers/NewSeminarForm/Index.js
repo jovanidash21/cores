@@ -56,7 +56,11 @@ class NewSeminarForm extends React.Component {
 
 export default connect(() => {
     return {
-        speakersDataFetch: `/api/speakers`,
+        speakersDataFetch: {
+            url: `/api/speakers`,
+            force: true,
+            refreshing: true
+        },
         addNewSeminar: (newSeminar) => ({
             addNewSeminarFetch: {
                 url: `/api/seminars`,

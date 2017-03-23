@@ -49,7 +49,11 @@ class SpeakerProfile extends Component {
 
 export default connect((props) => {
     return {
-        speakerProfileDataFetch: `/api/speaker/${props.speakerID}`,
+        speakerProfileDataFetch: {
+            url:`/api/speaker/${props.speakerID}`,
+            force: true,
+            refreshing: true
+        },
         deleteSpeaker: (speakerID) => ({
             deleteSpeakerFetch: {
                 url: `/api/speaker/${speakerID}`,

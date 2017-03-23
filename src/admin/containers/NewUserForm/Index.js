@@ -56,7 +56,11 @@ class NewUserForm extends Component {
 
 export default connect(() => {
     return {
-        seminarsDataFetch: `/api/seminars`,
+        seminarsDataFetch: {
+            url: `/api/seminars`,
+            force: true,
+            refreshing: true
+        },
         addNewUser: (newUser) => ({
             addNewUserFetch: {
                 url: `/api/users`,

@@ -35,6 +35,10 @@ class AllSeminars extends Component {
 
 export default connect(() => {
     return {
-        seminarsDataFetch: `/api/seminars`
+        seminarsDataFetch: {
+            url: `/api/seminars`,
+            force: true,
+            refreshing: true
+        }
     }
 })(AllSeminars);

@@ -55,7 +55,11 @@ class NewSpeakerForm extends Component {
 
 export default connect(() => {
     return {
-        seminarsDataFetch: `/api/seminars`,
+        seminarsDataFetch: {
+            url: `/api/seminars`,
+            force: true,
+            refreshing: true
+        },
         addNewSpeaker: (newSpeaker) => ({
             addNewSpeakerFetch: {
                 url: `/api/speakers`,

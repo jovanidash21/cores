@@ -35,6 +35,10 @@ class AllSpeakers extends Component {
 
 export default connect(() => {
     return {
-        speakersDataFetch: `/api/speakers`
+        speakersDataFetch: {
+            url: `/api/speakers`,
+            force: true,
+            refreshing: true
+        }
     }
 })(AllSpeakers);

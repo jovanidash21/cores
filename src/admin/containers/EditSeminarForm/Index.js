@@ -63,8 +63,16 @@ class EditSeminarForm extends Component {
 
 export default connect((props) => {
     return {
-        seminarUpdateDataFetch: `/api/seminar/${props.seminarID}`,
-        speakersDataFetch: `/api/speakers`,
+        seminarUpdateDataFetch: {
+            url: `/api/seminar/${props.seminarID}`,
+            force: true,
+            refreshing: true
+        },
+        speakersDataFetch: {
+            url: `/api/speakers`,
+            force: true,
+            refreshing: true
+        },
         updateSeminar: (editSeminar) => ({
             updateSeminarFetch: {
                 url: `/api/seminar/${props.seminarID}`,

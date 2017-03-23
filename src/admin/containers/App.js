@@ -38,6 +38,10 @@ class App extends Component {
 
 export default connect(() => {
     return {
-        userDataFetch: `/api/user`
+        userDataFetch: {
+            url: `/api/user`,
+            force: true,
+            refreshing: true
+        }
     }
 })(App);

@@ -51,7 +51,11 @@ class SeminarProfile extends Component {
 
 export default connect((props) => {
     return {
-        seminarProfileDataFetch: `/api/seminar/${props.seminarID}`,
+        seminarProfileDataFetch: {
+            url: `/api/seminar/${props.seminarID}`,
+            force: true,
+            refreshing: true
+        },
         deleteSeminar: (seminarID) => ({
             deleteSeminarFetch: {
                 url: `/api/seminar/${seminarID}`,

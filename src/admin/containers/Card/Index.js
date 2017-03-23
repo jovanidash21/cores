@@ -53,8 +53,20 @@ class Card extends Component {
 
 export default connect(() => {
     return {
-        seminarsCountFetch: `/api/seminars/count`,
-        speakersCountFetch: `/api/speakers/count`,
-        usersCountFetch: `/api/users/count`
+        seminarsCountFetch: {
+            url: `/api/seminars/count`,
+            force: true,
+            refreshing: true
+        },
+        speakersCountFetch: {
+            url: `/api/speakers/count`,
+            force: true,
+            refreshing: true
+        },
+        usersCountFetch: {
+            url: `/api/users/count`,
+            force: true,
+            refreshing: true
+        }
     }
 })(Card);

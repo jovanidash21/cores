@@ -49,7 +49,11 @@ class UserProfile extends Component {
 
 export default connect((props) => {
     return {
-        userProfileDataFetch: `/api/user/${props.userID}`,
+        userProfileDataFetch: {
+            url: `/api/user/${props.userID}`,
+            force: true,
+            refreshing: true
+        },
         deleteUser: (userID) => ({
             deleteUserFetch: {
                 url: `/api/user/${userID}`,

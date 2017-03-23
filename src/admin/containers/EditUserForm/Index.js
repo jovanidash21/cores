@@ -63,8 +63,16 @@ class EditUserForm extends Component {
 
 export default connect((props) => {
     return {
-        userUpdateDataFetch: `/api/user/${props.userID}`,
-        seminarsDataFetch: `/api/seminars`,
+        userUpdateDataFetch: {
+            url:`/api/user/${props.userID}`,
+            force: true,
+            refreshing: true
+        },
+        seminarsDataFetch: {
+            url: `/api/seminars`,
+            force: true,
+            refreshing: true
+        },
         updateUser: (editUser) => ({
             updateUserFetch: {
                 url: `/api/user/${props.userID}`,
