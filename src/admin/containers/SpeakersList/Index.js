@@ -3,21 +3,20 @@ import { connect, PromiseState } from 'react-refetch';
 import LoadingAnimation from '../LoadingAnimation/Index';
 import Error from '../Error/Index';
 import CardHeader from './CardHeader';
-import SeminarItem from './SeminarItem';
+import SpeakerItem from './SpeakerItem';
 
 class SeminarsTimeline extends Component {
-    render() {
-        const { seminarsDataFetch } = this.props;
-        const allSeminarsDataFetch = PromiseState.all([seminarsDataFetch]);
+    render() {const { speakersDataFetch } = this.props;
+        const allSpeakersDataFetch = PromiseState.all([speakersDataFetch]);
 
-        if (allSeminarsDataFetch.pending) {
+        if (allSpeakersDataFetch.pending) {
             return <LoadingAnimation />
         }
-        else if (allSeminarsDataFetch.rejected) {
-            return <Error error={allSeminarsDataFetch.reason} />
+        else if (allSpeakersDataFetch.rejected) {
+            return <Error error={allSpeakersDataFetch.reason} />
         }
-        else if (allSeminarsDataFetch.fulfilled) {
-            const [seminars] = allSeminarsDataFetch.value;
+        else if (allSpeakersDataFetch.fulfilled) {
+            const [speakers] = allSpeakersDataFetch.value;
 
             return(
                 <div className="col-md-6">
@@ -26,10 +25,10 @@ class SeminarsTimeline extends Component {
                         <div className="card-body">
                             <div className="row">
                                 <div className="col-md-12">
-                                    <div className="list-group __timeline">
+                                    <div className="list-group">
                                         {
-                                            seminars.map(seminar =>
-                                                <SeminarItem seminar={seminar} />
+                                            speakers.map(speaker =>
+                                                <SpeakerItem speaker={speaker} />
                                             )
                                         }
                                     </div>
@@ -45,8 +44,8 @@ class SeminarsTimeline extends Component {
 
 export default connect(() => {
     return {
-        seminarsDataFetch: {
-            url: `/api/seminars`,
+        speakersDataFetch: {
+            url: `/api/speakers`,
             force: true,
             refreshing: true
         }
