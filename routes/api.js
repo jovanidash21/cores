@@ -216,6 +216,22 @@ router.post('/users', function(req, res, next) {
     }
 });
 
+router.get('/users/count', function(req, res, next) {
+    if (req.user === undefined) {
+        res.json({});
+    }
+    else {
+        usersData.find({}, function(err, results) {
+            if(err) {
+                res.end(err);
+            }
+            else {
+                res.json({count: results.length});
+            }
+        });
+    }
+});
+
 router.get('/seminar/:seminarID', function(req, res, next) {
     if (req.user === undefined) {
         res.json({});
@@ -420,6 +436,22 @@ router.post('/seminars', function(req, res, next) {
     }
 });
 
+router.get('/seminars/count', function(req, res, next) {
+    if (req.user === undefined) {
+        res.json({});
+    }
+    else {
+        seminarsData.find({}, function(err, results) {
+            if(err) {
+                res.end(err);
+            }
+            else {
+                res.json({count: results.length});
+            }
+        });
+    }
+});
+
 router.get('/speaker/:speakerID', function(req, res, next) {
     if (req.user === undefined) {
         res.json({});
@@ -610,6 +642,22 @@ router.post('/speakers', function(req, res, next) {
                     });
                 }
             });
+        });
+    }
+});
+
+router.get('/speakers/count', function(req, res, next) {
+    if (req.user === undefined) {
+        res.json({});
+    }
+    else {
+        speakersData.find({}, function(err, results) {
+            if(err) {
+                res.end(err);
+            }
+            else {
+                res.json({count: results.length});
+            }
         });
     }
 });
