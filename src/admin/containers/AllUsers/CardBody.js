@@ -10,9 +10,9 @@ class CardBody extends Component {
         const usersColumns = [
             { key: 'username', label: 'Username' },
             { key: 'firstName', label: 'First Name' },
-            { key: 'lastName', label: 'lastName' },
-            { key: 'email', label: 'email' },
-            { key: 'role', label: 'role' },
+            { key: 'lastName', label: 'Last Name' },
+            { key: 'email', label: 'Email' },
+            { key: 'role', label: 'Role' },
             { key: 'createdAt', label: 'Date Created' },
             { key: 'updatedAt', label: 'Last Update' }
         ];
