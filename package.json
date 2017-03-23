@@ -8,7 +8,6 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "axios": "^0.15.3",
     "babel-core": "^6.22.1",
     "babel-loader": "^6.3.2",
     "babel-preset-latest": "^6.22.0",
