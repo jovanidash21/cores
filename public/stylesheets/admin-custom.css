@@ -34,3 +34,32 @@ body .app-container > div > div.row > [class*="col-"]
 {
     width: 100% !important;
 }
+.spicy-datatable
+{
+    font-size: 1.4rem !important;
+}
+.spicy-datatableoptions-sizepicker,
+.spicy-datatableoptions-search
+{
+    padding: 10px;
+}
+.spicy-datatable-counter
+{
+    font-size: 14px !important;
+}
+.spicy-datatable-pagination-list
+{
+    padding: 15px !important;
+}
+.spicy-datatable-pagination-list .spicy-datatable-pagination-button
+{
+    margin: 5px;
+}
+.spicy-datatable-pagination-list .spicy-datatable-pagination-button:hover
+{
+    background: #5fc77f !important;
+}
+.spicy-datatable-pagination-list .spicy-datatable-pagination-button.active
+{
+    background: #29c75f !important;
+}
