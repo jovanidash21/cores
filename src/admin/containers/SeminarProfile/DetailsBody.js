@@ -44,7 +44,7 @@ class DetailsBody extends Component {
                                             {
                                                 moment(seminar.schedule)
                                                     .tz("Asia/Manila")
-                                                    .format("MM/DD/YYYY hh:mm A")
+                                                    .format("MMM DD, YYYY hh:mm A")
                                             }
                                         </div>
                                     </div>

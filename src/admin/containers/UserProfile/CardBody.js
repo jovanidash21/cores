@@ -42,7 +42,7 @@ class CardBody extends Component {
                                 {
                                     moment(user.birthDate)
                                         .tz("Asia/Manila")
-                                        .format("MM/DD/YYYY")
+                                        .format("MMM DD, YYYY")
                                 }
                             </div>
                         </div>
