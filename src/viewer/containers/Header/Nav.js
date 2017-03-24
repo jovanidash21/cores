@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Nav  = () => {
-    return(
-        <nav id="nav">
-            <ul>
-                <li className="current">
-                    <a href="index.html">
-                        Home
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    )
-};
+class Nav extends Component {
+    render() {
+        const { user } = this.props;
+
+        return(
+            <nav id="nav">
+                <ul>
+                    <li className="current">
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        )
+    }
+}
 
 export default Nav;

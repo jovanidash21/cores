@@ -22,7 +22,7 @@ class App extends Component {
 
             return (
                 <div>
-                    <Header />
+                    <Header user={user} />
                     {children}
                 </div>
             )
