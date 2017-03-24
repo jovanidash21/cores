@@ -31,9 +31,9 @@ class Right extends Component {
                                 </Link>
                             </li>
                             <li>
-                                <a href="#">
-                                    Logout
-                                </a>
+                                <form action="/auth/logout" method="post">
+                                    <input type="submit" value="Logout" />
+                                </form>
                             </li>
                         </ul>
                     </div>
