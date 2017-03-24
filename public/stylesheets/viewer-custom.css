@@ -16,3 +16,8 @@ section.loading-animation > div > div
     height: 110px;
     width: 110px;
 }
+.wrapper.style1,
+.wrapper.style1 .title
+{
+    background: #ef8355 url("images/overlay.png");
+}
