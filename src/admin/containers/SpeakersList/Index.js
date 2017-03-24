@@ -22,18 +22,22 @@ class SeminarsTimeline extends Component {
                 <div className="col-md-6">
                     <div className="card">
                         <CardHeader />
-                        <div className="card-body">
-                            <div className="row">
-                                <div className="col-md-12">
-                                    <div className="list-group">
-                                        {
-                                            speakers.map(speaker =>
-                                                <SpeakerItem speaker={speaker} />
-                                            )
-                                        }
-                                    </div>
-                                </div>
-                            </div>
+                        <div className="card-body no-padding table-responsive">
+                            <table className="table card-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th className="right">Email</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        speakers.map(speaker =>
+                                            <SpeakerItem speaker={speaker} />
+                                        )
+                                    }
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

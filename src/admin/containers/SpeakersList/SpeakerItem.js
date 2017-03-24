@@ -6,20 +6,24 @@ class SpeakerItem extends Component {
         const { speaker } = this.props;
 
         return(
-            <Link to={'/admin/speaker/' + speaker._id} className="list-group-item">
-                <span className="badge badge-success">
+            <tr>
+                <td>
+                    <Link to={'/admin/speaker/' + speaker._id}>
+                        {
+                            speaker.firstName
+                        }
+                        &nbsp;
+                        {
+                            speaker.lastName
+                        }
+                    </Link>
+                </td>
+                <td className="right">
                     {
-                        speaker.position
+                        speaker.email
                     }
-                </span>
-                {
-                    speaker.firstName
-                }
-                &nbsp;
-                {
-                    speaker.lastName
-                }
-            </Link>
+                </td>
+            </tr>
         )
     }
 }
