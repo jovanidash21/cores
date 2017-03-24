@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { IndexLink, Link } from 'react-router';
 
 class Nav extends Component {
     render() {
@@ -8,8 +9,18 @@ class Nav extends Component {
             <nav id="nav">
                 <ul>
                     <li className="current">
-                        <a href="index.html">
+                        <IndexLink to="/">
                             Home
+                        </IndexLink>
+                    </li>
+                    <li>
+                        <Link to="/seminars">
+                            Seminars
+                        </Link>
+                    </li>
+                    <li>
+                        <a href="/auth/login">
+                            Login
                         </a>
                     </li>
                 </ul>
