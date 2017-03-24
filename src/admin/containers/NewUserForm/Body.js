@@ -26,7 +26,7 @@ class Body extends Component {
         this.state = {
             usernameValue: '',
             emailValue: '',
-            birthDateValue: '',
+            birthDateValue: new Date(),
             genderValue: 'male',
             schoolValue: 'pup-manila',
             courseValue: 'bscpe',

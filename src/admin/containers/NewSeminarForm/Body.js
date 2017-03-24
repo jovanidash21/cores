@@ -27,7 +27,7 @@ class Body extends Component {
             titleValue: '',
             speakersValue: [],
             speakersData: speakersData,
-            scheduleValue: '',
+            scheduleValue: new Date(),
             locationValue: 'none'
         };
         this.handleTitleValueChange = this.handleTitleValueChange.bind(this);
