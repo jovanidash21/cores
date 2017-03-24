@@ -1,10 +1,10 @@
 import React from 'react';
+import Intro from '../containers/Intro/Index';
 
 const Home  = () => {
     return (
         <div>
-            <div className="row">
-            </div>
+            <Intro />
         </div>
     )
 };
