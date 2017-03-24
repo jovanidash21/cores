@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-refetch';
 import LoadingAnimation from './LoadingAnimation/Index';
 import Error from './Error/Index';
+import Header from './Header/Index';
 
 class App extends Component {
     render() {
@@ -21,6 +22,7 @@ class App extends Component {
 
             return (
                 <div>
+                    <Header />
                     {children}
                 </div>
             )
