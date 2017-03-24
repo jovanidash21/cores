@@ -64,14 +64,6 @@ class Menu extends Component {
                             </ul>
                         </div>
                     </li>
-                    <li>
-                        <a href="#">
-                            <div className="icon">
-                                <i className="fa fa-money" aria-hidden="true"/>
-                            </div>
-                            <div className="title">Sale</div>
-                        </a>
-                    </li>
                     <li className="dropdown">
                         <a href="#" className="dropdown-toggle" data-toggle="dropdown">
                             <div className="icon">
