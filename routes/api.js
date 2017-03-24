@@ -6,7 +6,7 @@ var speakersData = require('../models/speakers-data-schema');
 
 router.get('/user', function(req, res, next) {
     if (req.user === undefined) {
-        res.json({});
+        res.json([{}]);
     }
     else {
         res.json([req.user]);
