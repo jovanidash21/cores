@@ -10,7 +10,7 @@ const AboutSection = () => {
             </div>
             <div id="main" className="container">
                 <a href="#" className="image featured">
-                    <img src="/images/pic01.jpg" alt="" />
+                    <img src="/images/about.png" alt="" />
                 </a>
                 <section id="features">
                     <Header />
