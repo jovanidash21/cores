@@ -37,6 +37,8 @@ class Body extends Component {
         this.state = {
             usernameValue: user.username,
             emailValue: user.email,
+            firstNameValue: user.firstName,
+            lastNameValue: user.lastName,
             birthDateValue: birthDate,
             genderValue: user.gender,
             schoolValue: user.school,
@@ -48,6 +50,8 @@ class Body extends Component {
         };
         this.handleUsernameValueChange = this.handleUsernameValueChange.bind(this);
         this.handleEmailValueChange = this.handleEmailValueChange.bind(this);
+        this.handleFirstNameValueChange = this.handleFirstNameValueChange.bind(this);
+        this.handleLastNameValueChange = this.handleLastNameValueChange.bind(this);
         this.handleBirthDateValueChange = this.handleBirthDateValueChange.bind(this);
         this.handleGenderValueChange = this.handleGenderValueChange.bind(this);
         this.handleSchoolValueChange = this.handleSchoolValueChange.bind(this);
@@ -62,6 +66,12 @@ class Body extends Component {
     }
     handleEmailValueChange(event) {
         this.setState({emailValue: event.target.value})
+    }
+    handleFirstNameValueChange(event) {
+        this.setState({firstNameValue: event.target.value})
+    }
+    handleLastNameValueChange(event) {
+        this.setState({lastNameValue: event.target.value})
     }
     handleBirthDateValueChange(newDate) {
         this.setState({birthDateValue: newDate});
@@ -101,8 +111,8 @@ class Body extends Component {
         let editUser = [];
         let username = this.state.usernameValue;
         let email = this.state.emailValue;
-        let firstName = this.firstName.value;
-        let lastName = this.lastName.value;
+        let firstName = this.state.firstNameValue;
+        let lastName = this.state.lastNameValue;
         let birthDate = this.state.birthDateValue;
         let gender = this.state.genderValue;
         let school = this.state.schoolValue;
@@ -115,6 +125,8 @@ class Body extends Component {
         if (
             (username == '' ) ||
             (email == '') ||
+            (firstName == '') ||
+            (lastName == '') ||
             (password == '')
         ) {
             alert("Please fill out all the required fields");
@@ -143,6 +155,8 @@ class Body extends Component {
         const {
             handleUsernameValueChange,
             handleEmailValueChange,
+            handleFirstNameValueChange,
+            handleLastNameValueChange,
             handleBirthDateValueChange,
             handleGenderValueChange,
             handleSchoolValueChange,
@@ -156,6 +170,8 @@ class Body extends Component {
         const {
             usernameValue,
             emailValue,
+            firstNameValue,
+            lastNameValue,
             birthDateValue,
             genderValue,
             schoolValue,
@@ -216,30 +232,48 @@ class Body extends Component {
                                 />
                             </div>
                         </FormGroup>
-                        <FormGroup>
+                        <FormGroup
+                            bsClass=
+                                {
+                                    firstNameValue == ""
+                                        ?
+                                        "form-group has-error"
+                                        :
+                                        "form-group"
+                                }
+                        >
                             <ControlLabel bsClass="col-md-3 control-label" htmlFor="firstName">
-                                First Name
+                                First Name (required)
                             </ControlLabel>
                             <div className="col-md-9">
                                 <FormControl
                                     id="firstName"
-                                    inputRef={(ref) => {this.firstName = ref}}
                                     type="text"
-                                    defaultValue={user.firstName}
+                                    value={firstNameValue}
+                                    onChange={handleFirstNameValueChange}
                                     placeholder=""
                                 />
                             </div>
                         </FormGroup>
-                        <FormGroup>
+                        <FormGroup
+                            bsClass=
+                                {
+                                    lastNameValue == ""
+                                        ?
+                                        "form-group has-error"
+                                        :
+                                        "form-group"
+                                }
+                        >
                             <ControlLabel bsClass="col-md-3 control-label" htmlFor="lastName">
-                                Last Name
+                                Last Name (required)
                             </ControlLabel>
                             <div className="col-md-9">
                                 <FormControl
                                     id="lastName"
-                                    inputRef={(ref) => {this.lastName = ref}}
                                     type="text"
-                                    defaultValue={user.lastName}
+                                    value={lastNameValue}
+                                    onChange={handleLastNameValueChange}
                                     placeholder=""
                                 />
                             </div>
