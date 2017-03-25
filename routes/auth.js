@@ -3,10 +3,13 @@ var router = express.Router();
 var passport = require('passport');
 
 router.get('/login', function(req, res, next) {
-    if(req.user){
-        res.render('admin/index', {
-            title: 'Task Tracker'
-        });
+    if (req.user) {
+        if(req.user.role == 'administrator') {
+            res.redirect('/admin');
+        }
+        else {
+            res.redirect('/');
+        }
     }
     else {
         res.render('login', {
