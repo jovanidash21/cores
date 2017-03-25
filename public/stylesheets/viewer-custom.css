@@ -16,6 +16,17 @@ section.loading-animation > div > div
     height: 110px;
     width: 110px;
 }
+#header-wrapper
+{
+    background: url("../../images/header.png");
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 .wrapper.style1,
 .wrapper.style1 .title
 {

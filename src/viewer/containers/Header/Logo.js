@@ -6,11 +6,11 @@ const Logo  = () => {
         <div id="logo">
             <h1>
                 <IndexLink to="/">
-                    CoRES 2018
+                    <img src="/images/logo.png" alt="" />
                 </IndexLink>
             </h1>
             <p>
-                Computer Research and Engineering Symposium
+                Computer Research and Engineering Symposium 2018
             </p>
         </div>
     )

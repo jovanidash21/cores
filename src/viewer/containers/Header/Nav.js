@@ -18,11 +18,27 @@ class Nav extends Component {
                             Seminars
                         </Link>
                     </li>
-                    <li>
-                        <a href="/auth/login">
-                            Login
-                        </a>
-                    </li>
+                    {
+                        user._id != undefined
+                            ?
+                            <li>
+                                <a href="#">
+                                    {
+                                        user.firstName
+                                    }
+                                    &nbsp;
+                                    {
+                                        user.lastName
+                                    }
+                                </a>
+                            </li>
+                            :
+                            <li>
+                                <a href="/auth/login">
+                                    Login
+                                </a>
+                            </li>
+                    }
                 </ul>
             </nav>
         )
