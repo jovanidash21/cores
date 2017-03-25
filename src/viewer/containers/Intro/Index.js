@@ -3,7 +3,9 @@ import React from 'react';
 const Intro = () => {
     return (
         <div id="intro-wrapper" className="wrapper style1">
-            <div className="title">The Introduction</div>
+            <div className="title">
+                Introduction
+            </div>
             <section id="intro" className="container">
                 <p className="style1">
                     Three Days of Inspiration!
