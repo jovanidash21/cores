@@ -1,12 +1,14 @@
 import React from 'react';
 import Intro from '../containers/Intro/Index';
-import About from '../containers/AboutSection/Index';
+import AboutSection from '../containers/AboutSection/Index';
+import SeminarsSection from '../containers/SeminarsSection/Index';
 
 const Home  = () => {
     return (
         <div>
             <Intro />
-            <About />
+            <AboutSection />
+            <SeminarsSection />
         </div>
     )
 };
