@@ -1,47 +1,47 @@
 import React, { Component } from 'react';
+import { connect, PromiseState } from 'react-refetch';
+import LoadingAnimation from '../LoadingAnimation/Index';
+import Error from '../Error/Index';
+import Highlight from './Highlight';
 
 class SeminarsSection extends Component {
     render() {
-        return (
-            <div className="wrapper style3">
-                <div className="title">Seminars</div>
-                <div id="highlights" className="container">
-                    <div className="row 150%">
-                        <div className="4u 12u(mobile)">
-                            <section className="highlight">
-                                <a href="#" className="image featured"><img src="images/pic02.jpg" alt="" /></a>
-                                <h3><a href="#">Aliquam diam consequat</a></h3>
-                                <p>Eget mattis at, laoreet vel amet sed velit aliquam diam ante, dolor aliquet sit amet vulputate mattis amet laoreet lorem.</p>
-                                <ul className="actions">
-                                    <li><a href="#" className="button style1">Learn More</a></li>
-                                </ul>
-                            </section>
-                        </div>
-                        <div className="4u 12u(mobile)">
-                            <section className="highlight">
-                                <a href="#" className="image featured"><img src="images/pic03.jpg" alt="" /></a>
-                                <h3><a href="#">Nisl adipiscing sed lorem</a></h3>
-                                <p>Eget mattis at, laoreet vel amet sed velit aliquam diam ante, dolor aliquet sit amet vulputate mattis amet laoreet lorem.</p>
-                                <ul className="actions">
-                                    <li><a href="#" className="button style1">Learn More</a></li>
-                                </ul>
-                            </section>
-                        </div>
-                        <div className="4u 12u(mobile)">
-                            <section className="highlight">
-                                <a href="#" className="image featured"><img src="images/pic04.jpg" alt="" /></a>
-                                <h3><a href="#">Mattis tempus lorem</a></h3>
-                                <p>Eget mattis at, laoreet vel amet sed velit aliquam diam ante, dolor aliquet sit amet vulputate mattis amet laoreet lorem.</p>
-                                <ul className="actions">
-                                    <li><a href="#" className="button style1">Learn More</a></li>
-                                </ul>
-                            </section>
+        const { seminarsDataFetch } = this.props;
+        const allSeminarsDataFetch = PromiseState.all([seminarsDataFetch]);
+
+        if (allSeminarsDataFetch.pending) {
+            return <LoadingAnimation />
+        }
+        else if (allSeminarsDataFetch.rejected) {
+            return <Error error={allSeminarsDataFetch.reason} />
+        }
+        else if (allSeminarsDataFetch.fulfilled) {
+            const [seminars] = allSeminarsDataFetch.value;
+            console.log(seminars);
+            return (
+                <div className="wrapper style3">
+                    <div className="title">Seminars</div>
+                    <div id="highlights" className="container">
+                        <div className="row 150%">
+                            {
+                                seminars.map(seminar =>
+                                    <Highlight seminar={seminar} />
+                                )
+                            }
                         </div>
                     </div>
                 </div>
-            </div>
-        )
+            )
+        }
     }
 }
 
-export default SeminarsSection;
+export default connect(() => {
+    return {
+        seminarsDataFetch: {
+            url: `/api/seminars`,
+            force: true,
+            refreshing: true
+        }
+    }
+})(SeminarsSection);
