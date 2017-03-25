@@ -4,7 +4,14 @@ const Copyright = () => {
     return (
         <div id="copyright">
             <ul>
-                <li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                <li>
+                    &copy; CoRES 2018
+                </li>
+                <li>
+                    <a href="https://github.com/jovanidash21/cores" target="_blank">
+                        Github Project Link
+                    </a>
+                </li>
             </ul>
         </div>
     )

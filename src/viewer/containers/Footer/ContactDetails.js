@@ -9,9 +9,13 @@ const ContactDetails = () => {
                         <section>
                             <h3 className="icon fa-home">Mailing Address</h3>
                             <p>
-                                Untitled Corporation<br />
-                                1234 Somewhere Rd #987<br />
-                                Nashville, TN 00000-0000
+                                PUP College of Engineering
+                                <br />
+                                CEA Building, NDC Campus
+                                <br />
+                                Anonas cor. Pureza Sts.
+                                <br />
+                                Sta. Mesa, Manila, Philippines 01008
                             </p>
                         </section>
                     </div>
@@ -19,9 +23,17 @@ const ContactDetails = () => {
                         <section>
                             <h3 className="icon fa-comment">Social</h3>
                             <p>
-                                <a href="#">@untitled-corp</a><br />
-                                <a href="#">linkedin.com/untitled</a><br />
-                                <a href="#">facebook.com/untitled</a>
+                                <a href="https://www.facebook.com/coresofficial/" target="_blank">
+                                    Facebook
+                                </a>
+                                <br />
+                                <a href="https://twitter.com/coresofficial" target="_blank">
+                                    Twitter
+                                </a>
+                                <br />
+                                <a href="https://instagram.com/coresofficial" target="_blank">
+                                    Instagram
+                                </a>
                             </p>
                         </section>
                     </div>
@@ -31,7 +43,9 @@ const ContactDetails = () => {
                         <section>
                             <h3 className="icon fa-envelope">Email</h3>
                             <p>
-                                <a href="#">info@untitled.tld</a>
+                                <a href="#">
+                                    coresofficial@gmail.com
+                                </a>
                             </p>
                         </section>
                     </div>
