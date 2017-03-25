@@ -6,42 +6,24 @@ const FeatureList = () => {
             <div className="row">
                 <div className="6u 12u(mobile)">
                     <section>
-                        <h3 className="icon fa-comment">Mattis velit diam vulputate</h3>
-                        <p>Eget mattis at, laoreet vel et velit aliquam diam ante, aliquet sit amet vulputate. Eget mattis at, laoreet vel velit lorem.</p>
+                        <h3 className="icon fa-book">History</h3>
+                        <p>
+                            The National Computer Research and Engineering Symposium is an annual event organized
+                            by the senior Computer Engineering students of Polytechnic University of the
+                            Philippines – Manila. It is formerly known as ICT Conference, which had been annually
+                            held for eight consecutive years, from 2004 to 2011
+                        </p>
                     </section>
                 </div>
                 <div className="6u 12u(mobile)">
                     <section>
-                        <h3 className="icon fa-refresh">Lorem ipsum dolor sit veroeros</h3>
-                        <p>Eget mattis at, laoreet vel et velit aliquam diam ante, aliquet sit amet vulputate. Eget mattis at, laoreet vel velit lorem.</p>
-                    </section>
-                </div>
-            </div>
-            <div className="row">
-                <div className="6u 12u(mobile)">
-                    <section>
-                        <h3 className="icon fa-picture-o">Pretium phasellus justo lorem</h3>
-                        <p>Eget mattis at, laoreet vel et velit aliquam diam ante, aliquet sit amet vulputate. Eget mattis at, laoreet vel velit lorem.</p>
-                    </section>
-                </div>
-                <div className="6u 12u(mobile)">
-                    <section>
-                        <h3 className="icon fa-cog">Tempus sed pretium orci</h3>
-                        <p>Eget mattis at, laoreet vel et velit aliquam diam ante, aliquet sit amet vulputate. Eget mattis at, laoreet vel velit lorem.</p>
-                    </section>
-                </div>
-            </div>
-            <div className="row">
-                <div className="6u 12u(mobile)">
-                    <section>
-                        <h3 className="icon fa-wrench">Aliquam consequat et feugiat</h3>
-                        <p>Eget mattis at, laoreet vel et velit aliquam diam ante, aliquet sit amet vulputate. Eget mattis at, laoreet vel velit lorem.</p>
-                    </section>
-                </div>
-                <div className="6u 12u(mobile)">
-                    <section>
-                        <h3 className="icon fa-check">Dolore laoreet aliquam mattis</h3>
-                        <p>Eget mattis at, laoreet vel et velit aliquam diam ante, aliquet sit amet vulputate. Eget mattis at, laoreet vel velit lorem.</p>
+                        <h3 className="icon fa-lightbulb-o">Goal</h3>
+                        <p>
+                            Its primary goal is to gather students taking up IT-related courses from PUP as well
+                            as other universities so as to impart to them the latest in the field of Information
+                            and Communication Technology. It also highlights research presentations from the
+                            students with the goal to inspire the participants to become innovators of technology.
+                        </p>
                     </section>
                 </div>
             </div>
