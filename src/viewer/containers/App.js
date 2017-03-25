@@ -3,6 +3,7 @@ import { connect } from 'react-refetch';
 import LoadingAnimation from './LoadingAnimation/Index';
 import Error from './Error/Index';
 import Header from './Header/Index';
+import Footer from './Footer/Index';
 
 class App extends Component {
     render() {
@@ -24,6 +25,7 @@ class App extends Component {
                 <div>
                     <Header user={user} />
                     {children}
+                    <Footer />
                 </div>
             )
         }
