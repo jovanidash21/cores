@@ -1,6 +1,6 @@
 import React from 'react';
 import Intro from '../containers/Intro/Index';
-import About from '../containers/About/Index';
+import About from '../containers/AboutSection/Index';
 
 const Home  = () => {
     return (
