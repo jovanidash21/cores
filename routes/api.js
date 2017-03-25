@@ -379,19 +379,14 @@ router.delete('/seminar/:seminarID', function(req, res, next) {
 });
 
 router.get('/seminars', function(req, res, next) {
-    if (req.user === undefined) {
-        res.json({});
-    }
-    else {
-        seminarsData.find({}, function(err, results) {
-            if(err) {
-                res.end(err);
-            }
-            else {
-                res.json(results);
-            }
-        });
-    }
+    seminarsData.find({}, function(err, results) {
+        if(err) {
+            res.end(err);
+        }
+        else {
+            res.json(results);
+        }
+    });
 });
 
 router.post('/seminars', function(req, res, next) {
