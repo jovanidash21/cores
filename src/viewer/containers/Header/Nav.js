@@ -13,11 +13,6 @@ class Nav extends Component {
                             Home
                         </IndexLink>
                     </li>
-                    <li>
-                        <Link to="/seminars">
-                            Seminars
-                        </Link>
-                    </li>
                     {
                         user._id != undefined
                             ?
