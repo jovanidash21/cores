@@ -8,7 +8,7 @@ class Footer extends Component {
     render() {
         return (
             <div id="footer-wrapper" className="wrapper">
-                <div className="title">Get In Touch</div>
+                <div className="title">Contact Us</div>
                 <div id="footer" className="container">
                     <Header />
                     <hr />
