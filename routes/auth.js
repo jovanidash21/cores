@@ -26,7 +26,12 @@ router.post('/login', function(req, res, next) {
             else{
                 req.logIn(user, function(err) {
                     if(!err){
-                        res.redirect('/admin');
+                        if (req.user.role == 'administrator') {
+                            res.redirect('/admin');
+                        }
+                        else {
+                            res.redirect('/');
+                        }
                     }
                     else{
                         res.end(err);
