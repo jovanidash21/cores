@@ -1,5 +1,14 @@
 # Software Engineering - Final Project - Event Registration System - React
 ---
+## Screenshots
+* Viewer Page
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jovanidash21/cores/master/screenshots/viewer.png">
+</p>
+* Administrator Page
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jovanidash21/cores/master/screenshots/admin.png">
+</p>
 
 ## Prerequisite
 * [Node.js](https://nodejs.org/en/) installed.
