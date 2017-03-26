@@ -12,7 +12,7 @@ class Nav extends Component {
                         user._id != undefined
                             ?
                             <li>
-                                <Link to={'/' + user.username}>
+                                <Link to={'/user/' + user._id}>
                                     {
                                         user.firstName
                                     }

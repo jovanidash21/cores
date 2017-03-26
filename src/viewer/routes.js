@@ -7,6 +7,6 @@ import UserProfile from './components/UserProfile';
 export default (
     <Route path="/" component={App}>
         <IndexRoute component={Home} />
-        <Route path="/:username" component={UserProfile} />
+        <Route path="/user/:userID" component={UserProfile} />
     </Route>
 );

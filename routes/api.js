@@ -151,6 +151,74 @@ router.delete('/user/:userID', function(req, res, next) {
     }
 });
 
+router.patch('/user/:userID/seminars', function(req, res, next) {
+    if (req.user === undefined) {
+        res.json({});
+    }
+    else {
+        var userID = req.params.userID;
+        var userData = req.body;
+
+        userData.forEach(function (userData) {
+            var editUser = {
+                seminars: userData.seminars
+            };
+
+            usersData.findById(userID, function(err, user) {
+                if(err) {
+                    res.end(err);
+                }
+                else {
+                    user.seminars.forEach(function (seminarID){
+                        seminarsData.findByIdAndUpdate(
+                            seminarID,
+                            { $pull: { registrants: user._id }},
+                            { new: true, upsert: true },
+                            function(err) {
+                                if(err) {
+                                    res.end(err);
+                                }
+                                else {
+                                    res.end();
+                                }
+                            }
+                        );
+                    });
+                    user.update({ $set: editUser}, function(err){
+                        if(err) {
+                            res.end(err);
+                        }
+                        else {
+                            usersData.findById(userID, function(err, updateUser) {
+                                if(err) {
+                                    res.end(err);
+                                }
+                                else {
+                                    updateUser.seminars.forEach(function (seminarID){
+                                        seminarsData.findByIdAndUpdate(
+                                            seminarID,
+                                            { $push: { registrants: user._id }},
+                                            { new: true, safe: true, upsert: true },
+                                            function(err) {
+                                                if(err) {
+                                                    res.end(err);
+                                                }
+                                                else {
+                                                    res.end();
+                                                }
+                                            }
+                                        );
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    }
+});
+
 router.get('/users', function(req, res, next) {
     if (req.user === undefined) {
         res.json({});

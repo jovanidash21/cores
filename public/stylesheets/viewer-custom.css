@@ -36,3 +36,35 @@ section.loading-animation > div > div
 {
     text-transform: none;
 }
+div#user-details-body
+{
+    border: 5px solid #ffffff;
+    border-radius: 21px;
+    padding: 50px;
+    text-align: left;
+}
+div#user-details-body .select2-container
+{
+    width: 100% !important;
+}
+div#user-details-body .select2-container--default .select2-selection--multiple .select2-selection__choice
+{
+    background-color: #555555;
+}
+div#user-details-body ul.actions
+{
+    text-align: center;
+}
+@media screen and (min-width: 737px)
+{
+    #intro > div#user-details-body > div > div > p
+    {
+        font-size: 1em;
+        letter-spacing: 0.075em;
+        margin-bottom: 10px;
+    }
+    div#user-details-body hr
+    {
+        margin: 0.5em 0;
+    }
+}
