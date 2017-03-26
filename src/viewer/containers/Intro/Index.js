@@ -15,13 +15,6 @@ const Intro = () => {
                     <br className="mobile-hide" />
                     From People Who Share Same Interests.
                 </p>
-                <ul className="actions">
-                    <li>
-                        <a href="#" className="button style3 big">
-                            Proceed
-                        </a>
-                    </li>
-                </ul>
             </section>
         </div>
     )
