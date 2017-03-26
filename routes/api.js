@@ -263,6 +263,8 @@ router.patch('/seminar/:seminarID', function(req, res, next) {
         seminarData.forEach(function (seminarData) {
             var editSeminar = {
                 title: seminarData.title,
+                featuredImage: seminarData.featuredImage,
+                description: seminarData.description,
                 speakers: seminarData.speakers,
                 location: seminarData.location,
                 schedule: seminarData.schedule
@@ -399,6 +401,8 @@ router.post('/seminars', function(req, res, next) {
         seminarData.forEach(function (seminarData) {
             var seminar = {
                 title: seminarData.title,
+                featuredImage: seminarData.featuredImage,
+                description: seminarData.description,
                 speakers: seminarData.speakers,
                 schedule: seminarData.schedule,
                 location: seminarData.location,

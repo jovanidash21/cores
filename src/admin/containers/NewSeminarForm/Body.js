@@ -61,9 +61,15 @@ class Body extends Component {
         const { handleAddNewSeminarSubmit } = this.props;
         let newSeminar = [];
         let title = this.state.titleValue;
+        let featuredImage = this.featuredImage.value;
+        let description = this.description.value;
         let speakers = this.state.speakersValue;
         let schedule = this.state.scheduleValue;
         let location = this.state.locationValue;
+
+        if (this.featuredImage.value.length < 1) {
+           featuredImage = 'https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/seminar/default.png';
+        }
 
         if (title == '') {
             alert("Please fill out all the required fields");
@@ -71,6 +77,8 @@ class Body extends Component {
         else {
             newSeminar.push({
                 title,
+                featuredImage,
+                description,
                 speakers,
                 schedule,
                 location
@@ -118,6 +126,32 @@ class Body extends Component {
                                     type="text"
                                     value={titleValue}
                                     onChange={handleTitleValueChange}
+                                    placeholder=""
+                                />
+                            </div>
+                        </FormGroup>
+                        <FormGroup>
+                            <ControlLabel bsClass="col-md-3 control-label" htmlFor="featuredImage">
+                                Featured Image
+                            </ControlLabel>
+                            <div className="col-md-9">
+                                <FormControl
+                                    id="featuredImage"
+                                    inputRef={(ref) => {this.featuredImage = ref}}
+                                    type="text"
+                                    placeholder="Image URL"
+                                />
+                            </div>
+                        </FormGroup>
+                        <FormGroup>
+                            <ControlLabel bsClass="col-md-3 control-label" htmlFor="description">
+                                Description
+                            </ControlLabel>
+                            <div className="col-md-9">
+                                <FormControl
+                                    id="description"
+                                    componentClass="textarea"
+                                    inputRef={(ref) => {this.description = ref}}
                                     placeholder=""
                                 />
                             </div>

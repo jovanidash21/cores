@@ -15,6 +15,30 @@ class DetailsBody extends Component {
                         </div>
                         <div className="card-body">
                             <div className="row">
+                                <div className="col-md-4">
+                                    <div className="section">
+                                        <div className="section-title">
+                                            Featured Image
+                                        </div>
+                                        <div className="section-body">
+                                            <a href={seminar.featuredImage} className="thumbnail" target="_blank">
+                                                <img src={seminar.featuredImage} className="img-responsive" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-md-8">
+                                    <div className="section">
+                                        <div className="section-title">
+                                           Description
+                                        </div>
+                                        <div className="section-body">
+                                            {
+                                                seminar.description
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
                                 <div className="col-md-12">
                                     <div className="section">
                                         <div className="section-title">
