@@ -224,7 +224,7 @@ router.get('/users', function(req, res, next) {
         res.json({});
     }
     else {
-        usersData.find({}, function(err, results) {
+        usersData.find({}, null, {sort: 'username'}, function(err, results) {
             if(err) {
                 res.end(err);
             }
@@ -449,7 +449,7 @@ router.delete('/seminar/:seminarID', function(req, res, next) {
 });
 
 router.get('/seminars', function(req, res, next) {
-    seminarsData.find({}, function(err, results) {
+    seminarsData.find({}, null, {sort: 'schedule'}, function(err, results) {
         if(err) {
             res.end(err);
         }
@@ -658,7 +658,7 @@ router.get('/speakers', function(req, res, next) {
         res.json({});
     }
     else {
-        speakersData.find({}, function(err, results) {
+        speakersData.find({}, null, {sort: 'firstName'}, function(err, results) {
             if(err) {
                 res.end(err);
             }
