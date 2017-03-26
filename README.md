@@ -5,6 +5,7 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/jovanidash21/cores/master/screenshots/viewer.png">
 </p>
+
 * Administrator Page
 <p align="center">
   <img src="https://raw.githubusercontent.com/jovanidash21/cores/master/screenshots/admin.png">
