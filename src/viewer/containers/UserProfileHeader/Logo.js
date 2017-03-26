@@ -24,6 +24,13 @@ class Logo extends Component {
                         user.username
                     }
                 </p>
+                <ul className="actions">
+                    <li>
+                        <form action="/auth/logout" method="post">
+                            <input type="submit" className="style3" value="Logout" />
+                        </form>
+                    </li>
+                </ul>
             </div>
         )
     }
