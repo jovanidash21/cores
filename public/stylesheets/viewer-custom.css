@@ -18,7 +18,7 @@ section.loading-animation > div > div
 }
 #header-wrapper
 {
-    background: url("../../images/header.png");
+    background: url("../images/header.png");
     background-attachment: fixed;
     background-position: center center;
     background-repeat: no-repeat;
@@ -31,4 +31,8 @@ section.loading-animation > div > div
 .wrapper.style1 .title
 {
     background: #ef8355 url("images/overlay.png");
+}
+#logo p
+{
+    text-transform: none;
 }
