@@ -13,7 +13,6 @@
 npm install
 ```
 * Start the MongoDB Server.
-```
 * Open app.js and replace ```process.env.MONGODB_URI``` with ```'mongodb://localhost:27017/cores'```.
 * On the same file, replace ```process.env.SECRET_KEY``` with ```'secret'```.
 * Open another terminal or cmd and run 'www' file inside the bin directory.
