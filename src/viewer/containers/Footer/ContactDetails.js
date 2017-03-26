@@ -5,7 +5,7 @@ const ContactDetails = () => {
         <div className="12u$">
             <section className="feature-list small">
                 <div className="row">
-                    <div className="3u 12u(mobile)">
+                    <div className="6u 12u(mobile)">
                         <section>
                             <h3 className="icon fa-home">Mailing Address</h3>
                             <p>
@@ -19,7 +19,7 @@ const ContactDetails = () => {
                             </p>
                         </section>
                     </div>
-                    <div className="3u 12u(mobile)">
+                    <div className="6u 12u(mobile)">
                         <section>
                             <h3 className="icon fa-comment">Social</h3>
                             <p>
@@ -36,9 +36,7 @@ const ContactDetails = () => {
                                 </a>
                             </p>
                         </section>
-                    </div>
-                    <div className="3u 12u(mobile)">
-                        <section>
+						<section>
                             <h3 className="icon fa-envelope">Email</h3>
                             <p>
                                 <a href="#">
@@ -46,9 +44,7 @@ const ContactDetails = () => {
                                 </a>
                             </p>
                         </section>
-                    </div>
-                    <div className="3u 12u(mobile)">
-                        <section>
+						 <section>
                             <h3 className="icon fa-phone">Phone</h3>
                             <p>
                                 0915 964 7951
