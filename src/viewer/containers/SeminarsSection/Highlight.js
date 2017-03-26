@@ -7,7 +7,9 @@ class Highlight extends Component {
         return (
             <div className="4u 12u(mobile)">
                 <section className="highlight">
-                    <a href="#" className="image featured"><img src="images/pic03.jpg" alt="" /></a>
+                    <a href="#" className="image featured">
+                        <img src={seminar.featuredImage} alt="" />
+                    </a>
                     <h3>
                         <a href="#">
                             {
@@ -15,10 +17,11 @@ class Highlight extends Component {
                             }
                         </a>
                     </h3>
-                    <p>Eget mattis at, laoreet vel amet sed velit aliquam diam ante, dolor aliquet sit amet vulputate mattis amet laoreet lorem.</p>
-                    <ul className="actions">
-                        <li><a href="#" className="button style1">Learn More</a></li>
-                    </ul>
+                    <p>
+                        {
+                            seminar.description
+                        }
+                    </p>
                 </section>
             </div>
         )

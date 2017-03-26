@@ -17,7 +17,7 @@ class SeminarsSection extends Component {
         }
         else if (allSeminarsDataFetch.fulfilled) {
             const [seminars] = allSeminarsDataFetch.value;
-            console.log(seminars);
+
             return (
                 <div className="wrapper style3">
                     <div className="title">Seminars</div>
