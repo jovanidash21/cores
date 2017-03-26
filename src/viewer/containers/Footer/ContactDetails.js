@@ -51,7 +51,7 @@ const ContactDetails = () => {
                         <section>
                             <h3 className="icon fa-phone">Phone</h3>
                             <p>
-                                (000) 555-0000
+                                0915 964 7951
                             </p>
                         </section>
                     </div>
