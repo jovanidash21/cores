@@ -34,6 +34,7 @@ section.loading-animation > div > div
 }
 #logo p
 {
+    color: #ffffff;
     text-transform: none;
 }
 div#user-details-body
@@ -57,6 +58,10 @@ div#user-details-body ul.actions
 }
 @media screen and (min-width: 737px)
 {
+    #logo p
+    {
+        font-size: 1.6em;
+    }
     #intro > div#user-details-body > div > div > p
     {
         font-size: 1em;
