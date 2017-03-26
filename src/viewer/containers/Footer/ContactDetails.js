@@ -2,10 +2,10 @@ import React from 'react';
 
 const ContactDetails = () => {
     return (
-        <div className="6u 12u(mobile)">
+        <div className="12u$">
             <section className="feature-list small">
                 <div className="row">
-                    <div className="6u 12u(mobile)">
+                    <div className="3u 12u(mobile)">
                         <section>
                             <h3 className="icon fa-home">Mailing Address</h3>
                             <p>
@@ -19,7 +19,7 @@ const ContactDetails = () => {
                             </p>
                         </section>
                     </div>
-                    <div className="6u 12u(mobile)">
+                    <div className="3u 12u(mobile)">
                         <section>
                             <h3 className="icon fa-comment">Social</h3>
                             <p>
@@ -37,9 +37,7 @@ const ContactDetails = () => {
                             </p>
                         </section>
                     </div>
-                </div>
-                <div className="row">
-                    <div className="6u 12u(mobile)">
+                    <div className="3u 12u(mobile)">
                         <section>
                             <h3 className="icon fa-envelope">Email</h3>
                             <p>
@@ -49,7 +47,7 @@ const ContactDetails = () => {
                             </p>
                         </section>
                     </div>
-                    <div className="6u 12u(mobile)">
+                    <div className="3u 12u(mobile)">
                         <section>
                             <h3 className="icon fa-phone">Phone</h3>
                             <p>

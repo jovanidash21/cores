@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Header from './Header';
-import ContactForm from './ContactForm';
 import ContactDetails from './ContactDetails';
 import Copyright from './Copyright';
 
@@ -13,7 +12,6 @@ class Footer extends Component {
                     <Header />
                     <hr />
                     <div className="row 150%">
-                        <ContactForm />
                         <ContactDetails />
                     </div>
                     <hr />
