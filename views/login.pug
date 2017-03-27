@@ -40,3 +40,10 @@ html
                             if (alertMessage.length > 0)
                                 p.alert-message
                                     | #{alertMessage}
+                            .form-line
+                                .title OR
+                            .form-footer
+                                a.btn.btn-default.btn-sm.btn-social.__facebook(href='/auth/facebook')
+                                    .info
+                                        i.icon.fa.fa-facebook-official(aria-hidden='true')
+                                        span.title Login with Facebook
