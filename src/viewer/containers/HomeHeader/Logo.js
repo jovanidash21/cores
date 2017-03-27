@@ -6,7 +6,7 @@ const Logo  = () => {
         <div id="logo">
             <h1>
                 <IndexLink to="/">
-                    <img src="/images/logo.png" alt="" />
+                    <img src="/images/logo-light.png" alt="" />
                 </IndexLink>
             </h1>
             <p>
