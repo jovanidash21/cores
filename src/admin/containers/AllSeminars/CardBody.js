@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import SpicyDatatable from 'spicy-datatable';
 import moment from 'moment-timezone';
-import 'spicy-datatable/src/sample-styles.css'
+import 'spicy-datatable/src/sample-styles.css';
 
 class CardBody extends Component {
     render() {
