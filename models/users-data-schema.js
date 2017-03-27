@@ -89,11 +89,7 @@ var usersDataSchema = new Schema
             type:String,
             enum: ['administrator', 'registrant'],
             default: 'registrant'
-        },
-        facebookID: {type:String},
-        facebookToken: {type:String},
-        facebookEmail: {type:String},
-        facebookName: {type:String}
+        }
     },
 
     {
