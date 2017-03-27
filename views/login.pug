@@ -13,19 +13,12 @@ html
             .flex-center
                 .app-header
                 .app-body
-                    .loader-container.text-center
-                        .icon
-                            .sk-folding-cube
-                                .sk-cube1.sk-cube
-                                .sk-cube2.sk-cube
-                                .sk-cube4.sk-cube
-                                .sk-cube3.sk-cube
-                        .title Logging in...
                     .app-block
                         .app-form
                             .form-header
                                 .app-brand
-                                    span.highlight CoRES
+                                    img(src='/images/logo-dark.png' alt='')
+                                    p.highlight CoRES
                             form(action='/auth/login', method='post')
                                 .input-group
                                     span#basic-addon1.input-group-addon
