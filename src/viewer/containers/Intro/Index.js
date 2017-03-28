@@ -11,9 +11,9 @@ const Intro = () => {
                     Three Days of Inspiration!
                 </p>
                 <p className="style2">
-                    Find The Best Solutions
+                    Find The Best Ideas
                     <br className="mobile-hide" />
-                    From People Who Share Same Interests.
+                    From The Best Speakers.
                 </p>
             </section>
         </div>
