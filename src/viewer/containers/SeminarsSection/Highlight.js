@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment-timezone';
 
 class Highlight extends Component {
     render() {
@@ -17,6 +18,13 @@ class Highlight extends Component {
                             }
                         </a>
                     </h3>
+                    <p>
+                        {
+                            moment(seminar.schedule)
+                                .tz("Asia/Manila")
+                                .format("MMM DD, YYYY hh:mm A")
+                        }
+                    </p>
                     <p>
                         {
                             seminar.description
