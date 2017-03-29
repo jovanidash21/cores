@@ -151,71 +151,75 @@ router.delete('/user/:userID', function(req, res, next) {
     }
 });
 
-router.patch('/user/:userID/seminars', function(req, res, next) {
+router.patch('/user/:userID/register/:seminarID', function(req, res, next) {
     if (req.user === undefined) {
         res.json({});
     }
     else {
         var userID = req.params.userID;
-        var userData = req.body;
+        var seminarID = req.params.seminarID;
 
-        userData.forEach(function (userData) {
-            var editUser = {
-                seminars: userData.seminars
-            };
-
-            usersData.findById(userID, function(err, user) {
+        seminarsData.findByIdAndUpdate(
+            seminarID,
+            { $push: { registrants: userID }},
+            { safe: true, upsert: true, new: true },
+            function(err) {
                 if(err) {
                     res.end(err);
                 }
                 else {
-                    user.seminars.forEach(function (seminarID){
-                        seminarsData.findByIdAndUpdate(
-                            seminarID,
-                            { $pull: { registrants: user._id }},
-                            { new: true, upsert: true },
-                            function(err) {
-                                if(err) {
-                                    res.end(err);
-                                }
-                                else {
-                                    res.end();
-                                }
+                    usersData.findByIdAndUpdate(
+                        userID,
+                        { $push: { seminars: seminarID }},
+                        { safe: true, upsert: true, new: true },
+                        function(err) {
+                            if(err) {
+                                res.end(err);
                             }
-                        );
-                    });
-                    user.update({ $set: editUser}, function(err){
-                        if(err) {
-                            res.end(err);
+                            else {
+                                res.end();
+                            }
                         }
-                        else {
-                            usersData.findById(userID, function(err, updateUser) {
-                                if(err) {
-                                    res.end(err);
-                                }
-                                else {
-                                    updateUser.seminars.forEach(function (seminarID){
-                                        seminarsData.findByIdAndUpdate(
-                                            seminarID,
-                                            { $push: { registrants: user._id }},
-                                            { new: true, safe: true, upsert: true },
-                                            function(err) {
-                                                if(err) {
-                                                    res.end(err);
-                                                }
-                                                else {
-                                                    res.end();
-                                                }
-                                            }
-                                        );
-                                    });
-                                }
-                            });
-                        }
-                    });
+                    );
                 }
-            });
-        });
+            }
+        );
+    }
+});
+
+router.patch('/user/:userID/unregister/:seminarID', function(req, res, next) {
+    if (req.user === undefined) {
+        res.json({});
+    }
+    else {
+        var userID = req.params.userID;
+        var seminarID = req.params.seminarID;
+
+        seminarsData.findByIdAndUpdate(
+            seminarID,
+            { $pull: { registrants: userID }},
+            { new: true, upsert: true },
+            function(err) {
+                if(err) {
+                    res.end(err);
+                }
+                else {
+                    usersData.findByIdAndUpdate(
+                        userID,
+                        { $pull: { seminars: seminarID }},
+                        { new: true, upsert: true },
+                        function(err) {
+                            if(err) {
+                                res.end(err);
+                            }
+                            else {
+                                res.end();
+                            }
+                        }
+                    );
+                }
+            }
+        );
     }
 });
 
@@ -301,23 +305,18 @@ router.get('/users/count', function(req, res, next) {
 });
 
 router.get('/seminar/:seminarID', function(req, res, next) {
-    if (req.user === undefined) {
-        res.json({});
-    }
-    else {
-        var seminarID = req.params.seminarID;
+    var seminarID = req.params.seminarID;
 
-        seminarsData.findById(seminarID)
-            .populate(['speakers', 'registrants'])
-            .exec(function(err, results) {
-                if(err) {
-                    res.end(err);
-                }
-                else {
-                    res.json([results]);
-                }
-            });
-    }
+    seminarsData.findById(seminarID)
+        .populate(['speakers', 'registrants'])
+        .exec(function(err, results) {
+            if(err) {
+                res.end(err);
+            }
+            else {
+                res.json([results]);
+            }
+        });
 });
 
 router.patch('/seminar/:seminarID', function(req, res, next) {

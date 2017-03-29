@@ -9,8 +9,8 @@ class HomeHeader extends Component {
     constructor(props) {
         super(props);
 
-        this.handleUserAddSeminarSubmit = this.handleUserAddSeminarSubmit .bind(this);
-        this.handleUserRemoveSeminarSubmit = this.handleUserRemoveSeminarSubmit .bind(this);
+        this.handleUserAddSeminarSubmit = this.handleUserAddSeminarSubmit.bind(this);
+        this.handleUserRemoveSeminarSubmit = this.handleUserRemoveSeminarSubmit.bind(this);
     }
     handleUserAddSeminarSubmit(userID, seminarID) {
         const { registerSeminar } = this.props;
@@ -45,6 +45,8 @@ class HomeHeader extends Component {
                         <Logo
                             user={user}
                             seminar={seminar}
+                            handleUserAddSeminarSubmit={handleUserAddSeminarSubmit}
+                            handleUserRemoveSeminarSubmit={handleUserRemoveSeminarSubmit}
                         />
                         <Nav user={user} />
                     </div>
@@ -55,6 +57,19 @@ class HomeHeader extends Component {
 }
 
 export default connect((props) => {
+    const refreshSeminarProfileDataFetch = {
+        userDataFetch: {
+            url: `/api/user`,
+            force: true,
+            refreshing: true
+        },
+        seminarProfileDataFetch: {
+            url: `/api/seminar/${props.seminarID}`,
+            force: true,
+            refreshing: true
+        }
+    };
+
     return {
         userDataFetch: {
             url: `/api/user`,
@@ -71,7 +86,8 @@ export default connect((props) => {
                 url: `/api/user/${userID}/register/${seminarID}`,
                 method: 'PATCH',
                 force: true,
-                refreshing: true
+                refreshing: true,
+                andThen: () => (refreshSeminarProfileDataFetch)
             }
         }),
         unRegisterSeminar: (userID, seminarID) => ({
@@ -79,7 +95,8 @@ export default connect((props) => {
                 url: `/api/user/${userID}/unregister/${seminarID}`,
                 method: 'PATCH',
                 force: true,
-                refreshing: true
+                refreshing: true,
+                andThen: () => (refreshSeminarProfileDataFetch)
             }
         })
     }
