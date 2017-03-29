@@ -5,72 +5,8 @@ import Select2 from 'react-select2-wrapper';
 import 'react-select2-wrapper/css/select2.min.css';
 
 class Body extends Component {
-    constructor(props) {
-        super(props);
-
-        const {
-            user,
-            seminars
-        } = this.props;
-        let seminarsValue = [];
-        let seminarsData = [];
-
-        for (var i = 0; i < user.seminars.length; i++) {
-            seminarsValue.push(user.seminars[i]._id);
-        }
-
-        for (var j = 0; j < seminars.length; j++) {
-            seminarsData.push({
-                text: seminars[j].title,
-                id: seminars[j]._id
-            });
-        }
-
-        this.state = {
-            seminarsValue: seminarsValue,
-            seminarsData: seminarsData
-        };
-
-        this.handleSeminarsValueChange = this.handleSeminarsValueChange.bind(this);
-        this.handleEditUserSeminarsSubmit = this.handleEditUserSeminarsSubmit.bind(this);
-    }
-    handleSeminarsValueChange() {
-        let seminars = this.refs.seminars.el.select2('data');
-        let seminarsValue = [];
-
-        for (var i = 0; i < seminars.length; i++) {
-            seminarsValue.push(seminars[i].id);
-        }
-
-        this.setState({seminarsValue: seminarsValue})
-    }
-    handleEditUserSeminarsSubmit(event) {
-        event.preventDefault();
-
-        const {
-            user,
-            handleEditUserSeminarsSubmit
-        } = this.props;
-        let editUserSeminars = [];
-        let seminars = this.state.seminarsValue;
-
-        editUserSeminars.push ({
-            seminars
-        });
-        handleEditUserSeminarsSubmit(user._id, editUserSeminars);
-        browserHistory.push('/');
-    }
-
     render() {
-        const {
-            handleSeminarsValueChange,
-            handleEditUserSeminarsSubmit
-        } = this;
         const { user } = this.props;
-        const {
-            seminarsValue,
-            seminarsData
-        } = this.state;
 
         return(
             <div id="user-details-body">
@@ -171,9 +107,22 @@ class Body extends Component {
                             {
                                 user.seminars.map(userSeminar =>
                                     <li>
-                                        <Link to={'/seminar/' + userSeminar._id}>
-                                            {userSeminar.title}
-                                        </Link>
+                                        <strong>
+                                            <Link to={'/seminar/' + userSeminar._id}>
+                                                {userSeminar.title}
+                                            </Link>
+                                        </strong>
+                                        &nbsp;
+                                        {
+                                            moment(userSeminar.schedule)
+                                                .tz("Asia/Manila")
+                                                .format("MMM DD, YYYY hh:mm A")
+                                        }
+                                        &nbsp;
+                                        &#64;
+                                        {
+                                            userSeminar.location
+                                        }
                                     </li>
                                 )
                             }
