@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { browserHistory } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import moment from 'moment-timezone';
 import Select2 from 'react-select2-wrapper';
 import 'react-select2-wrapper/css/select2.min.css';
@@ -167,20 +167,16 @@ class Body extends Component {
                                Seminars
                             </strong>
                         </p>
-                        <Select2
-                            multiple
-                            defaultValue={seminarsValue}
-                            data={seminarsData}
-                            onChange={handleSeminarsValueChange}
-                            ref="seminars"
-                        />
-                        <hr />
-                        <ul className="actions">
-                            <li>
-                                <a className="button style3" onClick={handleEditUserSeminarsSubmit}>
-                                    Edit Registration
-                                </a>
-                            </li>
+                        <ul>
+                            {
+                                user.seminars.map(userSeminar =>
+                                    <li>
+                                        <Link to={'/seminar/' + userSeminar._id}>
+                                            {userSeminar.title}
+                                        </Link>
+                                    </li>
+                                )
+                            }
                         </ul>
                     </div>
                 </div>

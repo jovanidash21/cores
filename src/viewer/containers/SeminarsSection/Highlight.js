@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import moment from 'moment-timezone';
 
 class Highlight extends Component {
@@ -8,15 +9,15 @@ class Highlight extends Component {
         return (
             <div className="4u 12u(mobile)">
                 <section className="highlight">
-                    <a href="#" className="image featured">
+                    <Link to={'/seminar/' + seminar._id} className="image featured">
                         <img src={seminar.featuredImage} alt="" />
-                    </a>
+                    </Link>
                     <h3>
-                        <a href="#">
+                        <Link to={'/seminar/' + seminar._id}>
                             {
                                 seminar.title
                             }
-                        </a>
+                        </Link>
                     </h3>
                     <p>
                         {
