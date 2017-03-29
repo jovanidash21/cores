@@ -62,7 +62,31 @@ class Logo extends Component {
                         seminar.title
                     }
                 </h1>
-
+                <ul className="actions">
+                    {
+                        user._id != undefined
+                            ?
+                                registered == false
+                                ?
+                                <li>
+                                    <a className="button style1" onClick={handleUserAddSeminarSubmit}>
+                                        Register
+                                    </a>
+                                </li>
+                                :
+                                <li>
+                                    <a className="button style3" onClick={handleUserRemoveSeminarSubmit}>
+                                        Unregister
+                                    </a>
+                                </li>
+                            :
+                            <li>
+                                <a href="/auth/login" className="button style3">
+                                    Login to Register
+                                </a>
+                            </li>
+                    }
+                </ul>
             </div>
         )
     }
