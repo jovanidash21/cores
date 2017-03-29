@@ -23,6 +23,9 @@ class SeminarDescription extends Component {
                         More Info
                     </div>
                     <section id="intro" className="container">
+                        <p>
+                            <img src={seminar.featuredImage} alt="" />
+                        </p>
                         <p className="style2">
                             {
                                 moment(seminar.schedule)
@@ -55,7 +58,6 @@ class SeminarDescription extends Component {
                                         </li>
                                 }
                             </ul>
-
                         </p>
                         <p className="style1">
                             {
