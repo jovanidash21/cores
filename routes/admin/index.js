@@ -8,6 +8,9 @@ router.get('/', function(req, res, next) {
                 title: 'Dashboard'
             });
         }
+        else {
+            res.redirect('/');
+        }
     }
     else {
         res.redirect('/auth/login');
