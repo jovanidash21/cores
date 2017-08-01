@@ -44,6 +44,6 @@
     "react-spinkit": "^2.1.1",
     "spicy-datatable": "^0.2.9",
     "style-loader": "^0.13.2",
-    "webpack": "^2.2.1"
+    "webpack": "^3.4.1"
   }
 }
