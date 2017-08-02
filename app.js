@@ -10,6 +10,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
 var mongoose = require('mongoose');
 var Promise = require('bluebird');
+var browserSync = require('browser-sync');
 
 var options = {
   server: {
@@ -32,6 +33,17 @@ var auth = require('./routes/auth');
 var usersData = require('./models/users-data-schema');
 
 var app = express();
+
+// browserSync setup
+if ( process.env.NODE_ENV != 'production' ) {
+  browserSync({
+    files: ['./**/*'],
+    online: false,
+    port: 9000,
+    proxy: 'localhost:3000',
+    ui: false
+  });
+}
 
 passport.use(new LocalStrategy(usersData.authenticate()));
 passport.serializeUser(usersData.serializeUser());
