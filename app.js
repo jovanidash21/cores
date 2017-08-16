@@ -11,6 +11,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
 var mongoose = require('mongoose');
+var MongoStore = require('connect-mongo')(session);
 var Promise = require('bluebird');
 
 var options = {
@@ -52,8 +53,11 @@ passport.serializeUser(usersData.serializeUser());
 passport.deserializeUser(usersData.deserializeUser());
 
 // mongoose configuration
-mongoose.connect(process.env.MONGODB_URI, options);
+var mongooseOptions = {
+  useMongoClient: true
+};
 mongoose.Promise = Promise;
+mongoose.connect(process.env.MONGODB_URI, mongooseOptions);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -66,10 +70,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// session configuration
+var mongosStoreOptions = {
+  mongooseConnection: mongoose.connection
+}
 app.use(session({
   secret: process.env.SESSION_SECRET,
   saveUninitialized: true,
-  resave: false
+  resave: false,
+  store: new MongoStore(mongosStoreOptions)
 }));
 
 // passport configuration
