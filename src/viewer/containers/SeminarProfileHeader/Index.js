@@ -39,7 +39,7 @@ class HomeHeader extends Component {
                 handleUserRemoveSeminarSubmit
             } = this;
 
-            return (
+            return(
                 <div id="header-wrapper" className="wrapper">
                     <div id="header">
                         <Logo

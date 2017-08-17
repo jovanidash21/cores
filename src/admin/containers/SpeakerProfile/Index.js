@@ -8,59 +8,59 @@ import Header from './Header';
 import Body from './Body';
 
 class SpeakerProfile extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.handleDeleteSpeakerSubmit = this.handleDeleteSpeakerSubmit.bind(this);
+    this.handleDeleteSpeakerSubmit = this.handleDeleteSpeakerSubmit.bind(this);
+  }
+  handleDeleteSpeakerSubmit(speakerID) {
+    const { deleteSpeaker } = this.props;
+
+    deleteSpeaker(speakerID);
+    browserHistory.push('/admin/speakers');
+  }
+
+  render() {
+    const { speakerProfileDataFetch } = this.props;
+
+    if (speakerProfileDataFetch.pending) {
+      return <LoadingAnimation />
     }
-    handleDeleteSpeakerSubmit(speakerID) {
-        const { deleteSpeaker } = this.props;
-
-        deleteSpeaker(speakerID);
-        browserHistory.push('/admin/speakers');
+    else if (speakerProfileDataFetch.rejected) {
+      return <Error error={speakerProfileDataFetch.reason} />
     }
+    else if (speakerProfileDataFetch.fulfilled) {
+      const [speaker] = speakerProfileDataFetch.value;
+      const { handleDeleteSpeakerSubmit } = this;
 
-    render() {
-        const { speakerProfileDataFetch } = this.props;
-
-        if (speakerProfileDataFetch.pending) {
-            return <LoadingAnimation />
-        }
-        else if (speakerProfileDataFetch.rejected) {
-            return <Error error={speakerProfileDataFetch.reason} />
-        }
-        else if (speakerProfileDataFetch.fulfilled) {
-            const [speaker] = speakerProfileDataFetch.value;
-            const { handleDeleteSpeakerSubmit } = this;
-
-            return(
-                <div>
-                    <Menu
-                        speaker={speaker}
-                        handleDeleteSpeakerSubmit={handleDeleteSpeakerSubmit}
-                    />
-                    <Header speaker={speaker} />
-                    <Body speaker={speaker} />
-                </div>
-            )
-        }
+      return(
+        <div>
+          <Menu
+            speaker={speaker}
+            handleDeleteSpeakerSubmit={handleDeleteSpeakerSubmit}
+          />
+          <Header speaker={speaker} />
+          <Body speaker={speaker} />
+        </div>
+      )
     }
+  }
 }
 
 export default connect((props) => {
-    return {
-        speakerProfileDataFetch: {
-            url:`/api/speaker/${props.speakerID}`,
-            force: true,
-            refreshing: true
-        },
-        deleteSpeaker: (speakerID) => ({
-            deleteSpeakerFetch: {
-                url: `/api/speaker/${speakerID}`,
-                method: 'DELETE',
-                force: true,
-                refreshing: true
-            }
-        })
-    }
+  return {
+    speakerProfileDataFetch: {
+      url:`/api/speaker/${props.speakerID}`,
+      force: true,
+      refreshing: true
+    },
+    deleteSpeaker: (speakerID) => ({
+      deleteSpeakerFetch: {
+        url: `/api/speaker/${speakerID}`,
+        method: 'DELETE',
+        force: true,
+        refreshing: true
+      }
+    })
+  }
 })(SpeakerProfile);

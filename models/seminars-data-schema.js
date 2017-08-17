@@ -9,40 +9,40 @@ mongoose.Promise = Promise;
 
 var seminarsDataSchema = new Schema
 (
-    {
-        title: {type:String, default: ''},
-        featuredImage: {
-            type:String,
-            default: 'https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/seminar/default.png'
-        },
-        description: {type:String, default: ''},
-        speakers: [{
-            type: Schema.Types.ObjectId,
-            ref: 'speakersData'
-        }],
-        schedule: {type:Date, default: Date.now},
-        location: {
-            type:String,
-            enum: [
-                'none',
-                'bulwagang-balagtas',
-                'claro-m-recto',
-                'ictc',
-                'pup-theater',
-                'avr-cea',
-                'avr-cot',
-                'manila-room'
-            ],
-            default: 'none'
-        },
-        registrants: [{
-            type: Schema.Types.ObjectId,
-            ref: 'usersData'
-        }]
+  {
+    title: {type:String, default: ''},
+    featuredImage: {
+      type:String,
+      default: 'https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/seminar/default.png'
     },
-    {
-        collection: 'seminarsData'
-    }
+    description: {type:String, default: ''},
+    speakers: [{
+      type: Schema.Types.ObjectId,
+      ref: 'speakersData'
+    }],
+    schedule: {type:Date, default: Date.now},
+    location: {
+      type:String,
+      enum: [
+        'none',
+        'bulwagang-balagtas',
+        'claro-m-recto',
+        'ictc',
+        'pup-theater',
+        'avr-cea',
+        'avr-cot',
+        'manila-room'
+      ],
+      default: 'none'
+    },
+    registrants: [{
+      type: Schema.Types.ObjectId,
+      ref: 'usersData'
+    }]
+  },
+  {
+    collection: 'seminarsData'
+  }
 );
 
 seminarsDataSchema.plugin(timestamps);

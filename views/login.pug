@@ -1,35 +1,34 @@
 doctype html
 html
-    head
-        meta(charset='utf-8')
-        meta(http-equiv='X-UA-Compatible', content='IE=edge')
-        meta(name='viewport', content='width=device-width, initial-scale=1')
-        title= title
-        link(rel='stylesheet', type='text/css', href='/stylesheets/vendor.css')
-        link(rel='stylesheet', type='text/css', href='/stylesheets/flat-admin.css')
-        link(rel='stylesheet', type='text/css', href='/stylesheets/login.css')
-    body.login-page
-        .app-container.app-login
-            .flex-center
-                .app-header
-                .app-body
-                    .app-block
-                        .app-form
-                            .form-header
-                                .app-brand
-                                    img(src='/images/logo-dark.png' alt='')
-                                    p.highlight CoRES
-                            form(action='/auth/login', method='post')
-                                .input-group
-                                    span#basic-addon1.input-group-addon
-                                        i.fa.fa-user(aria-hidden='true')
-                                    input.form-control(name='username', type='text', placeholder='Username', required='required', autocomplete='off', aria-describedby='basic-addon1')
-                                .input-group
-                                    span#basic-addon2.input-group-addon
-                                        i.fa.fa-key(aria-hidden='true')
-                                    input.form-control(name='password', type='password', placeholder='Password', required='required', autocomplete='off', aria-describedby='basic-addon2')
-                                .text-center
-                                    input.btn.btn-success.btn-submit(type='submit', value='Login')
-                            if (alertMessage.length > 0)
-                                p.alert-message
-                                    | #{alertMessage}
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title= title
+    link(rel='stylesheet', type='text/css', href='/stylesheets/vendor.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/flat-admin.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/login.css')
+  body.login-page
+    .app-container.app-login
+      .flex-center
+        .app-header
+        .app-body
+          .app-block
+            .app-form
+              .form-header
+                .app-brand
+                  img(src='/images/logo-dark.png' alt='')
+                  p.highlight CoRES
+              form(action='/auth/login', method='post')
+                .input-group
+                  span#basic-addon1.input-group-addon
+                    i.fa.fa-user(aria-hidden='true')
+                  input.form-control(name='username', type='text', placeholder='Username', required='required', autocomplete='off', aria-describedby='basic-addon1')
+                .input-group
+                  span#basic-addon2.input-group-addon
+                    i.fa.fa-key(aria-hidden='true')
+                  input.form-control(name='password', type='password', placeholder='Password', required='required', autocomplete='off', aria-describedby='basic-addon2')
+                .text-center
+                  input.btn.btn-success.btn-submit(type='submit', value='Login')
+              if (alertMessage.length > 0)
+                p.alert-message= alertMessage

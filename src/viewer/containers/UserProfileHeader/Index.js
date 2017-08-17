@@ -6,35 +6,35 @@ import Logo from './Logo';
 import Nav from './Nav';
 
 class HomeHeader extends Component {
-    render() {
-        const { userDataFetch } = this.props;
-        if (userDataFetch.pending) {
-            return <LoadingAnimation />
-        }
-        else if (userDataFetch.rejected) {
-            return <Error error={userDataFetch.reason} />
-        }
-        else if (userDataFetch.fulfilled) {
-            const [ user ] = userDataFetch.value;
-
-            return (
-                <div id="header-wrapper" className="wrapper">
-                    <div id="header">
-                        <Logo user={user} />
-                        <Nav />
-                    </div>
-                </div>
-            )
-        }
+  render() {
+    const { userDataFetch } = this.props;
+    if (userDataFetch.pending) {
+      return <LoadingAnimation />
     }
+    else if (userDataFetch.rejected) {
+      return <Error error={userDataFetch.reason} />
+    }
+    else if (userDataFetch.fulfilled) {
+      const [ user ] = userDataFetch.value;
+
+      return(
+        <div id="header-wrapper" className="wrapper">
+          <div id="header">
+            <Logo user={user} />
+            <Nav />
+          </div>
+        </div>
+      )
+    }
+  }
 }
 
 export default connect(() => {
-    return {
-        userDataFetch: {
-            url: `/api/user`,
-            force: true,
-            refreshing: true
-        }
+  return {
+    userDataFetch: {
+      url: `/api/user`,
+      force: true,
+      refreshing: true
     }
+  }
 })(HomeHeader);

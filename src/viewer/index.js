@@ -4,5 +4,5 @@ import { Router, browserHistory } from 'react-router'
 import routes from './routes';
 
 render(
-    <Router history={browserHistory} routes={routes} />
-    , document.getElementById('viewer-root'));
+  <Router history={browserHistory} routes={routes} />
+  , document.getElementById('viewer-root'));

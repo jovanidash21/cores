@@ -1,11 +1,11 @@
 import React from 'react';
 
 const CardHeader = () => {
-    return(
-        <div className="card-header">
-            Create a brand new seminar.
-        </div>
-    )
+  return(
+    <div className="card-header">
+      Create a brand new seminar.
+    </div>
+  )
 };
 
 export default CardHeader;

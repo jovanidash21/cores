@@ -7,68 +7,68 @@ import CardHeader from './CardHeader';
 import Body from './Body';
 
 class NewSeminarForm extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.handleAddNewSeminarSubmit = this.handleAddNewSeminarSubmit.bind(this);
+    this.handleAddNewSeminarSubmit = this.handleAddNewSeminarSubmit.bind(this);
+  }
+  handleAddNewSeminarSubmit(newSeminar) {
+    const { addNewSeminar } = this.props;
+
+    addNewSeminar(newSeminar);
+    browserHistory.push('/admin/seminars');
+  }
+
+  render() {
+    const { speakersDataFetch } = this.props;
+    const allSpeakersDataFetch = PromiseState.all([speakersDataFetch]);
+
+    if (allSpeakersDataFetch.pending) {
+      return <LoadingAnimation />
     }
-    handleAddNewSeminarSubmit(newSeminar) {
-        const { addNewSeminar } = this.props;
-
-        addNewSeminar(newSeminar);
-        browserHistory.push('/admin/seminars');
+    else if (allSpeakersDataFetch.rejected) {
+      return <Error error={allSpeakersDataFetch.reason} />
     }
+    else if (allSpeakersDataFetch.fulfilled) {
+      const [speakers] = allSpeakersDataFetch.value;
+      const { handleAddNewSeminarSubmit } = this;
 
-    render() {
-        const { speakersDataFetch } = this.props;
-        const allSpeakersDataFetch = PromiseState.all([speakersDataFetch]);
-
-        if (allSpeakersDataFetch.pending) {
-            return <LoadingAnimation />
-        }
-        else if (allSpeakersDataFetch.rejected) {
-            return <Error error={allSpeakersDataFetch.reason} />
-        }
-        else if (allSpeakersDataFetch.fulfilled) {
-            const [speakers] = allSpeakersDataFetch.value;
-            const { handleAddNewSeminarSubmit } = this;
-
-            return(
-                <div className="row">
-                    <div className="col-md-12">
-                        <div className="card">
-                            <CardHeader />
-                            <div className="card-body">
-                                <form className="form form-horizontal">
-                                    <Body
-                                        speakers={speakers}
-                                        handleAddNewSeminarSubmit={handleAddNewSeminarSubmit}
-                                    />
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )
-        }
+      return(
+        <div className="row">
+          <div className="col-md-12">
+            <div className="card">
+              <CardHeader />
+              <div className="card-body">
+                <form className="form form-horizontal">
+                    <Body
+                      speakers={speakers}
+                      handleAddNewSeminarSubmit={handleAddNewSeminarSubmit}
+                    />
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
     }
+  }
 }
 
 export default connect(() => {
-    return {
-        speakersDataFetch: {
-            url: `/api/speakers`,
-            force: true,
-            refreshing: true
-        },
-        addNewSeminar: (newSeminar) => ({
-            addNewSeminarFetch: {
-                url: `/api/seminars`,
-                method: 'POST',
-                force: true,
-                refreshing: true,
-                body: JSON.stringify(newSeminar)
-            }
-        })
-    }
+  return {
+    speakersDataFetch: {
+      url: `/api/speakers`,
+      force: true,
+      refreshing: true
+    },
+    addNewSeminar: (newSeminar) => ({
+      addNewSeminarFetch: {
+        url: `/api/seminars`,
+        method: 'POST',
+        force: true,
+        refreshing: true,
+        body: JSON.stringify(newSeminar)
+      }
+    })
+  }
 })(NewSeminarForm);

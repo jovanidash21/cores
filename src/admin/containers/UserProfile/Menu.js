@@ -4,40 +4,40 @@ import { Button } from 'react-bootstrap';
 
 class Menu extends Component {
     constructor(props) {
-        super(props);
+      super(props);
 
-        this.handleDeleteUserSubmit = this.handleDeleteUserSubmit.bind(this);
+      this.handleDeleteUserSubmit = this.handleDeleteUserSubmit.bind(this);
     }
     handleDeleteUserSubmit(event) {
-        event.preventDefault();
+      event.preventDefault();
 
-        const {
-            user,
-            handleDeleteUserSubmit
-        } = this.props;
+      const {
+        user,
+        handleDeleteUserSubmit
+      } = this.props;
 
-        handleDeleteUserSubmit(user._id);
+      handleDeleteUserSubmit(user._id);
     }
 
     render() {
-        const { handleDeleteUserSubmit } = this;
-        const { user } = this.props;
+      const { handleDeleteUserSubmit } = this;
+      const { user } = this.props;
 
-        return(
-            <div className="row" style={{textAlign:"right"}}>
-                <div className="col-lg-12">
-                    <Link to={'/admin/user/' + user._id + '/edit'}>
-                        <Button bsSize="large" bsStyle="success">
-                            Edit User
-                        </Button>
-                    </Link>
-                    &nbsp;
-                    <Button bsSize="large" bsStyle="danger" onClick={handleDeleteUserSubmit} >
-                        Delete User
-                    </Button>
-                </div>
-            </div>
-        )
+      return(
+        <div className="row" style={{textAlign:"right"}}>
+          <div className="col-lg-12">
+            <Link to={'/admin/user/' + user._id + '/edit'}>
+              <Button bsSize="large" bsStyle="success">
+                Edit User
+              </Button>
+            </Link>
+            &nbsp;
+            <Button bsSize="large" bsStyle="danger" onClick={handleDeleteUserSubmit} >
+              Delete User
+            </Button>
+          </div>
+        </div>
+      )
     }
 }
 
