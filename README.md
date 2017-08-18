@@ -1,15 +1,5 @@
-# Software Engineering - Final Project - Event Registration System - React
+# CoRES
 ---
-## Screenshots
-* Viewer Page
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jovanidash21/cores/master/screenshots/viewer.png">
-</p>
-
-* Administrator Page
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jovanidash21/cores/master/screenshots/admin.png">
-</p>
 
 ## Prerequisite
 * [Node.js](https://nodejs.org/en/) installed.
@@ -26,25 +16,41 @@ git clone https://github.com/jovanidash21/cores.git
 npm install
 ```
 * Start the MongoDB Server.
-* Open app.js and replace ```process.env.MONGODB_URI``` with ```'mongodb://localhost:27017/cores'```.
-* On the same file, replace ```process.env.SECRET_KEY``` with ```'secret'```.
-* Open another terminal or cmd and run 'www' file inside the bin directory.
 ```
-node ./bin/www
+mongod
+``` 
+* Open another terminal or cmd and run mongo.
+```
+mongo
+``` 
+* Create a database locally using MongoDB on your computer.
+```
+use cores
+``` 
+* Insert to the database the JSON files inside the data folder of this project.
+* Create a ```.env``` file. 
+* Copy and paste the texts in ```.env.example``` to ```.env``` and insert the values for each environment variables.
+* Open another terminal or cmd and run the project.
+```
+npm run build
 ```
 * Open a browser and visit ```localhost:3000```.
-* Signup to create an account.
+* Login with this credentials. Username: ```admin```. Password: ```admin```.
+* Run in dev mode.
+```
+npm run dev
+```
+
+## NPM Scripts
+* ```npm start``` - start the server.
+* ```npm run build``` - run the project in production mode.
+* ```npm run build:client``` - run client side in production mode.
+* ```npm run build:server``` - run server side in production mode.
+* ```npm run dev``` - run the project in dev mode.
 
 ## Credits
 - [Viewer Skel Theme](https://html5up.net/uploads/demos/escape-velocity/)
 - [Admin Bootstrap Theme](https://github.com/tui2tone/flat-admin-bootstrap-templates)
 
-## Connect
-- [Wordpress](https://jovaniwarguez.wordpress.com/)
-- [Facebook](https://facebook.com/jovani.cadornawarguez)
-- [Twitter](https://twitter.com/jovanidash21)
-- [Instagram](https://www.instagram.com/jovanidash21/)
-- [Google+](https://plus.google.com/u/0/104385173780051504413)
-- [LinkedIn](https://www.linkedin.com/in/jovani-warguez-827a8a11b?trk=nav_responsive_tab_profile_pic)
-- [YouTube](https://www.youtube.com/channel/UCNiVxhbJ6Ku9keIjkQX3RRQ)
-- [CodePen](http://codepen.io/jovanidash21/)
+## Website
+[Live Demo](https://cores-jovanidash21.herokuapp.com/)
