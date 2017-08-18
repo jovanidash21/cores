@@ -1,0 +1,206 @@
+[
+  {
+  	"createdAt": {
+  		"$date": "2017-03-19T10:17:02.521Z"
+  	},
+  	"updatedAt": {
+  		"$date": "2017-03-29T10:37:33.088Z"
+  	},
+  	"registrants": [],
+  	"location": "bulwagang-balagtas",
+  	"schedule": {
+  		"$date": "2018-01-19T05:00:00.000Z"
+  	},
+  	"speakers": [],
+  	"description": "Google, Intel and Microsoft Community, Communities mostly consists of the developers and non-developers.",
+  	"featuredImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/seminar/communities-mozilla-intel-google.png",
+  	"title": "Communities: Mozilla, Intel, Google"
+  },
+  {
+  	"createdAt": {
+  		"$date": "2017-03-19T10:28:44.294Z"
+  	},
+  	"updatedAt": {
+  		"$date": "2017-03-28T06:10:00.800Z"
+  	},
+  	"registrants": [],
+  	"location": "claro-m-recto",
+  	"schedule": {
+  		"$date": "2018-01-19T00:00:00.000Z"
+  	},
+  	"speakers": [],
+  	"description": "DIWATA is the country’s first micro-satellite designed, developed and assembled by Filipino researchers and engineers under the guidance of Japanese experts in Hokkaido and Tohoku Universities.",
+  	"featuredImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/seminar/sattelite-technology-diwata.png",
+  	"title": "Satellite Technology Diwata"
+  },
+  {
+  	"createdAt": {
+  		"$date": "2017-03-19T10:40:46.879Z"
+  	},
+  	"updatedAt": {
+  		"$date": "2017-03-28T06:10:00.809Z"
+  	},
+  	"registrants": [],
+  	"location": "ictc",
+  	"schedule": {
+  		"$date": "2018-01-20T00:00:00.000Z"
+  	},
+  	"speakers": [],
+  	"description": "A geographic information system(GIS) is a computer system for capturing, storing, checking, and displaying data related to positions on Earth's surface. GIS can show many different kinds of data on one map. ",
+  	"featuredImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/seminar/gis-mapping.png",
+  	"title": "GIS Mapping"
+  },
+  {
+  	"createdAt": {
+  		"$date": "2017-03-19T10:42:30.367Z"
+  	},
+  	"updatedAt": {
+  		"$date": "2017-03-28T06:10:00.784Z"
+  	},
+  	"registrants": [],
+  	"location": "manila-room",
+  	"schedule": {
+  		"$date": "2018-01-18T08:00:00.000Z"
+  	},
+  	"speakers": [],
+  	"description": "HERE is building the Open Location Platform for just this purpose. It is a multi-sided platform agnostic to data type and source and is designed to ingest, process and analyze location data.",
+  	"featuredImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/seminar/here-maps.png",
+  	"title": "Here Maps"
+  },
+  {
+  	"createdAt": {
+  		"$date": "2017-03-19T10:44:49.604Z"
+  	},
+  	"updatedAt": {
+  		"$date": "2017-03-28T06:10:00.813Z"
+  	},
+  	"registrants": [],
+  	"location": "pup-theater",
+  	"schedule": {
+  		"$date": "2018-01-20T00:00:00.000Z"
+  	},
+  	"speakers": [],
+  	"description": "For virtual reality to be truly effective, it must have a good sense of realism. Just on its own this is a technical challenge and, as such, virtual reality is highly demanding on many resissue.",
+  	"featuredImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/seminar/virtual-reality.png",
+  	"title": "VR Reality Programming"
+  },
+  {
+  	"createdAt": {
+  		"$date": "2017-03-19T10:46:46.294Z"
+  	},
+  	"updatedAt": {
+  		"$date": "2017-03-29T10:50:49.056Z"
+  	},
+  	"registrants": [],
+  	"location": "avr-cot",
+  	"schedule": {
+  		"$date": "2018-01-18T00:30:00.000Z"
+  	},
+  	"speakers": [],
+  	"description": "While the clue's in the name, it doesn't quite tell the whole story. Wearable technology is clearly gadgets you wear, but there are important distinctions.",
+  	"featuredImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/seminar/wearable-technology.png",
+  	"title": "Wearable Technology"
+  },
+  {
+  	"createdAt": {
+  		"$date": "2017-03-19T10:51:35.891Z"
+  	},
+  	"updatedAt": {
+  		"$date": "2017-03-29T10:37:33.091Z"
+  	},
+  	"registrants": [],
+  	"location": "avr-cea",
+  	"schedule": {
+  		"$date": "2018-01-19T05:00:00.000Z"
+  	},
+  	"speakers": [],
+  	"description": "To extend connectivity to hundreds or even thousands of kilometers away, Project Loon needs to transmit a signal from Internet connection points on the ground, beam it across multiple balloons in the stratosphere, and then send that signal back down to users.",
+  	"featuredImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/seminar/project-loon.png",
+  	"title": "Project Loon"
+  },
+  {
+  	"createdAt": {
+  		"$date": "2017-03-19T10:52:22.939Z"
+  	},
+  	"updatedAt": {
+  		"$date": "2017-03-29T10:37:33.093Z"
+  	},
+  	"registrants": [],
+  	"location": "pup-theater",
+  	"schedule": {
+  		"$date": "2018-01-18T02:30:00.000Z"
+  	},
+  	"speakers": [],
+  	"description": "LIDAR, which stands for Light Detection and Ranging, is a remote sensing method that uses light in the form of a pulsed laser to measure ranges (variable distances) to the Earth.",
+  	"featuredImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/seminar/lidar-technology.png",
+  	"title": "Lidar Technology"
+  },
+  {
+  	"createdAt": {
+  		"$date": "2017-03-19T10:53:34.373Z"
+  	},
+  	"updatedAt": {
+  		"$date": "2017-03-29T10:37:33.090Z"
+  	},
+  	"registrants": [],
+  	"location": "bulwagang-balagtas",
+  	"schedule": {
+  		"$date": "2018-01-18T06:00:00.000Z"
+  	},
+  	"speakers": [],
+  	"description": "IoT Cloud is a platform that is designed to store and process Internet of Things (IoT) data. The platform is built to take in the massive volumes of data generated by devices, sensors, websites, applications, customers and partners and initate actions for real-time responses.",
+  	"featuredImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/seminar/data-cloud-internet-of-things.png",
+  	"title": "Data Cloud: Internet of Things"
+  },
+  {
+  	"createdAt": {
+  		"$date": "2017-03-19T10:54:08.641Z"
+  	},
+  	"updatedAt": {
+  		"$date": "2017-03-28T06:10:00.815Z"
+  	},
+  	"registrants": [],
+  	"location": "bulwagang-balagtas",
+  	"schedule": {
+  		"$date": "2018-01-20T07:00:00.000Z"
+  	},
+  	"speakers": [],
+  	"description": "The interconnection of nanoscale devices with existing communication networks and ultimately the Internet defines a new networking paradigm that is further referred to as the Internet of Nano-Things. ",
+  	"featuredImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/seminar/internet-of-nano-things.png",
+  	"title": "Internet of Nanothings"
+  },
+  {
+  	"createdAt": {
+  		"$date": "2017-03-26T04:06:47.873Z"
+  	},
+  	"updatedAt": {
+  		"$date": "2017-03-28T06:10:00.802Z"
+  	},
+  	"registrants": [],
+  	"location": "manila-room",
+  	"schedule": {
+  		"$date": "2018-01-19T07:00:00.000Z"
+  	},
+  	"speakers": [],
+  	"description": "Light Fidelity or Li-Fi is a Visible Light Communications (VLC) system running wireless communications travelling at very high speeds.",
+  	"featuredImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/seminar/lifi-technology.png",
+  	"title": "LiFi Technology"
+  },
+  {
+  	"createdAt": {
+  		"$date": "2017-03-26T04:08:02.933Z"
+  	},
+  	"updatedAt": {
+  		"$date": "2017-03-28T06:10:00.814Z"
+  	},
+  	"registrants": [],
+  	"location": "manila-room",
+  	"schedule": {
+  		"$date": "2018-01-20T03:00:00.000Z"
+  	},
+  	"speakers": [],
+  	"description": "Security analytics isn't just a fancy marketing term. It's a highly nuanced discipline that takes effort to get right. As IoT devices become ubiquitous and as these devices connect us to incredibly valuable data, we simple cannot afford to get it wrong.",
+  	"featuredImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/seminar/security-and-analytics-internet-of-things.png",
+  	"title": "Security and Analytics: Internet of Things"
+  }
+]

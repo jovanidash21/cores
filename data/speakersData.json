@@ -1,0 +1,218 @@
+[
+	{
+		"createdAt": {
+			"$date": "2017-03-19T11:00:48.658Z"
+		},
+		"updatedAt": {
+			"$date": "2017-03-22T14:12:41.985Z"
+		},
+		"socialLinks": [],
+		"seminars": [],
+		"office": "",
+		"course": "bscpe",
+		"school": "adu",
+		"position": "Manager",
+		"profileImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/profile/default.png",
+		"email": "deborah.parker@gmail.com",
+		"lastName": "Parker",
+		"firstName": "Deborah"
+	},
+	{
+		"createdAt": {
+			"$date": "2017-03-19T11:01:54.114Z"
+		},
+		"updatedAt": {
+			"$date": "2017-03-21T13:43:22.012Z"
+		},
+		"socialLinks": [],
+		"seminars": [],
+		"office": "",
+		"course": "bscs",
+		"school": "pup-manila",
+		"position": "Web Developer",
+		"profileImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/profile/default.png",
+		"email": "brooks.mark@gmail.com",
+		"lastName": "Brooks",
+		"firstName": "Mark"
+	},
+	{
+		"createdAt": {
+			"$date": "2017-03-19T11:03:48.626Z"
+		},
+		"updatedAt": {
+			"$date": "2017-03-19T11:03:48.626Z"
+		},
+		"socialLinks": [],
+		"seminars": [],
+		"office": "",
+		"course": "bscpe",
+		"school": "ceu",
+		"position": "Teacher",
+		"profileImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/profile/default.png",
+		"email": "steveturner@gmail.com",
+		"lastName": "Turner",
+		"firstName": "Steve"
+	},
+	{
+		"createdAt": {
+			"$date": "2017-03-19T11:04:30.949Z"
+		},
+		"updatedAt": {
+			"$date": "2017-03-20T14:00:35.435Z"
+		},
+		"socialLinks": [],
+		"seminars": [],
+		"office": "",
+		"course": "bscpe",
+		"school": "pup-manila",
+		"position": "",
+		"profileImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/profile/default.png",
+		"email": "juangraham@gmail.com",
+		"lastName": "Graham",
+		"firstName": "Juan"
+	},
+	{
+		"createdAt": {
+			"$date": "2017-03-19T11:05:23.865Z"
+		},
+		"updatedAt": {
+			"$date": "2017-03-20T14:05:53.025Z"
+		},
+		"socialLinks": [],
+		"seminars": [],
+		"office": "",
+		"course": "bsit",
+		"school": "feu",
+		"position": "",
+		"profileImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/profile/default.png",
+		"email": "loishanson@gmail.com",
+		"lastName": "Hanson",
+		"firstName": "Lois"
+	},
+	{
+		"createdAt": {
+			"$date": "2017-03-19T11:05:54.564Z"
+		},
+		"updatedAt": {
+			"$date": "2017-03-19T11:05:54.564Z"
+		},
+		"socialLinks": [],
+		"seminars": [],
+		"office": "",
+		"course": "bscpe",
+		"school": "pup-manila",
+		"position": "",
+		"profileImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/profile/default.png",
+		"email": "samuelhart@gmail.com",
+		"lastName": "Hart",
+		"firstName": "Samuel"
+	},
+	{
+		"createdAt": {
+			"$date": "2017-03-19T11:06:35.582Z"
+		},
+		"updatedAt": {
+			"$date": "2017-03-24T09:19:06.477Z"
+		},
+		"socialLinks": [],
+		"seminars": [],
+		"office": "",
+		"course": "other",
+		"school": "pup-manila",
+		"position": "",
+		"profileImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/profile/default.png",
+		"email": "colejoseph@gmail.com",
+		"lastName": "Cole",
+		"firstName": "Joseph"
+	},
+	{
+		"createdAt": {
+			"$date": "2017-03-19T11:07:28.753Z"
+		},
+		"updatedAt": {
+			"$date": "2017-03-19T11:07:28.753Z"
+		},
+		"socialLinks": [],
+		"seminars": [],
+		"office": "",
+		"course": "bscpe",
+		"school": "nu",
+		"position": "Project Manager",
+		"profileImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/profile/default.png",
+		"email": "toddwedwards@gmail.com",
+		"lastName": "Edwards",
+		"firstName": "Todd"
+	},
+	{
+		"createdAt": {
+			"$date": "2017-03-19T11:08:44.058Z"
+		},
+		"updatedAt": {
+			"$date": "2017-03-22T14:20:48.207Z"
+		},
+		"socialLinks": [],
+		"seminars": [],
+		"office": "",
+		"course": "bsit",
+		"school": "pup-manila",
+		"position": "Network Engineer",
+		"profileImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/profile/default.png",
+		"email": "nancygomez@gmail.com",
+		"lastName": "Gomez",
+		"firstName": "Nancy"
+	},
+	{
+		"createdAt": {
+			"$date": "2017-03-19T11:10:36.584Z"
+		},
+		"updatedAt": {
+			"$date": "2017-03-28T03:57:26.451Z"
+		},
+		"socialLinks": [],
+		"seminars": [],
+		"office": "",
+		"course": "bscpe",
+		"school": "pup-manila",
+		"position": "Database Manager",
+		"profileImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/profile/default.png",
+		"email": "josellineward@gmail.com",
+		"lastName": "Ward",
+		"firstName": "Joselline"
+	},
+	{
+		"createdAt": {
+			"$date": "2017-03-26T15:47:03.297Z"
+		},
+		"updatedAt": {
+			"$date": "2017-03-28T03:57:26.443Z"
+		},
+		"socialLinks": [],
+		"seminars": [],
+		"office": "",
+		"course": "bscpe",
+		"school": "ust",
+		"position": "CEO",
+		"profileImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/profile/default.png",
+		"email": "alanlee@gmail.com",
+		"lastName": "Lee",
+		"firstName": "Alan"
+	},
+	{
+		"createdAt": {
+			"$date": "2017-03-26T15:48:03.321Z"
+		},
+		"updatedAt": {
+			"$date": "2017-03-26T15:48:03.321Z"
+		},
+		"socialLinks": [],
+		"seminars": [],
+		"office": "",
+		"course": "bscpe",
+		"school": "pup-manila",
+		"position": "Programmer",
+		"profileImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/profile/default.png",
+		"email": "robinmckinley@gmail.com",
+		"lastName": "McKinley",
+		"firstName": "Robin"
+	}
+]

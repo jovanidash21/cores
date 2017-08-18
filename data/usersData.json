@@ -1,0 +1,27 @@
+[
+	{
+		"createdAt": {
+			"$date": "2017-08-18T12:53:53.276Z"
+		},
+		"updatedAt": {
+			"$date": "2017-08-18T12:53:53.276Z"
+		},
+		"salt": "e418b4e4382eb1c55283052e5bb287afd913397c7b3f16a79af796726abe39b6",
+		"hash": "53c116cbd5dfb161eaa814128e568cefb8282af5b67d8e426e423668b2bed73aefe215da195513fe13347e9cd240c52a7b20d0baaf065ad2f4c41a34d679a61a512d873f207e58f2912732fcad6a11bed782080ae2f1736d6a6d88a1e664f78409ab61bc836ea7b783b79107b19d254619056d94f55e3a6b3722b037fe8904f2feceffe3ab32af407b4a7cecae591eb522b5d2a6b03f87f3ed7929a37e0347c7373d7f9ce24763616ab8c412d51b87bc175987db5b68353ab6e3428188ff635129c8901fef04381419c59801dca517d3872cee41e8628ef871e5bc5b44d05cbe74a4319297f96e6290870c366ffec6b951d52a56490012f9f9d33e404dc9fd80bffcd636889196447cbfc415a38bb217cb430aa6be2c409646fb162420a9021b7e1f190ac230a25ff60edeb24e4eaed90695cfe5c7cdba9fac9f637da5a90f5644fdf231368889ed4466132d5fa270bb2c3c07a7717d7426309eba0d006deea4c747aaaeb35f9bc62360df243f5deb661c9dfa8163dd06f0c70028d7fbc03e1ab33ca59bdde3bc309167a56612094161e4ba15a75d565a06eb210749a50b160849aa46d926fd1396d091ac19d80ba62754c459c71d8945f6d4cb256e034fc1cc618d5a1353d04ee003a7c18e129c342ad7288faf1dca25e4ccdda2ee3160d530a51018a3ffe876503defe415277f343c9e3c3f21b88fa52ec898c4c1e0b33f70",
+		"username": "admin",
+		"role": "registrant",
+		"socialLinks": [],
+		"seminars": [],
+		"course": "bscpe",
+		"studentNumber": "",
+		"school": "pup-manila",
+		"gender": "male",
+		"birthDate": {
+			"$date": "2017-08-18T12:53:20.519Z"
+		},
+		"profileImage": "https://raw.githubusercontent.com/jovanidash21/cores/master/public/images/profile/default.png",
+		"email": "admin@example.com",
+		"lastName": "Admin",
+		"firstName": "Admin"
+	}
+]
