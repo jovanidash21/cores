@@ -14,19 +14,6 @@ var mongoose = require('mongoose');
 var MongoStore = require('connect-mongo')(session);
 var Promise = require('bluebird');
 
-var options = {
-  server: {
-    socketOptions: {
-      keepAlive: 300000, connectTimeoutMS: 30000
-    }
-  },
-  replset: {
-    socketOptions: {
-      keepAlive: 300000, connectTimeoutMS : 30000
-    }
-  }
-};
-
 var viewer = require('./routes/viewer/index');
 var admin = require('./routes/admin/index');
 var api = require('./routes/api');
